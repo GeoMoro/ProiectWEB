@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+	<head>
+		<title>MyRobot</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+	
+<audio autoplay id="audio">
+  <source src="img/Music.mp3" type="audio/mpeg">
+</audio>
+
+		<div id="page-wrapper">
+			<div id="header-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							<header id="header">
+							  <img src="images/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+										
+								<nav>
+									<a href="2Welcome-logat.html" >Home</a>
+									<a href="3TopPlayers.html" > TopPlayers </a>
+									<a href="8Rules.html" > How to </a>
+							</nav>
+							</header>
+						</div>
+					</div>
+				</div>
+			</div>	
+		     <div id="main1">
+		       <div class="main2">
+		       <br><br>
+			   <h2>My Robot</h2>
+			   <br>
+			   <br>
+			   <h3>Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="New Name" name="CurrentName" id="ChangeRobot">&nbsp;&nbsp;&nbsp;<a href="[7]MyRobot(o coloana + stuff).jsp" >change?</a></h3>
+               <br>
+               <h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			       <input type="text" class="material" list="materialName"/>
+                                  <datalist id="materialName">
+    								 <option value="WOOD">WOOD-Basic</option>
+    								 <option value="STONE">STONE-Basic</option>
+    								 <option value="SILVER">SILVER</option>
+    								 <option value="STEEL">STEEL</option>
+    								 <option value="GOLD">GOLD</option>
+    								 <option value="DIAMOND">DIAMOND</option>
+    								 <option value="PLATINUM">PLATINUM</option>
+    								 <option value="OBSIDIAN">OBSIDIAN</option>
+								  </datalist>
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   </h3>
+			   <br>
+			   <h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+			        <input type="text" class="bomb" list="bombName"/>
+                                  <datalist id="bombName">
+    								 <option value="Short Ranged Bombs">Normal Bombs(3 ranged)</option>
+    								 <option value="Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+    								 <option value="Poison Bombs">Poison Bombs(3 ranged)</option>
+    								 <option value="Proximity Mine">Proximity Mine(1x1 ranged)</option>
+    								 <option value="Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+								  </datalist>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   </h3>
+			   <br>
+			   <h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    &nbsp;&nbsp;&nbsp;
+			       <input type="text" class="tool" list="toolName"/>
+                                  <datalist id="toolName">
+    								 <option value="Guardian">Guardian(+1 life)</option>
+    								 <option value="JetPack">JetPack(jump over obstacles)</option>
+    								 <option value="Detonator">Detonator</option>
+    								 <option value="Kick">Kick(Push the bomb trough 1 obstacle)</option>
+    								 <option value="Slide">Slide(Push the bomb trough the wall)</option>
+    								 <option value="Invisibility">Invisibility</option>
+    								 <option value="Redbull">Redbull(+Speed)</option>
+								  </datalist>
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   </h3>
+			   <section class = "topmenu1">
+			      <a href="[4] Jocul.html"> <button> Play a game </button> </a>
+			   </section>
+			   <br><br><br><br><br><br><br><br><br><br>
+			  </div>
+			</div>
+			<div id="footer-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="8u 12u(mobile)">
+						</div>
+						<div class="4u 12u(mobile)">
+						</div>
+					</div>
+					<div class="row">
+						<div class="12u">
+
+							<div id="copyright">
+								 Copyright © 2017 BomberBot |	Powered by UAIC/2B3/VMMMteam
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  <script>
+		      var audio = document.getElementById("audio");
+		      audio.volume = 0.05;
+		  </script>
+	</body>
+</html>
