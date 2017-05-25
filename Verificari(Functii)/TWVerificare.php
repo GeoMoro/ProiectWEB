@@ -21,8 +21,20 @@
 	{
 		if (!ctype_alpha(str_replace(' ','',str_replace('-', '', $p_prenume))))
 			return 0;
+		if(strlen(str_replace(' ','',str_replace('-', '', $p_prenume)))==0)
+			return -1;
 		return 1;
 	}
+	
+	function validUserName($p_username)  // V
+	{
+		if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_username))))))
+			return 0;
+		if(strlen(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_username)))))<4)
+			return -1;
+		return 1;
+	}
+	
 	function existUser($user,$pass)
 	{
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
