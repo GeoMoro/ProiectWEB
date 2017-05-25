@@ -30,15 +30,15 @@
 
 			$LogPass=$_POST["logpassword"];
 
-			$ConfirmPassword=$_Post["confirm_password"];
-
-			$Password=$_POST["password"];
-
-			$SecondName=$_POST["second_name"];
+			$LastName=$_POST["last_name"];
 
 			$FirstName=$_POST["first_name"];
 
 			$UserName=$_POST["username"];
+			
+			$Password_Register=$_POST["passwordRegister"];
+
+			$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
 
 		?>
 
@@ -158,14 +158,14 @@
 
 									<legend><span class="number">1</span> Login</legend>
 
-									<input type="text" name="logusername" placeholder="username: " required  value="<?php 
+									<input type="text" name="logusername" placeholder="Username: *" required  value="<?php 
 																														if($LogUserName == '') 
 																															echo '';
 																														else
 																															echo $LogUserName;
 																													?>">
 
-									<input type = "password" name = "logpassword" placeholder="password: " required  value="<?php 
+									<input type = "password" name = "logpassword" placeholder="Password: *" required  value="<?php 
 																																if($LogPass == '') 
 																																	echo '';
 																																else
@@ -189,16 +189,58 @@
 								<fieldset>
 
 									<legend><span class="number">2</span> Sign Up Now!</legend>
-										
-									<input type="text" name="username" placeholder="Username *" >
+
+									<h6 href="#" data-toggle="popover" title="<?php echo 'Username must have at least four alpha-numeric characters.'.PHP_EOL.'  You can use also the characters: \'-\', \'_\', \'+\' and \'.\';'.PHP_EOL.'First name and last name must contain only alpha-numeric characters, with \' \' and \'-\';'.PHP_EOL.'Password must have at least 5 characters, and here is allowed every character.';?>">Info</h6>
+
+									<br>
+
+									<span style="color:red"> 
 
 									<?php
 										if(isset($_POST['Submit1'])) {
 										    $UserName=$_POST["username"];
+											if(validUserName($UserName) == 0)
+												echo 'Invalid Username!';
+											else
+												if(validUserName($UserName) == -1)
+													echo 'At least 4 characters!';
+												else
+												echo '';
 										}
 									?>
 
-									<input type="text" name="first_name" placeholder="First Name *" >
+									</span>
+
+									<input type="text" name="username" placeholder="Username *" required value="<?php 
+																													if($UserName == '') 
+																														echo '';
+																													else
+																														echo $UserName;
+													 															?>">
+
+									<span style="color:red"> 
+
+									<?php
+										if(isset($_POST['Submit1'])) {
+										    $FirstName=$_POST["first_name"];
+											if(validPremume($FirstName) == 0)
+												echo 'Invalid Name!';
+											else
+												if(validPremume($FirstName) == -1)
+													echo 'You must have a name, bro!';
+												else
+												echo '';
+										}
+									?>
+
+									</span>
+
+									<input type="text" name="first_name" placeholder="First Name *" required value="<?php 
+																														if($FirstName == '') 
+																															echo '';
+																														else
+																															echo $FirstName;
+																													?>">
 
 									<?php
 										if(isset($_POST['Submit1'])) {
@@ -206,26 +248,42 @@
 										}
 									?>
 
-									<input type="text" name="second_name" placeholder="Second Name *" >
+									<span style="color:red"> 
 
 									<?php
 										if(isset($_POST['Submit1'])) {
-										    $SecondName=$_POST["second_name"];
+										    $LastName=$_POST["last_name"];
+											if(validPremume($LastName) == 0)
+												echo 'Invalid Name!';
+											else
+												if(validPremume($LastName) == -1)
+													echo 'You must have a name, bro!';
+												else
+												echo '';
 										}
 									?>
 
-									<input type="password" name="passwordRegister" placeholder="Password *" >
+									</span>
 
-									<input type="password" name="confirm_passwordRegister" placeholder="Confirm password *" >
+									<input type="text"  name="last_name"  placeholder="Last Name *" required value="<?php 
+																												if($LastName == '') 
+																													echo '';
+																												else
+																													echo $LastName;
+																											?>">
+
+									<?php
+										if(isset($_POST['Submit1'])) {
+										    $LastName=$_POST["last_name"];
+										}
+									?>
 
 									<span style="color:red">
 
 										<?php
 											if(isset($_POST['Submit1'])) {
 												$Password_Register=$_POST["passwordRegister"];
-												//$okPass = 1;
 												$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
-												//$okPass = validPass($Password,$ConfirmPassword);
 												if($Password_Register == $Confirm_Password_Register)
 													echo "";
 												else
@@ -234,6 +292,21 @@
 										?>
 
 									</span>
+
+									<input type="password" name="passwordRegister" placeholder="Password *" required value="<?php 
+																																if($Password_Register == '') 
+																																	echo '';
+																																else
+																																	echo $Password_Register;
+																															?>">
+
+
+									<input type="password" name="confirm_passwordRegister" placeholder="Confirm password *" required value="<?php 
+																																				if($Confirm_Password_Register == '') 
+																																					echo '';
+																																				else
+																																					echo $Confirm_Password_Register;
+																																			?>">
 
 								</fieldset>
 
