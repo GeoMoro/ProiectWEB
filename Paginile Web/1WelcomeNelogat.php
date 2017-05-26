@@ -6,21 +6,21 @@
 
 		<title>Welcome Nelogat</title>
 	
-		<meta charset="utf-8" />
+	<!--	<meta charset="utf-8" />
 	
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />  -->
 	
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="TW_CSS/css/main.css" />
 
 	</head>
 
 	<body>
-
+<!--<form action="" method='post'> -->
 		<?php
 
 			include "TWVerificare.php";
 
-			session_start();
+			 ob_start();
 
 			error_reporting(0);
 
@@ -199,13 +199,19 @@
 									<?php
 										if(isset($_POST['Submit1'])) {
 										    $UserName=$_POST["username"];
-											if(validUserName($UserName) == 0)
+											if(validUserName($UserName) == 0) {
 												echo 'Invalid Username!';
+												$okUName = 0;
+											}
 											else
-												if(validUserName($UserName) == -1)
+												if(validUserName($UserName) == -1) {
 													echo 'At least 4 characters!';
-												else
-												echo '';
+													$okUName = 0;
+												}
+												else {
+													echo '';
+													$okUName = 1;
+												}
 										}
 									?>
 
@@ -223,13 +229,19 @@
 									<?php
 										if(isset($_POST['Submit1'])) {
 										    $FirstName=$_POST["first_name"];
-											if(validPremume($FirstName) == 0)
+											if(validPremume($FirstName) == 0) {
 												echo 'Invalid Name!';
+												$okFName = 0;
+											}
 											else
-												if(validPremume($FirstName) == -1)
+												if(validPremume($FirstName) == -1) {
 													echo 'You must have a name, bro!';
-												else
-												echo '';
+													$okFName = 0;
+												}
+												else {
+													echo '';
+													$okFName = 1;
+												}
 										}
 									?>
 
@@ -253,13 +265,19 @@
 									<?php
 										if(isset($_POST['Submit1'])) {
 										    $LastName=$_POST["last_name"];
-											if(validPremume($LastName) == 0)
+											if(validPremume($LastName) == 0) {
 												echo 'Invalid Name!';
+												$okLName = 0;
+											}
 											else
-												if(validPremume($LastName) == -1)
+												if(validPremume($LastName) == -1) {
 													echo 'You must have a name, bro!';
-												else
-												echo '';
+													$okLName = 0;
+												}
+												else {
+													echo '';
+													$okLName = 1;
+												}
 										}
 									?>
 
@@ -284,10 +302,14 @@
 											if(isset($_POST['Submit1'])) {
 												$Password_Register=$_POST["passwordRegister"];
 												$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
-												if($Password_Register == $Confirm_Password_Register)
+												if($Password_Register == $Confirm_Password_Register) {
 													echo "";
-												else
+													$okp = 1;
+												}
+												else {
 													echo "Parolele nu corescund!";
+													$okp = 0;
+												}
 											}
 										?>
 
@@ -310,7 +332,7 @@
 
 								</fieldset>
 
-								<button id="Submit1" name="Submit1" Value="Register1" type="Submit1" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Register </button>
+								<button id="Submit" name="Submit1" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Register </button>
 
 						    </form>
 
@@ -364,34 +386,6 @@
 
 						$rezultat = existUser($LogUserName,$LogPass);
 
-						//echo "<strong>".'Ai introdus: '.$LogUserName.'  '.$LogPass.' '.$rezultat.'!!!'."</strong>"."<br>";
-
-						//if($rezultat == 1){
-							
-							//$cookie_name = "userID";
-
-							//$cookie_value = getID($LogUserName,$LogPass);
-
-							//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");  // 86400 = o zi
-
-						//	$linklogin='2WelcomeLogat.php';
-							
-						//	redirect($linklogin,$statusCode = 303);
-							
-							//header('Location: 2WelcomeLogat.php');
-
-							//exit;
-
-							//echo "<a target = '_blank' href=2Welcome-Logat.php >open</a>";
-
-							//session_register("UserSession");
-
-							//$_SESSION['login_user'] = $myusername;
-
-							//header("location: 2WelcomeLogat.php");
-
-						//}
-
 						if($rezultat == 0){
 
 							//echo "Username sau Parola gresita!";
@@ -416,16 +410,8 @@
 
 		</div>
 
-		<!--<div>
-		  <span>
-			<?php
-				echo "?".$Confirm_Password_Register."!!!".$Password_Register."?";
-			?>
-		  </span>
-		</div> -->
-	</body>
-	
-	<?php
+		<span>
+		<?php
 
 		$LogUserName=$_POST["logusername"];
 
@@ -433,22 +419,45 @@
 
 		if(isset($_POST['Submit'])) {
 
-			//$rezultat = existUser($LogUserName,$LogPass);
+			$rezultat = existUser($LogUserName,$LogPass);
 
-			//if($rezultat !== 0){
+			if($rezultat == 1){
+
+			 // echo 'AICI!!!!';
 						
-				$cookie_name = "userID";
+				//$cookie_name = "UserID";
 
 				$cookie_value = getID($LogUserName,$LogPass);
+				
+				echo '!!!'.$cookie_value.'?!!!';
 
-				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");  // 86400 = o zi
+				//$time=time();
+
+				setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 		
 				header('Location: 2WelcomeLogat.php');
 
-			//	}
+			}
 
 		}
+		
+		else
+		
+			if(isset($_POST['Submit1'])) {
+				
+				if($okUName == 1 && $okFName == 1 && $okLName && $okp == 1) {
+					
+					Register($UserName, $FirstName, $LastName, $Password_Register);
+					
+				}
+				
+			}
+			
+?>
+		</span>
 
-	?>
+<!--</form> -->
+	</body>
 
 </html>
+

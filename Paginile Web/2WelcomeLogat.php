@@ -1,16 +1,6 @@
 <!DOCTYPE HTML>
 
 <html lang="en">
-
-    <?php
-	
-	    $LoggedAs = '';
-		
-		if(isset($_COOKIE["UserID"]))
-		{
-			$LoggedAs = $cookie_value;
-		}
-	?>
 	
 	<head>
 
@@ -20,7 +10,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="TW_CSS/css/main.css" />
 
 	</head>
 
@@ -65,6 +55,19 @@
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
+					
+					<span>
+    <?php
+	
+	    if(isset($_COOKIE['UserID'])){
+			$cookie =  $_COOKIE["UserID"];
+			echo 'DAAAA'.$cookie;
+		}
+		else{
+			echo 'NUUUU';
+		}
+	?>
+</span>
 
 						<section class="left-content">
 

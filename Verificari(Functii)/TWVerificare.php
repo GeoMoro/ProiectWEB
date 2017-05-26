@@ -45,33 +45,21 @@
 		}
 		else{
 				
-				$sql = 'begin  :rez := checklogg(:UserName,:Passw); end;';
+				$sql = 'begin :rez := checklogg(:UserName,:Passw); end;';
 				$result = oci_parse($connection, $sql);
 
-				oci_bind_by_name($result, ':rez', $rezultat);
-				oci_bind_by_name($result, ':UserName', $user);
-				oci_bind_by_name($result, ':Passw', $pass);
+				oci_bind_by_name($result, ':rez', $rezultat,50,SQLT_INT);
+				oci_bind_by_name($result, ':UserName', $user,50);
+				oci_bind_by_name($result, ':Passw', $pass,50);
 				
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
+				
+				oci_free_statement($result);
+				
 				oci_close($connection);
+				
 				return $rezultat;
-				//oci_close($connection);
 				
-			   
-				/*if(!$result){
-					return 0;
-					$e1 = oci_error($connection);
-					trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-                else {
-					oci_execute($result);
-					
-					$rez = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
-					return $rez;
-				}*/
-				
-				return 0;
 			}
 	}
 	
@@ -85,33 +73,21 @@
 		}
 		else{
 				
-				$sql = 'begin  :rez := returnID(:UserName,:Passw); end;';
+				$sql = 'begin :rez := returnID(:UserName,:Passw); end;';
 				$result = oci_parse($connection, $sql);
 
-				oci_bind_by_name($result, ':rez', $rezultat);
-				oci_bind_by_name($result, ':UserName', $user);
-				oci_bind_by_name($result, ':Passw', $pass);
+				oci_bind_by_name($result, ':rez', $rezultat,50,SQLT_INT);
+				oci_bind_by_name($result, ':UserName', $user,50);
+				oci_bind_by_name($result, ':Passw', $pass,50);
 				
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
+				
+				oci_free_statement($result);
+				
 				oci_close($connection);
+				
 				return $rezultat;
-				//oci_close($connection);
 				
-			   
-				/*if(!$result){
-					return 0;
-					$e1 = oci_error($connection);
-					trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-                else {
-					oci_execute($result);
-					
-					$rez = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
-					return $rez;
-				}*/
-				
-				return $rez;
 			}
 	}
 	
@@ -130,7 +106,6 @@
 				$result = oci_parse($connection, $sql);
 
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
 				
 				$index = 0;
 				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
@@ -158,7 +133,6 @@
 				$result = oci_parse($connection, $sql);
 
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
 				
 				$index = 0;
 				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
@@ -190,7 +164,6 @@
 				$result = oci_parse($connection, $sql);
 
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
 				
 				$index = 0;
 				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
@@ -203,6 +176,36 @@
 			}
 	}
 	
+	function Register($username, $firstname, $lastname, $pass)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql1 = 'declare :rez int; begin select count(ID) into :rez from players; end;';
+				$result1 = oci_parse($connection, $sql);
+				oci_bind_by_name($result1, ':rez', $ID ,50,SQLT_INT);
+				oci_execute($result1);
+				
+				$sql = 'insert into Players values (:ID, :UserName, :FirstName, :LastName, :Passw, 0, NULL, \'N\', :ID, 0, 0, 0, SYSDATE); end;';
+				$result = oci_parse($connection, $sql);
+				oci_free_statement($result);
+
+				oci_bind_by_name($result, ':UserName', $username,50);
+				oci_bind_by_name($result, ':FirstName', $firstname,50);
+				oci_bind_by_name($result, ':LastName', $lastname,50);
+				oci_bind_by_name($result, ':Passw', $pass,50);
+				oci_bind_by_name($result, ':ID', $ID,50,SQLT_INT);
+				
+				oci_execute($result);
+				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
+				oci_close($connection);
+			}
+	}
 	
 	function redirect($url, $statusCode = 303)
 	{

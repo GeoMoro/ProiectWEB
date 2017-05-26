@@ -225,7 +225,7 @@ th, td {
 			   width: 100%;
                height: 100%;
                background-size: contain;
-			   background-image: url("../img/sans.gif");
+			   background-image: url("/TW_CSS/img/sans.gif");
 			   background-repeat: no-repeat;
 			   background-position: center;
 			   text-align: center;
@@ -1967,3 +1967,7 @@ th, td {
 				font-size: 0.8em;
 				line-height: 1.5em;
 			}
+			
+			.popover{
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
+}
