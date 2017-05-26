@@ -364,9 +364,15 @@
 
 						$rezultat = existUser($LogUserName,$LogPass);
 
-						echo "<strong>".'Ai introdus: '.$LogUserName.'  '.$LogPass.' '.$rezultat.'!!!'."</strong>"."<br>";
+						//echo "<strong>".'Ai introdus: '.$LogUserName.'  '.$LogPass.' '.$rezultat.'!!!'."</strong>"."<br>";
 
-						if($rezultat == 1){
+						//if($rezultat == 1){
+							
+							//$cookie_name = "userID";
+
+							//$cookie_value = getID($LogUserName,$LogPass);
+
+							//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");  // 86400 = o zi
 
 						//	$linklogin='2WelcomeLogat.php';
 							
@@ -378,13 +384,13 @@
 
 							//echo "<a target = '_blank' href=2Welcome-Logat.php >open</a>";
 
-							session_register("UserSession");
+							//session_register("UserSession");
 
-							$_SESSION['login_user'] = $myusername;
+							//$_SESSION['login_user'] = $myusername;
 
-							header("location: 2WelcomeLogat.php");
+							//header("location: 2WelcomeLogat.php");
 
-						}
+						//}
 
 						if($rezultat == 0){
 
@@ -404,12 +410,6 @@
 
 					}
 
-					//if(isset($_POST['Submit1'])) {
-
-					    //if($okPass==1 && )
-
-					//}
-
 				?>
 
 			</span>
@@ -424,5 +424,31 @@
 		  </span>
 		</div> -->
 	</body>
+	
+	<?php
+
+		$LogUserName=$_POST["logusername"];
+
+		$LogPass=$_POST["logpassword"];
+
+		if(isset($_POST['Submit'])) {
+
+			//$rezultat = existUser($LogUserName,$LogPass);
+
+			//if($rezultat !== 0){
+						
+				$cookie_name = "userID";
+
+				$cookie_value = getID($LogUserName,$LogPass);
+
+				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");  // 86400 = o zi
+		
+				header('Location: 2WelcomeLogat.php');
+
+			//	}
+
+		}
+
+	?>
 
 </html>

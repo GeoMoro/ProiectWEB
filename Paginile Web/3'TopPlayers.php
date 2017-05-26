@@ -54,18 +54,21 @@
 
 			    <div class="topmenu">
 
+			       <form action="" method='post'>
 			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  	
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			        <button> Search <img src="TW_CSS/img/s.png" alt="Search" style="width:10px;height:10px;"></button>
+			        <button id="Submit" name="Submit" Value="Register" type="Submit"> Search <img src="TW_CSS/img/s.png" alt="Search" style="width:10px;height:10px;"></button>
 
-					<input type="text" placeholder="Search by name" name="searchArgument" id="searchByName">
+					<input type="text" id="searchByName" name="searchByName" placeholder="Search by name" >
 
-			      	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			      	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
-			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
 
-					<button>Top 10</button>
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+					<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
+</form>
 
 			    </div>
 
@@ -93,103 +96,21 @@
 
   						<tbody>
 
-							<tr>
-
-           						<td>1</td>
-
-           						<td>BecaliTheBoss</td>
-
-           						<td>Gigi</td>
-
-           						<td>Becali</td>
-
-           						<td>2000</td>
-
-        					</tr>
-
-         					<tr>
-
-           						<td>2</td>
-
-           						<td>TheKing</td>
-
-           						<td>Andrei</td>
-
-           						<td>Boistean</td>
-
-           						<td>1975</td>
-
-         					</tr>
-
-         					<tr>
-
-           						<td>3</td>
-
-           						<td>Terminator</td>
-
-           						<td>Claudiu</td>
-
-           						<td>Mocanu</td>
-
-           						<td>1975</td>
-
-         					</tr>
-
-         					<tr>
-
-           						<td>4</td>
-
-           						<td>Lord</td>
-
-           						<td>George</td>
-
-           						<td>Balan</td>
-
-           						<td>1850</td>
-
-         					</tr>
-
-         					<tr>
-
-           						<td>5</td>
-
-           						<td>Striker</td>
-
-           						<td>Robert</td>
-
-           						<td>Giovanni</td>
-
-           						<td>1800</td>
-
-         					</tr>
-
-         					<tr>
-
-           						<td>6</td>
-
-           						<td>Clau</td>
-
-           						<td>Claudiu</td>
-
-           						<td>Tonea</td>
-
-           						<td>1700</td>
-
-         					</tr>
-
-         					<tr>
-
-           						<td>7</td>
-
-           						<td>Demoler</td>
+							<?php 
+							    include "TWVerificare.php";
 								
-           						<td>Codrin</td>
-
-           						<td>Balan</td>
-
-           						<td >   0</td>
-
-         					</tr>
+								if(isset($_POST['Submit'])){
+									$UserSearch = $_POST["searchByName"];
+									getTopByName($UserSearch);
+								}
+								else
+									if(isset($_POST['Submit1']))
+									{
+										getTop10();
+									}
+									else
+										getTop();
+							?>
 
   						</tbody>
 

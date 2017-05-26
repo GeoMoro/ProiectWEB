@@ -2,6 +2,16 @@
 
 <html lang="en">
 
+    <?php
+	
+	    $LoggedAs = '';
+		
+		if(isset($_COOKIE["UserID"]))
+		{
+			$LoggedAs = $cookie_value;
+		}
+	?>
+	
 	<head>
 
 		<title>Welcome-logat</title>
@@ -122,13 +132,17 @@
 
 							<h2> Main Menu </h2>
 
-							<a href="4Jocul.php"> <button>   Play a game  </button> </a>	
+								<form action="" method='post'>
+								
+								<a href="4Jocul.php"> <button>   Play a game  </button> </a>	
 
-							<a href="6Accoutinfo.php">  <button> Account info </button> </a>
+								<a href="6Accoutinfo.php">  <button> Account info </button> </a>
 
-							<a href="7MyRobot.php">  <button> My Robot </button> </a>	
+								<a href="7MyRobot.php">  <button> My Robot </button> </a>	
 
-							<a href="1WelcomeNelogat.php"> <button> logout :( </button> </a>
+								<button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button>
+
+								</form>
 
 						</section>
 
@@ -167,5 +181,17 @@
 		</div>
 
 	</body>
+
+	<?php
+
+		if(isset($_POST['Submit'])) {
+
+			setcookie("userID", "", time() - 3600);
+
+			header('Location: 1WelcomeNelogat.php');
+
+		}
+
+	?>
 
 </html>
