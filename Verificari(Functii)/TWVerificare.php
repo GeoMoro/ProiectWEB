@@ -203,7 +203,7 @@
 				
 				oci_execute($result1);
 				
-			//	$ID = $ID + 1;
+				$ID = $ID + 1;
 				$veteran = 'N';
 				$sql = 'insert into Players VALUES ('.$ID.', \''.$username.'\', \''.$firstname.'\', \''.$lastname.'\', \''.$pass.'\', 0, NULL, \''.$veteran.'\', '.$ID.', 0, 0, 0, SYSDATE)';
 				$result = oci_parse($connection, $sql);

@@ -797,7 +797,7 @@ end Func;
 --Func.FindOpponents(229,2);
 --FindTeam()
 --end;
-/
+/*
 CREATE OR REPLACE PACKAGE F7 is
     function Decide(a int, b int) return int;
     function Paging(pg int,nrpepagina int) return varchar2;
@@ -851,7 +851,7 @@ CREATE OR REPLACE PACKAGE BODY F7 is
             end if;
     end if;
     return -1;
-  end Decide;
+  end Decide; */
   
   /*function Paging(nrPlayers int) return int as
   nrPag int;
