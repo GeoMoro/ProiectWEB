@@ -186,12 +186,15 @@
 		}
 		else{
 				
-				$sql1 = 'declare :rez int; begin select count(ID) into :rez from players; end;';
-				$result1 = oci_parse($connection, $sql);
-				oci_bind_by_name($result1, ':rez', $ID ,50,SQLT_INT);
-				oci_execute($result1);
+				//$sql1 = 'begin :rez := getNrOfPlayers(); end;';
+				//$result1 = oci_parse($connection, $sql1);
 				
-				$sql = 'insert into Players values (:ID, :UserName, :FirstName, :LastName, :Passw, 0, NULL, \'N\', :ID, 0, 0, 0, SYSDATE); end;';
+				//oci_bind_by_name($result1, ':rez', $ID ,50,SQLT_INT);
+				
+				//oci_execute($result1);
+				
+				//$ID = $ID + 1;
+				$sql = 'begin addPlayer(getNrOfPlayers()+1, :UserName, :FirstName, :LastName, :Passw); end;';
 				$result = oci_parse($connection, $sql);
 				oci_free_statement($result);
 
@@ -199,17 +202,64 @@
 				oci_bind_by_name($result, ':FirstName', $firstname,50);
 				oci_bind_by_name($result, ':LastName', $lastname,50);
 				oci_bind_by_name($result, ':Passw', $pass,50);
-				oci_bind_by_name($result, ':ID', $ID,50,SQLT_INT);
+				//oci_bind_by_name($result, ':ID', $ID,50,SQLT_INT);
 				
 				oci_execute($result);
-				//$rezultat = oci_fetch_array($results, OCI_RETURN_NULLS+OCI_ASSOC);
 				oci_close($connection);
 			}
 	}
 	
-	function redirect($url, $statusCode = 303)
+	function getUserName($uid)
 	{
-	   header('Location: ' . $url, true, $statusCode);
-	   die();
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = ' begin :rez := getUN(:ID); end;';
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+				oci_bind_by_name($result, ':rez', $user,50);
+				
+				oci_execute($result);
+				
+				oci_free_statement($result);
+				
+				oci_close($connection);
+				
+				return $user;
+				
+			}
+	}
+	
+	function getRank($uid)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = ' begin :rez := getRank(:ID); end;';
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+				oci_bind_by_name($result, ':rez', $user,50);
+				
+				oci_execute($result);
+				
+				oci_free_statement($result);
+				
+				oci_close($connection);
+				
+				return $user;
+				
+			}
 	}
 ?>

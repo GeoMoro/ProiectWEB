@@ -20,7 +20,7 @@
 
 			include "TWVerificare.php";
 
-			 ob_start();
+			ob_start();
 
 			error_reporting(0);
 
@@ -429,7 +429,7 @@
 
 				$cookie_value = getID($LogUserName,$LogPass);
 				
-				echo '!!!'.$cookie_value.'?!!!';
+				//echo '!!!'.$cookie_value.'?!!!';
 
 				//$time=time();
 
@@ -448,6 +448,16 @@
 				if($okUName == 1 && $okFName == 1 && $okLName && $okp == 1) {
 					
 					Register($UserName, $FirstName, $LastName, $Password_Register);
+					
+					//$cookie_value = getID($UserName,$Password_Register);
+				
+					//echo '!!!'.$cookie_value.'?!!!';
+
+					//$time=time();
+
+					//setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+		
+					//header('Location: 2WelcomeLogat.php');
 					
 				}
 				

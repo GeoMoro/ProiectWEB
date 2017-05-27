@@ -1,5 +1,19 @@
 <!DOCTYPE html>
+<?php
+	
+	include "TWVerificare.php";
 
+	//ob_start();
+
+	//error_reporting(0);
+
+	//ini_set('display_errors', 0);
+			
+	    if(isset($_COOKIE['UserID'])){
+			$uid =  $_COOKIE["UserID"];
+		}
+		
+	?>
 <html>
 
 	<head>
@@ -64,7 +78,7 @@
 			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
 
-			        <span>  Your rank: 1065 </span>
+			        <span>  Your rank: <?php $rank = getRank($uid); echo $rank;?> </span>
 
 			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
@@ -97,7 +111,6 @@
   						<tbody>
 	
 							<?php 
-							    include "TWVerificare.php";
 								if(isset($_POST['Submit'])){
 									$UserSearch = $_POST["searchByName"];
 									getTopByName($UserSearch);

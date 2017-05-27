@@ -1,5 +1,19 @@
 <!DOCTYPE HTML>
+<?php
+	
+	include "TWVerificare.php";
 
+	//ob_start();
+
+	//error_reporting(0);
+
+	//ini_set('display_errors', 0);
+			
+	    if(isset($_COOKIE['UserID'])){
+			$uid =  $_COOKIE["UserID"];
+		}
+		
+	?>
 <html>
 
 	<head>
