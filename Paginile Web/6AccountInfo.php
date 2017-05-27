@@ -78,7 +78,10 @@
 
 								<br><br>
 
-								<label class="labelavatar" > Nickname: Ion.Escu</label>
+								<label class="labelavatar" > Nickname:  <?php 
+																			$LoggedUserName = getUserName($uid);
+																			echo $LoggedUserName;
+																	   ?></label>
 
 								<div class="dropdown">
 
@@ -86,29 +89,65 @@
 
 									<div id="myDropdown" class="dropdown-content">
 
-										<form>
+										<form action="" method='post'>
 
 											<fieldset>
 
 												<input type="text" name="username" placeholder="Username *">
 
-												<input type="submit" value="Apply" />
+												<button id="Submit" name="Submit1" Value="ApplyChangePass" type="Submit"> Apply </button>
 
 											</fieldset>
 
 										</form>
 
 									</div>
+									
+									<span style="color:red"> 
+
+										<?php
+											if(isset($_POST['Submit1'])) {
+											    
+												$username = $_POST["username"];
+												$real_username = getUserName($uid);
+												if(validUserName($username) == 0) {
+													echo 'Ai introdus un username gresit!';
+												}
+												else 
+													if($username == $real_username) {
+														echo 'Trebuie sa introduci un username diferit de cel vechi!';
+													}
+													
+													
+													else {
+														echo '';
+														UpdateUserName($uid,$username);
+														setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+			
+														header('Location: 6AccountInfo.php');
+													}
+											}
+												
+											
+										?>
+
+									</span>
 
 								</div>
 
 								<br><br><br>
 
-								<label class="labelacount"> First Name: Ion</label>		
+								<label class="labelacount"> First Name: <?php 
+																			$LoggedFirstName = getFirstName($uid);
+																			echo $LoggedFirstName;
+																		 ?></label>		
 
 								<br>
 
-								<label class="labelacount"> Last Name: Escu</label>
+								<label class="labelacount"> Last Name: <?php 
+																			$LoggedLasttName = getLastName($uid);
+																			echo $LoggedLasttName;
+																		 ?></label>
 
 								<br>
 
@@ -118,23 +157,95 @@
 
 									<div id="myDropdown2" class="dropdown-content2">
 
-										<form>
+										<form action="" method='post'>
 
 											<fieldset>
 
 												<input type="password" name="old_password" placeholder="Old password *">
 
+												<span style="color:red"> 
+
+													<?php
+														if(isset($_POST['Submit2'])) {
+															$Old_pass=$_POST["old_password"];
+															$Real_Pass = getUserPass($uid);
+															if(validPass($Old_pass,$Real_Pass) == 0) {
+																echo 'Parolele nu corespund!';
+																$okUCheckPass = 0;
+															}
+															else {
+																	echo '';
+																	$okUCheckPass = 1;
+																}
+														}
+													?>
+
+												</span>
+												
 												<input type="password" name="password" placeholder="New password *">
 
 												<input type="password" name="confirm_password" placeholder="Confirm new password *">
+												
+												<span style="color:red"> 
 
-												<input type="submit" value="Apply" />
+													<?php
+														if(isset($_POST['Submit2'])) {
+															$New_Pass = $_POST["password"];
+															$New_Pass_Check = $_POST["confirm_password"];
+															
+															if( validPassword($New_Pass)==0  || validPassword($New_Pass_Check)==0) {
+																echo 'Parole invalide!';
+																$okUCheckNewPass = 0;
+															}
+															else 
+																if(validPass($New_Pass,$New_Pass_Check) == 0) {
+																	echo 'Parolele nu corespund!';
+																	$okUCheckNewPass = 0;
+																} 
+																	else 
+																		if(validPass($New_Pass,$Old_pass)==1){
+																			echo 'Trebuie sa introduci o parola diferita de cea veche!';
+																			$okUCheckNewPass = 0;
+																		}
+																	else{
+																		echo '';
+																		$okUCheckNewPass = 1;
+																	}
+														}
+													?>
+
+												</span>
+
+												<button id="Submit" name="Submit2" Value="ApplyChangePass" type="Submit"> Apply </button>
+												
 
 											</fieldset>
 
 										</form>
 
 									</div>
+									
+									<span style="color:red"> 
+
+										<?php
+											if(isset($_POST['Submit2'])) {
+											
+												if($okUCheckNewPass == 0  || $okUCheckPass == 0) {
+													echo 'Ai introdus gresit un camp!';
+												}
+												else {
+													echo '';
+													UpdatePass($uid,$New_Pass);
+													setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+		
+													header('Location: 6AccountInfo.php');
+												}
+											}
+												
+											
+										?>
+
+									</span>
 
 								</div>
 

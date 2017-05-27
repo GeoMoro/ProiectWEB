@@ -1,4 +1,14 @@
 <?php
+   
+   function validPassword($pass)
+   {
+	    if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', str_replace(' ', '', str_replace('@', '', str_replace('&', '', str_replace('#', '', $pass))))))))))
+			return 0;
+		else if(strlen($pass)<5)
+				return 0;
+	    return 1;
+   }
+
    function validPass($pass1, $pass2)  // V
 	{
 		if($pass1==$pass2)
@@ -54,7 +64,7 @@
 				
 				oci_execute($result);
 				
-				oci_free_statement($result);
+				//oci_free_statement($result);
 				
 				oci_close($connection);
 				
@@ -82,7 +92,7 @@
 				
 				oci_execute($result);
 				
-				oci_free_statement($result);
+				//oci_free_statement($result);
 				
 				oci_close($connection);
 				
@@ -113,7 +123,7 @@
 					echo '<tr> <td> '.$index.' </td> '.$row[0].'</tr>';
 				}
 
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 				oci_close($connection);
 			}
 	}
@@ -144,7 +154,7 @@
 					echo '<tr> <td> Nu </td> <td> exista </td> <td> un </td> <td> asemenea </td> <td> player</td> </tr>';
 				}
 
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 				oci_close($connection);
 			}
 	}
@@ -171,7 +181,7 @@
 					echo '<tr> <td> '.$index.' </td> '.$row[0].'</tr>';
 				}
 
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 				oci_close($connection);
 			}
 	}
@@ -186,24 +196,19 @@
 		}
 		else{
 				
-				//$sql1 = 'begin :rez := getNrOfPlayers(); end;';
-				//$result1 = oci_parse($connection, $sql1);
+				$sql1 = 'begin :rez := getNrOfPlayers(); end;';
+				$result1 = oci_parse($connection, $sql1);
 				
-				//oci_bind_by_name($result1, ':rez', $ID ,50,SQLT_INT);
+				oci_bind_by_name($result1, ':rez', $ID ,50,SQLT_INT);
 				
-				//oci_execute($result1);
+				oci_execute($result1);
 				
-				//$ID = $ID + 1;
-				$sql = 'begin addPlayer(getNrOfPlayers()+1, :UserName, :FirstName, :LastName, :Passw); end;';
+				$ID = $ID + 1 ;
+				$veteran = 'N';
+				$sql = 'insert into Players VALUES ('.$ID.', \''.$username.'\', \''.$firstname.'\', \''.$lastname.'\', \''.$pass.'\', 0, NULL, \''.$veteran.'\', '.$ID.', 0, 0, 0, SYSDATE)';
 				$result = oci_parse($connection, $sql);
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 
-				oci_bind_by_name($result, ':UserName', $username,50);
-				oci_bind_by_name($result, ':FirstName', $firstname,50);
-				oci_bind_by_name($result, ':LastName', $lastname,50);
-				oci_bind_by_name($result, ':Passw', $pass,50);
-				//oci_bind_by_name($result, ':ID', $ID,50,SQLT_INT);
-				
 				oci_execute($result);
 				oci_close($connection);
 			}
@@ -227,7 +232,7 @@
 				
 				oci_execute($result);
 				
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 				
 				oci_close($connection);
 				
@@ -254,7 +259,7 @@
 				
 				oci_execute($result);
 				
-				oci_free_statement($result);
+			//	oci_free_statement($result);
 				
 				oci_close($connection);
 				
@@ -262,4 +267,128 @@
 				
 			}
 	}
+	
+	function getFirstName($uid)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = ' begin :rez := getFN(:ID); end;';
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+				oci_bind_by_name($result, ':rez', $user,50);
+				
+				oci_execute($result);
+				
+			//	oci_free_statement($result);
+				
+				oci_close($connection);
+				
+				return $user;
+				
+			}
+	}
+	
+	function getLastName($uid)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = ' begin :rez := getLN(:ID); end;';
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+				oci_bind_by_name($result, ':rez', $user,50);
+				
+				oci_execute($result);
+				
+			//	oci_free_statement($result);
+				
+				oci_close($connection);
+				
+				return $user;
+				
+			}
+	}
+	
+	function getUserPass($uid)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = ' begin :rez := getPass(:ID); end;';
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+				oci_bind_by_name($result, ':rez', $user,50);
+				
+				oci_execute($result);
+				
+			//	oci_free_statement($result);
+				
+				oci_close($connection);
+				
+				return $user;
+				
+			}
+	}
+	
+	function UpdatePass($UID,$NewPass)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = 'update players SET password = \''.$NewPass.'\' WHERE ID = '.$UID;
+				$result = oci_parse($connection, $sql);
+				
+				oci_execute($result);
+				
+			//	oci_free_statement($result);
+				
+				oci_close($connection);
+		}
+	}
+	
+	function UpdateUserName($UID,$NewUserN)
+	{
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+														
+		if(!$connection){
+			echo "Connection failed. Please try again";
+			return -1;
+		}
+		else{
+				
+				$sql = 'update players SET username = \''.$NewUserN.'\' WHERE ID = '.$UID;
+				$result = oci_parse($connection, $sql);
+				
+				oci_execute($result);
+				
+			//	oci_free_statement($result);
+				
+				oci_close($connection);
+		}
+	}
+	
 ?>

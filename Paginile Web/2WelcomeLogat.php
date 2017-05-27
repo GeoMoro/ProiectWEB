@@ -3,11 +3,11 @@
 	
 	include "TWVerificare.php";
 
-	//ob_start();
+	ob_start();
 
-	//error_reporting(0);
+	error_reporting(0);
 
-	//ini_set('display_errors', 0);
+	ini_set('display_errors', 0);
 			
 	    if(isset($_COOKIE['UserID'])){
 			$uid =  $_COOKIE["UserID"];
@@ -69,10 +69,6 @@
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
-					
-					<span>
-    
-</span>
 
 						<section class="left-content">
 
@@ -145,13 +141,13 @@
 
 								<form action="" method='post'>
 								
-								<a href="4Jocul.php"> <button>   Play a game  </button> </a>	
+								<a href="4Jocul.php"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
 
-								<a href="6Accoutinfo.php">  <button> Account info </button> </a>
+								<a href="6Accoutinfo.php">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
 
-								<a href="7MyRobot.php">  <button> My Robot </button> </a>	
+								<a href="7MyRobot.php">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
 
-								<button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button>
+								<button id="Submit" name="Submit" Value="Logout" type="Submit"> Logout :( </button>
 
 								</form>
 
@@ -200,6 +196,27 @@
 			setcookie("userID", "", time() - 3600);
 
 			header('Location: 1WelcomeNelogat.php');
+
+		}
+		else if(isset($_POST['Submit1'])) {
+
+			setcookie("userID", "", time() - 3600);
+
+			header('Location: 4Jocul.php');
+
+		}
+		else if(isset($_POST['Submit2'])) {
+
+			setcookie("userID", "", time() - 3600);
+
+			header('Location: 6AccountInfo.php');
+
+		}
+		else if(isset($_POST['Submit3'])) {
+
+			setcookie("userID", "", time() - 3600);
+
+			header('Location: 7MyRobot.php');
 
 		}
 

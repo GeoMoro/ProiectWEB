@@ -190,7 +190,7 @@
 
 									<legend><span class="number">2</span> Sign Up Now!</legend>
 
-									<h6 href="#" data-toggle="popover" title="<?php echo 'Username must have at least four alpha-numeric characters.'.PHP_EOL.'  You can use also the characters: \'-\', \'_\', \'+\' and \'.\';'.PHP_EOL.'First name and last name must contain only alpha-numeric characters, with \' \' and \'-\';'.PHP_EOL.'Password must have at least 5 characters, and here is allowed every character.';?>">Info</h6>
+									<h6 href="#" data-toggle="popover" title="<?php echo 'Username must have at least four alpha-numeric characters.'.PHP_EOL.'  You can use also the characters: \'-\', \'_\', \'+\' and \'.\';'.PHP_EOL.'First name and last name must contain only alpha-numeric characters, with \' \' and \'-\';'.PHP_EOL.'Password must have at least 5 characters, and here is allowed alphanumeric characters and \'.\', \'-\', \'_\', \'+\, \' \', \'@\', \'&\' and \'#\'.';?>">Info</h6>
 
 									<br>
 
@@ -302,6 +302,11 @@
 											if(isset($_POST['Submit1'])) {
 												$Password_Register=$_POST["passwordRegister"];
 												$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
+												if(validPassword($Password_Register) == 0 || validPassword($Confirm_Password_Register) == 0) {
+													echo "Parole Invalide!";
+													$okp = 0;
+												}
+												else
 												if($Password_Register == $Confirm_Password_Register) {
 													echo "";
 													$okp = 1;
@@ -449,15 +454,15 @@
 					
 					Register($UserName, $FirstName, $LastName, $Password_Register);
 					
-					//$cookie_value = getID($UserName,$Password_Register);
+					$cookie_value = getID($UserName,$Password_Register);
 				
 					//echo '!!!'.$cookie_value.'?!!!';
 
 					//$time=time();
 
-					//setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+					setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 		
-					//header('Location: 2WelcomeLogat.php');
+				header('Location: 2WelcomeLogat.php');
 					
 				}
 				
