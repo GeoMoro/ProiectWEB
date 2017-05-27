@@ -203,12 +203,18 @@
 				
 				oci_execute($result1);
 				
-				$ID = $ID + 1 ;
+			//	$ID = $ID + 1;
 				$veteran = 'N';
 				$sql = 'insert into Players VALUES ('.$ID.', \''.$username.'\', \''.$firstname.'\', \''.$lastname.'\', \''.$pass.'\', 0, NULL, \''.$veteran.'\', '.$ID.', 0, 0, 0, SYSDATE)';
 				$result = oci_parse($connection, $sql);
 			//	oci_free_statement($result);
 
+				//oci_bind_by_name($result, ':UserName', $username,50);
+				//oci_bind_by_name($result, ':FirstName', $firstname,50);
+				//oci_bind_by_name($result, ':LastName', $lastname,50);
+				//oci_bind_by_name($result, ':Passw', $pass,50);
+				//oci_bind_by_name($result, ':ID', $ID,50,SQLT_INT);
+				
 				oci_execute($result);
 				oci_close($connection);
 			}
