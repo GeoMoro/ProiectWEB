@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+
 <?php
-	
+
 	include "TWVerificare.php";
 
 	ob_start();
@@ -8,12 +9,15 @@
 	error_reporting(0);
 
 	ini_set('display_errors', 0);
-			
-	    if(isset($_COOKIE['UserID'])){
-			$uid =  $_COOKIE["UserID"];
-		}
-		
-	?>
+
+	if(isset($_COOKIE['UserID'])){
+
+		$uid =  $_COOKIE["UserID"];
+
+	}
+
+?>
+
 <html>
 
 	<head>
@@ -67,23 +71,29 @@
 		    <div id="main" >
 
 			    <div class="topmenu">
-<form action="" method='post'>
-			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  	
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			        <button id="Submit" name="Submit" Value="Register" type="Submit"> Search <img src="TW_CSS/img/s.png" alt="Search" style="width:10px;height:10px;"></button>
+					<form action="" method='post'>
 
-					<input type="text" id="searchByName" name="searchByName" placeholder="Search by name" >
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			        <span>  Your rank: <?php $rank = getRank($uid); echo $rank;?> </span>
+						<button id="Submit" name="Submit" Value="Register" type="Submit"> Search <img src="TW_CSS/img/s.png" alt="Search" style="width:10px;height:10px;"></button>
 
-			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						<input type="text" id="searchByName" name="searchByName" placeholder="Search by name" >
 
-					<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
-</form>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<span>  Your rank: <?php $rank = getRank($uid); echo $rank;?> </span>
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
+
+					</form>
+
 			    </div>
 
 				<div style="overflow-x:auto">
@@ -109,48 +119,38 @@
   						</thead>
 
   						<tbody>
-	
-							<?php 
+
+							<?php
+
 								if(isset($_POST['Submit'])){
+
 									$UserSearch = $_POST["searchByName"];
+
 									getTopByName($UserSearch);
+
 								}
+
 								else
+
 									if(isset($_POST['Submit1']))
+
 									{
+
 										getTop10();
+
 									}
-									else
+
+									else {
+
 										getTop();
+
+									}
+
 							?>
 
   						</tbody>
 
   					</table>
-
- 					<script type="text/javascript">
-
-						var xmlHttpRequest;
-
-						if(window.XMLHttpRequest){
-							xmlHttpRequest=new XMLHttpRequest();
-						} else  if(window.activeXObject){
-									xmlHttpRequest=new activeXObject("MICROSOFT.XMLHTTP");
-							    }
-
-						function sendMessageToServer(){
-							xmlHttpRequest.open("POST","Top?name="+document.getElementById("searchByName").value, true);
-							xmlHttpRequest.onreadystatechange=receiveMessageFromServer;
-							xmlHttpRequest.send();
-							document.getElementById("searchByName"); // introduc numele
-						}
-
-						function receiveMessageFromServer(){
-							if(xmlHttpRequest.readyState==4 && xmlHttpRequest.status==200)
-								document.getElementByID("RezultatTabela").value=xmlHttpRequest.reponseXML.getElementByTagName("responseFromServer"[0].txt)
-							}
-
-					</script>
 
 				</div>
 

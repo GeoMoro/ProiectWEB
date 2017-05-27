@@ -5,17 +5,13 @@
 	<head>
 
 		<title>Welcome Nelogat</title>
-	
-	<!--	<meta charset="utf-8" />
-	
-		<meta name="viewport" content="width=device-width, initial-scale=1" />  -->
-	
+
 		<link rel="stylesheet" href="TW_CSS/css/main.css" />
 
 	</head>
 
 	<body>
-<!--<form action="" method='post'> -->
+
 		<?php
 
 			include "TWVerificare.php";
@@ -35,7 +31,7 @@
 			$FirstName=$_POST["first_name"];
 
 			$UserName=$_POST["username"];
-			
+
 			$Password_Register=$_POST["passwordRegister"];
 
 			$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
@@ -45,7 +41,7 @@
 		<div id="page-wrapper">
 
 			<div id="header-wrapper">
-	
+
 				<div class="container">
 
 					<div class="row">
@@ -88,17 +84,17 @@
 
 							<p> As far as you probably figured it out, we made here a new platform for playing your  </p>
 
-							<p>beloved childhood game "Bomberman".</p> <hr>
+							<p> beloved childhood game "Bomberman".</p> <hr>
 
-							<p>  Special about Bomberbot, is that you can play it online!</p>
+							<p> Special about Bomberbot, is that you can play it online!</p>
 
-							<p>Yeah, that's right, you can play it right here, on your brownswer. No instalattion required, no pluggins, no boring stuff. It doesn't matter how old your device is. Just log in or join us if you haven't yet and enjoy yourself! </p>
+							<p> Yeah, that's right, you can play it right here, on your brownswer. No instalattion required, no pluggins, no boring stuff. It doesn't matter how old your device is. Just log in or join us if you haven't yet and enjoy yourself! </p>
 
 							<h2> More about us: </h2>
 
 							<p> This started out as a collage project, with a random team made on the fly. But we got ourself together and made it happen. Must we admit, we ourself play it to this day. </p>
 
-							<p>Now it's about time that you get to know who we are:</p>
+							<p> Now it's about time that you get to know who we are:</p>
 
 							<ul class="small-image-list">
 
@@ -124,7 +120,7 @@
 
 								<li>
 
-								<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -156,20 +152,34 @@
 
 								<fieldset>
 
-									<legend><span class="number">1</span> Login</legend>
+									<legend>
 
-									<input type="text" name="logusername" placeholder="Username: *" required  value="<?php 
+										<span class="number">1</span> Login
+
+									</legend>
+
+									<input type="text" name="logusername" placeholder="Username: *" required value="<?php 
+
 																														if($LogUserName == '') 
+
 																															echo '';
+
 																														else
+
 																															echo $LogUserName;
+
 																													?>">
 
-									<input type = "password" name = "logpassword" placeholder="Password: *" required  value="<?php 
-																																if($LogPass == '') 
+									<input type = "password" name = "logpassword" placeholder="Password: *" required value="<?php 
+
+																																if($LogPass == '')
+
 																																	echo '';
+
 																																else
+
 																																	echo $LogPass;
+
 																															?>">
 
 								</fieldset>
@@ -188,7 +198,11 @@
 
 								<fieldset>
 
-									<legend><span class="number">2</span> Sign Up Now!</legend>
+									<legend>
+
+										<span class="number">2</span> Sign Up Now!
+
+									</legend>
 
 									<h6 href="#" data-toggle="popover" title="<?php echo 'Username must have at least four alpha-numeric characters.'.PHP_EOL.'  You can use also the characters: \'-\', \'_\', \'+\' and \'.\';'.PHP_EOL.'First name and last name must contain only alpha-numeric characters, with \' \' and \'-\';'.PHP_EOL.'Password must have at least 5 characters, and here is allowed alphanumeric characters and \'.\', \'-\', \'_\', \'+\, \' \', \'@\', \'&\' and \'#\'.';?>">Info</h6>
 
@@ -196,143 +210,244 @@
 
 									<span style="color:red"> 
 
-									<?php
-										if(isset($_POST['Submit1'])) {
-										    $UserName=$_POST["username"];
-											if(validUserName($UserName) == 0) {
-												echo 'Invalid Username!';
-												$okUName = 0;
-											}
-											else
-												if(validUserName($UserName) == -1) {
-													echo 'At least 4 characters!';
+										<?php
+
+											if(isset($_POST['Submit1'])) {
+
+												$UserName=$_POST["username"];
+
+												if(validUserName($UserName) == 0) {
+
+													echo 'Invalid Username!';
+
 													$okUName = 0;
+
 												}
-												else {
-													echo '';
-													$okUName = 1;
-												}
-										}
-									?>
+
+												else
+
+													if(validUserName($UserName) == -1) {
+
+														echo 'At least 4 characters!';
+
+														$okUName = 0;
+
+													}
+
+													else {
+
+														echo '';
+
+														$okUName = 1;
+
+													}
+
+											}
+
+										?>
 
 									</span>
 
 									<input type="text" name="username" placeholder="Username *" required value="<?php 
-																													if($UserName == '') 
+
+																													if($UserName == '')
+
 																														echo '';
+
 																													else
+
 																														echo $UserName;
+
 													 															?>">
 
 									<span style="color:red"> 
 
-									<?php
-										if(isset($_POST['Submit1'])) {
-										    $FirstName=$_POST["first_name"];
-											if(validPremume($FirstName) == 0) {
-												echo 'Invalid Name!';
-												$okFName = 0;
-											}
-											else
-												if(validPremume($FirstName) == -1) {
-													echo 'You must have a name, bro!';
+										<?php
+
+											if(isset($_POST['Submit1'])) {
+
+												$FirstName=$_POST["first_name"];
+
+												if(validPremume($FirstName) == 0) {
+
+													echo 'Invalid Name!';
+
 													$okFName = 0;
+
 												}
-												else {
-													echo '';
-													$okFName = 1;
-												}
-										}
-									?>
+
+												else
+
+													if(validPremume($FirstName) == -1) {
+
+														echo 'You must have a name, bro!';
+
+														$okFName = 0;
+
+													}
+
+													else {
+
+														echo '';
+
+														$okFName = 1;
+
+													}
+
+											}
+
+										?>
 
 									</span>
 
 									<input type="text" name="first_name" placeholder="First Name *" required value="<?php 
-																														if($FirstName == '') 
+
+																														if($FirstName == '')
+
 																															echo '';
+
 																														else
+
 																															echo $FirstName;
+
 																													?>">
 
 									<?php
+
 										if(isset($_POST['Submit1'])) {
+
 										    $FirstName=$_POST["first_name"];
+
 										}
+
 									?>
 
 									<span style="color:red"> 
 
-									<?php
-										if(isset($_POST['Submit1'])) {
-										    $LastName=$_POST["last_name"];
-											if(validPremume($LastName) == 0) {
-												echo 'Invalid Name!';
-												$okLName = 0;
-											}
-											else
-												if(validPremume($LastName) == -1) {
-													echo 'You must have a name, bro!';
+										<?php
+
+											if(isset($_POST['Submit1'])) {
+
+												$LastName=$_POST["last_name"];
+
+												if(validPremume($LastName) == 0) {
+
+													echo 'Invalid Name!';
+
 													$okLName = 0;
+
 												}
-												else {
-													echo '';
-													$okLName = 1;
-												}
-										}
-									?>
+
+												else
+
+													if(validPremume($LastName) == -1) {
+
+														echo 'You must have a name, bro!';
+
+														$okLName = 0;
+
+													}
+
+													else {
+
+														echo '';
+
+														$okLName = 1;
+
+													}
+
+											}
+
+										?>
 
 									</span>
 
 									<input type="text"  name="last_name"  placeholder="Last Name *" required value="<?php 
-																												if($LastName == '') 
-																													echo '';
-																												else
-																													echo $LastName;
-																											?>">
+
+																														if($LastName == '') 
+
+																															echo '';
+
+																														else
+
+																															echo $LastName;
+
+																													?>">
 
 									<?php
+
 										if(isset($_POST['Submit1'])) {
+
 										    $LastName=$_POST["last_name"];
+
 										}
+
 									?>
 
 									<span style="color:red">
 
 										<?php
+
 											if(isset($_POST['Submit1'])) {
+
 												$Password_Register=$_POST["passwordRegister"];
+
 												$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
+
 												if(validPassword($Password_Register) == 0 || validPassword($Confirm_Password_Register) == 0) {
+
 													echo "Parole Invalide!";
+
 													$okp = 0;
+
 												}
+
 												else
-												if($Password_Register == $Confirm_Password_Register) {
-													echo "";
-													$okp = 1;
-												}
-												else {
-													echo "Parolele nu corescund!";
-													$okp = 0;
-												}
+
+													if($Password_Register == $Confirm_Password_Register) {
+
+														echo "";
+
+														$okp = 1;
+
+													}
+
+													else {
+
+														echo "Parolele nu corescund!";
+
+														$okp = 0;
+
+													}
+
 											}
+
 										?>
 
 									</span>
 
 									<input type="password" name="passwordRegister" placeholder="Password *" required value="<?php 
+
 																																if($Password_Register == '') 
+
 																																	echo '';
+
 																																else
+
 																																	echo $Password_Register;
+
 																															?>">
 
-
 									<input type="password" name="confirm_passwordRegister" placeholder="Confirm password *" required value="<?php 
+
 																																				if($Confirm_Password_Register == '') 
+
 																																					echo '';
+
 																																				else
+
 																																					echo $Confirm_Password_Register;
+
 																																			?>">
 
 								</fieldset>
@@ -382,7 +497,7 @@
 			<span style="color:red">
 
 				<?php
-											
+
 					$LogUserName=$_POST["logusername"];
 
 					$LogPass=$_POST["logpassword"];
@@ -416,63 +531,51 @@
 		</div>
 
 		<span>
-		<?php
 
-		$LogUserName=$_POST["logusername"];
+			<?php
 
-		$LogPass=$_POST["logpassword"];
+				$LogUserName=$_POST["logusername"];
 
-		if(isset($_POST['Submit'])) {
+				$LogPass=$_POST["logpassword"];
 
-			$rezultat = existUser($LogUserName,$LogPass);
+				if(isset($_POST['Submit'])) {
 
-			if($rezultat == 1){
+					$rezultat = existUser($LogUserName,$LogPass);
 
-			 // echo 'AICI!!!!';
-						
-				//$cookie_name = "UserID";
+					if($rezultat == 1){
 
-				$cookie_value = getID($LogUserName,$LogPass);
-				
-				//echo '!!!'.$cookie_value.'?!!!';
+						$cookie_value = getID($LogUserName,$LogPass);
 
-				//$time=time();
+						setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-				setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-		
-				header('Location: 2WelcomeLogat.php');
+						header('Location: 2WelcomeLogat.php');
 
-			}
+					}
 
-		}
-		
-		else
-		
-			if(isset($_POST['Submit1'])) {
-				
-				if($okUName == 1 && $okFName == 1 && $okLName && $okp == 1) {
-					
-					Register($UserName, $FirstName, $LastName, $Password_Register);
-					
-					$cookie_value = getID($UserName,$Password_Register);
-				
-					//echo '!!!'.$cookie_value.'?!!!';
-
-					//$time=time();
-
-					setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-		
-				header('Location: 2WelcomeLogat.php');
-					
 				}
-				
-			}
-			
-?>
+
+				else
+
+					if(isset($_POST['Submit1'])) {
+
+						if($okUName == 1 && $okFName == 1 && $okLName && $okp == 1) {
+
+							Register($UserName, $FirstName, $LastName, $Password_Register);
+
+							$cookie_value = getID($UserName,$Password_Register);
+
+							setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+
+							header('Location: 2WelcomeLogat.php');
+
+						}
+
+					}
+
+			?>
+
 		</span>
 
-<!--</form> -->
 	</body>
 
 </html>
-
