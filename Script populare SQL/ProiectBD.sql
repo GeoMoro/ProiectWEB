@@ -992,6 +992,14 @@ referencing new as new old as old
 begin
   insert into robots values ( :new.ID, 'Robo', 'STONE', 'Bomb', 'Slide', 'N');
 end;
+/
+create or replace trigger deleteRobot
+after delete on players
+referencing new as new old as old
+for each row
+begin
+  delete from robots where ID = :old.ID;
+end;
 
   
   
