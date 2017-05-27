@@ -895,7 +895,103 @@ end F7;*/
   --dbms_output.put_line(F7.Paging(1,5));
   --end;
   --select * from( select Decide(p1.id,p2.id) from players p1 join players p2 on p2.id=p1.id+1);
-
+/
+create or replace function checklogg(vusername varchar2, vpass varchar2) return int as
+  rez int;
+begin
+  select count(*)
+  into rez
+  from players
+  where username=vusername
+  and password=vpass;
   
+  return rez;
+end;
+/
+create or replace function getFN(UID int) return varchar2 as
+  rez varchar2(50);
+begin
+  select first_name
+  into rez
+  from players
+  where id = UID;
+  
+  return rez;
+end;
+/
+create or replace function getLN(UID int) return varchar2 as
+  rez varchar2(50);
+begin
+  select last_name
+  into rez
+  from players
+  where id = UID;
+  
+  return rez;
+end;
+/
+create or replace function getNrOfPlayers return int as
+  rez int;
+begin
+  select count(*)
+  into rez
+  from players;
+  
+  return rez;
+end;
+/
+create or replace function getPass(UID int) return varchar2 as
+  rez varchar2(50);
+begin
+  select password
+  into rez
+  from players
+  where id = UID;
+  
+  return rez;
+end;
+/
+create or replace function getRank(usid int) return int as
+  rez int;
+begin
+  select rank
+  into rez
+  from players
+  where id = usid;
+  
+  return rez;
+end;
+/
+create or replace function getUN(UID int) return varchar2 as
+  rez varchar2(50);
+begin
+  select username
+  into rez
+  from players
+  where id = UID;
+  
+  return rez;
+end;
+/
+create or replace function returnID(usern varchar2, passn varchar2) return int as
+  rez int;
+begin
+  select ID
+  into rez
+  from players
+  where username = usern
+  and password = passn;
+  
+  return rez;
+end;
+/
+create or replace trigger AddBot
+after insert on players
+referencing new as new old as old
+  for each row
+begin
+  insert into robots values ( :new.ID, 'Robo', 'STONE', 'Bomb', 'Slide', 'N');
+end;
+
   
   
