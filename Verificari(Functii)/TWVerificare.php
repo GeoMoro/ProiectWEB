@@ -1,5 +1,5 @@
 <?php
-   
+
    function validPassword($pass) {
 
 	    if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', str_replace(' ', '', str_replace('@', '', str_replace('&', '', str_replace('#', '', $pass))))))))))
@@ -110,11 +110,6 @@
 			}
 
 	}
-	
-	function filter($string) // functia care va preveni atacurile de tipul XSS
-		{
-		return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-		}
 
 
 	function getID($user,$pass) {
@@ -722,13 +717,12 @@
 
 				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
 
-					
 					$a[$index] = $row[0];
-					
+
 					$index = $index + 1;
 
 				}
-				
+
 				//$lengthOfArray = $index;
 
 			//	oci_free_statement($result);
@@ -736,7 +730,14 @@
 				oci_close($connection);
 
 				return $a;
+
 			}
+
+	}
+
+	function filter($string) { // functia care va preveni atacurile de tipul XSS
+
+		return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 
 	}
 

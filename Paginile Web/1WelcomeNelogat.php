@@ -504,21 +504,37 @@
 
 					if(isset($_POST['Submit'])) {
 
-						$rezultat = existUser($LogUserName,$LogPass);
+						if(validUserName($LogUserName) == 1 && validPassword($LogPass) == 1) {
 
-						if($rezultat == 0){
+							$rezultat = existUser($LogUserName,$LogPass);
 
-							//echo "Username sau Parola gresita!";
+							if($rezultat == 0){
 
-							$message = "Username sau Parola gresita!";
+								//echo "Username sau Parola gresita!";
 
-							//echo "<strong>".'Error: '.$message.'!!!'."</strong>"."<br>";
+								$message = "Username sau Parola gresita!";
+
+								//echo "<strong>".'Error: '.$message.'!!!'."</strong>"."<br>";
+
+								echo "<script type='text/javascript'>alert('$message');</script>";
+
+								$e1 = oci_error($statement1);
+
+								trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+
+							}
+
+						}
+
+						else {
+
+							$message = "Username sau Parola incorecta! Intodu niste campuri valide";
 
 							echo "<script type='text/javascript'>alert('$message');</script>";
 
-							$e1 = oci_error($statement1);
+								$e1 = oci_error($statement1);
 
-							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+								trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
 
 						}
 
@@ -540,15 +556,19 @@
 
 				if(isset($_POST['Submit'])) {
 
-					$rezultat = existUser($LogUserName,$LogPass);
+					if(validUserName($LogUserName) == 1 && validPassword($LogPass) == 1) {
 
-					if($rezultat == 1){
+						$rezultat = existUser($LogUserName,$LogPass);
 
-						$cookie_value = getID($LogUserName,$LogPass);
+						if($rezultat == 1){
 
-						setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+							$cookie_value = getID($LogUserName,$LogPass);
 
-						header('Location: 2WelcomeLogat.php');
+							setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+
+							header('Location: 2WelcomeLogat.php');
+
+						}
 
 					}
 

@@ -73,7 +73,7 @@
 						<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
 
 					</form>
-					
+
 					<p>Do you wanna search: <span id="txtHint" style="color:blue"></span></p>
 
 			    </div>
@@ -110,7 +110,11 @@
 
 									$UserSearch = $_POST["searchByName"];
 
-									getTopByName($UserSearch);
+									if(validUserName($UserSearch) == 1) {
+
+										getTopByName($UserSearch);
+
+									}
 
 								}
 
@@ -165,7 +169,7 @@
 			</div>
 
 		</div>
-		
+
 		<script>
 
 			function showHint(str) {

@@ -21,7 +21,7 @@
 <html>
 
 	<head>
-	
+
 		<title>Top</title>
 
 		<meta charset="utf-8" />
@@ -93,9 +93,9 @@
 						<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
 
 					</form>
-					
+
 					<p>Do you wanna search: <span id="txtHint" style="color:blue"></span></p>
-					
+
 			    </div>
 
 				<div style="overflow-x:auto">
@@ -128,7 +128,11 @@
 
 									$UserSearch = $_POST["searchByName"];
 
-									getTopByName($UserSearch);
+									if(validUserName($UserSearch) == 1) {
+
+										getTopByName($UserSearch);
+
+									}
 
 								}
 
@@ -189,20 +193,34 @@
 		<script>
 
 			function showHint(str) {
-    if (str.length == 0) { 
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "gethint.php?q=" + str, true);
-        xmlhttp.send();
-    }
-}
+
+				if (str.length == 0) { 
+
+					document.getElementById("txtHint").innerHTML = "";
+
+					return;
+
+				} else {
+
+					var xmlhttp = new XMLHttpRequest();
+
+					xmlhttp.onreadystatechange = function() {
+
+						if (this.readyState == 4 && this.status == 200) {
+
+							document.getElementById("txtHint").innerHTML = this.responseText;
+
+						}
+
+					};
+
+					xmlhttp.open("GET", "gethint.php?q=" + str, true);
+
+					xmlhttp.send();
+
+				}
+
+			}
 
 		</script>
 
