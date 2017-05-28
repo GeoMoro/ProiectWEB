@@ -1,19 +1,23 @@
 <!DOCTYPE HTML>
+
 <?php
-	
+
 	include "TWVerificare.php";
 
-	//ob_start();
+	ob_start();
 
-	//error_reporting(0);
+	error_reporting(0);
 
-	//ini_set('display_errors', 0);
-			
-	    if(isset($_COOKIE['UserID'])){
-			$uid =  $_COOKIE["UserID"];
-		}
-		
-	?>
+	ini_set('display_errors', 0);
+
+	if(isset($_COOKIE['UserID'])){
+
+		$uid =  $_COOKIE["UserID"];
+
+	}
+
+?>
+
 <html>
 
 	<head>
@@ -72,15 +76,7 @@
 
 						<form>
 
-							<label>Type</label>
-
-								<span class = "select">
-
-									<option value = "1">1VS1</option>
-
-									<!--<option value = "2">5V5</option>-->
-
-								</span>
+							<label>Type : 1VS1</label>
 
 								<label>Terain</label>
 

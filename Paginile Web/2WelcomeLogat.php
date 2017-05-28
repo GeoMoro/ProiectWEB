@@ -1,21 +1,25 @@
 <!DOCTYPE HTML>
+
 <?php
-	
+
 	include "TWVerificare.php";
 
-	//ob_start();
+	ob_start();
 
-	//error_reporting(0);
+	error_reporting(0);
 
-	//ini_set('display_errors', 0);
-			
-	    if(isset($_COOKIE['UserID'])){
-			$uid =  $_COOKIE["UserID"];
-		}
-		
-	?>
+	ini_set('display_errors', 0);
+
+	if(isset($_COOKIE['UserID'])){
+
+		$uid =  $_COOKIE["UserID"];
+
+	}
+
+?>
+
 <html lang="en">
-	
+
 	<head>
 
 		<title>Welcome-logat</title>
@@ -42,7 +46,7 @@
 
 							<header id="header">
 
-							  <img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
 
 								<nav>
 
@@ -69,25 +73,24 @@
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
-					
-					<span>
-    
-</span>
 
 						<section class="left-content">
 
-							<h2>Welcome, <?php 
+							<h2> Welcome, <?php 
+
 											$LoggedUserName = getUserName($uid);
+
 											echo $LoggedUserName;
+
 										 ?>! </h2>
 
-							<p>Glad to have you back!</p>
+							<p> Glad to have you back!</p>
 
 							<h2> More about us: </h2>
 
 							<p> This started out as a collage project, with a random team made on the fly. But we got ourself together and made it happen. Must we admit, we ourself play it to this day. </p>
 
-							<p>Now it's about time that you get to know who we are:</p>
+							<p> Now it's about time that you get to know who we are:</p>
 
 							<ul class="small-image-list">
 
@@ -144,14 +147,14 @@
 							<h2> Main Menu </h2>
 
 								<form action="" method='post'>
-								
-								<a href="4Jocul.php"> <button>   Play a game  </button> </a>	
 
-								<a href="6Accoutinfo.php">  <button> Account info </button> </a>
+									<a href="4Jocul.php"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
 
-								<a href="7MyRobot.php">  <button> My Robot </button> </a>	
+									<a href="6Accoutinfo.php">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
 
-								<button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button>
+									<a href="7MyRobot.php">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
+
+									<button id="Submit" name="Submit" Value="Logout" type="Submit"> Logout :( </button>
 
 								</form>
 
@@ -202,6 +205,36 @@
 			header('Location: 1WelcomeNelogat.php');
 
 		}
+
+		else 
+
+			if(isset($_POST['Submit1'])) {
+
+				setcookie("userID", "", time() - 3600);
+
+				header('Location: 4Jocul.php');
+
+			}
+
+			else
+
+				if(isset($_POST['Submit2'])) {
+
+				setcookie("userID", "", time() - 3600);
+
+				header('Location: 6AccountInfo.php');
+
+				}
+
+				else 
+
+					if(isset($_POST['Submit3'])) {
+
+						setcookie("userID", "", time() - 3600);
+
+						header('Location: 7MyRobot.php');
+
+					}
 
 	?>
 
