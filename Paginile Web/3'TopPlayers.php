@@ -110,7 +110,7 @@
 
 									$UserSearch = $_POST["searchByName"];
 
-									if(validUserName($UserSearch) == 1) {
+									if(validNume($UserSearch) == 1) {
 
 										getTopByName($UserSearch);
 
