@@ -85,7 +85,7 @@
 
 																			$LoggedUserName = getUserName($uid);
 
-																			echo filter($LoggedUserName);
+																			echo $LoggedUserName;
 
 																	   ?></label>
 
@@ -159,7 +159,7 @@
 
 																			$LoggedFirstName = getFirstName($uid);
 
-																			echo filter($LoggedFirstName);
+																			echo $LoggedFirstName;
 
 																		 ?></label>		
 
@@ -169,7 +169,7 @@
 
 																			$LoggedLasttName = getLastName($uid);
 
-																			echo filter($LoggedLasttName);
+																			echo $LoggedLasttName;
 
 																		 ?></label>
 

@@ -1,13 +1,21 @@
 <!DOCTYPE HTML>
 
 <?php
+
 	include "TWVerificare.php";
+
 	ob_start();
+
 	error_reporting(0);
+
 	ini_set('display_errors', 0);
+
 	if(isset($_COOKIE['UserID'])){
+
 		$uid =  $_COOKIE["UserID"];
+
 	}
+
 ?>
 
 <html lang="en">
@@ -69,8 +77,11 @@
 						<section class="left-content">
 
 							<h2> Welcome, <?php 
+
 											$LoggedUserName = getUserName($uid);
-											echo filter($LoggedUserName);
+
+											echo $LoggedUserName;
+
 										 ?>! </h2>
 
 							<p> Glad to have you back!</p>
@@ -186,25 +197,45 @@
 	</body>
 
 	<?php
+
 		if(isset($_POST['Submit'])) {
+
 			setcookie("userID", "", time() - 3600);
+
 			header('Location: 1WelcomeNelogat.php');
+
 		}
+
 		else 
+
 			if(isset($_POST['Submit1'])) {
+
 				setcookie("userID", "", time() - 3600);
+
 				header('Location: 4Jocul.php');
+
 			}
+
 			else
+
 				if(isset($_POST['Submit2'])) {
+
 				setcookie("userID", "", time() - 3600);
+
 				header('Location: 6AccountInfo.php');
+
 				}
+
 				else 
+
 					if(isset($_POST['Submit3'])) {
+
 						setcookie("userID", "", time() - 3600);
+
 						header('Location: 7MyRobot.php');
+
 					}
+
 	?>
 
 </html>

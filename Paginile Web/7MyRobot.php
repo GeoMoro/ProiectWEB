@@ -83,7 +83,7 @@
 
 					<br><br>
 
-					<h2><?php $Robotname = getRobotName($uid); echo filter($Robotname);?></h2>
+					<h2><?php $Robotname = getRobotName($uid); echo $Robotname;?></h2>
 
 					<br><br>
 

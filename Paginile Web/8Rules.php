@@ -76,7 +76,7 @@
 
 									$LoggedUserName = getUserName($uid);
 
-									echo filter($LoggedUserName);
+									echo $LoggedUserName;
 
 							   ?>!</h2>
 

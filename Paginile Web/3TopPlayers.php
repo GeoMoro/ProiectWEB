@@ -86,7 +86,7 @@
 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<span>  Your rank: <?php $rank = getRank($uid); echo filter($rank);?> </span>
+						<span>  Your rank: <?php $rank = getRank($uid); echo $rank;?> </span>
 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

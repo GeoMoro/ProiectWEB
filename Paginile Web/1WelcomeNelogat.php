@@ -166,7 +166,7 @@
 
 																														else
 
-																															echo filter($LogUserName);
+																															echo $LogUserName;
 
 																													?>">
 
@@ -178,7 +178,7 @@
 
 																																else
 
-																																	echo filter($LogPass);
+																																	echo $LogPass;
 
 																															?>">
 
@@ -256,7 +256,7 @@
 
 																													else
 
-																														echo filter($UserName);
+																														echo $UserName;
 
 													 															?>">
 
@@ -308,7 +308,7 @@
 
 																														else
 
-																															echo filter($FirstName);
+																															echo $FirstName;
 
 																													?>">
 
@@ -370,7 +370,7 @@
 
 																														else
 
-																															echo filter($LastName);
+																															echo $LastName;
 
 																													?>">
 
@@ -434,7 +434,7 @@
 
 																																else
 
-																																	echo filter($Password_Register);
+																																	echo $Password_Register;
 
 																															?>">
 
@@ -446,7 +446,7 @@
 
 																																				else
 
-																																					echo filter($Confirm_Password_Register);
+																																					echo $Confirm_Password_Register;
 
 																																			?>">
 
