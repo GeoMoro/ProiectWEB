@@ -62,7 +62,7 @@
 
 						<button id="Submit" name="Submit" Value="Register" type="Submit"> Search <img src="TW_CSS/img/s.png" alt="Search" style="width:10px;height:10px;"></button>
 
-						<input type="text" id="searchByName" name="searchByName" placeholder="Search by name" >
+						<input type="text" id="searchByName" name="searchByName" placeholder="Search by UserName" onkeyup="showHint(this.value)" >
 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -73,6 +73,8 @@
 						<button id="Submit" name="Submit1" Value="Register" type="Submit">Top 10</button>
 
 					</form>
+					
+					<p>Do you wanna search: <span id="txtHint" style="color:blue"></span></p>
 
 			    </div>
 
@@ -163,6 +165,40 @@
 			</div>
 
 		</div>
+		
+		<script>
+
+			function showHint(str) {
+
+				if (str.length == 0) { 
+
+					document.getElementById("txtHint").innerHTML = "";
+
+					return;
+
+				} else {
+
+					var xmlhttp = new XMLHttpRequest();
+
+					xmlhttp.onreadystatechange = function() {
+
+						if (this.readyState == 4 && this.status == 200) {
+
+							document.getElementById("txtHint").innerHTML = this.responseText;
+
+						}
+
+					};
+
+					xmlhttp.open("GET", "gethint.php?q="+str, true);
+
+					xmlhttp.send();
+
+				}
+
+			}
+
+		</script>
 
 	</body>
 

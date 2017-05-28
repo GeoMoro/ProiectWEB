@@ -692,5 +692,47 @@
 		}
 
 	}
+	
+	function getTopNames() {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'select Username from players order by username asc';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+				$index = 0;
+
+				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
+
+					
+					$a[$index] = $row[0];
+					
+					$index = $index + 1;
+
+				}
+				
+				//$lengthOfArray = $index;
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $a;
+			}
+
+	}
 
 ?>
