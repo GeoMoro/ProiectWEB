@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
 
-@media (min-width:700px){.hide-menu{display:none!important}}
+@media screen and (max-device-width:700px){
+#header img {
+	display: none;
+}
+}
 
-@media (max-width:700px) and (min-width:601px){.hide-menu{display:none!important}}
-
-@media (max-width:600px){	
-.menu-large{display:none!important}}
 .sidemenu
 {
     max-width: 500px;
