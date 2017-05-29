@@ -6,12 +6,14 @@
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
     <style type="text/css">
         body {
-            margin: 0;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            margin-right: 0%;
+            margin-left: 30%;
         }
     </style>
 </head>
-<body>
-
+<body bgcolor= "black">
 <script type="text/javascript">
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -103,7 +105,7 @@ function update() {
             player.body.velocity.x=-150;
             player.animations.play('left');
             inertia=4; 
-            game.time.events.repeat(Phaser.Timer.SECOND * 2, 1, InertiaStop, this);
+            //game.time.events.repeat(Phaser.Timer.SECOND * 2, 1, InertiaStop, this);
 
         }
     else if(cursors.right.isDown)
@@ -164,7 +166,7 @@ function update() {
             bomb.body.collideWorldBounds = true;
             bomb.body.bounce.set(0.8);
             bomb.body.gravity.set(0, 180);
-            bomb.body.velocity.setTo(player.body.velocity.x/1.2, player.body.velocity.y/1.2);
+            bomb.body.velocity.setTo(player.body.velocity.x*3, player.body.velocity.y/1.5);
             game.time.events.repeat(Phaser.Timer.SECOND * 3, 1, killbmb, this);
         }
     
