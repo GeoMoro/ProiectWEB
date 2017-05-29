@@ -1,0 +1,393 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Phaser - Making your first game!</title>
+    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin-top: 10%;
+            margin-bottom: 10%;
+            margin-right: 0%;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body bgcolor= "black">
+
+<script type="text/javascript">
+    
+    
+var eurecaServer;
+//this function will handle client communication with the server
+var eurecaClientSetup = function() {
+	//create an instance of eureca.io client
+	var eurecaClient = new Eureca.Client();
+	
+	eurecaClient.ready(function (proxy) {		
+		eurecaServer = proxy;
+	});
+	
+	
+	//methods defined under "exports" namespace become available in the server side
+	
+	eurecaClient.exports.setId = function(id) 
+	{
+		//create() is moved here to make sure nothing is created before uniq id assignation
+		myId = id;
+		create();
+		eurecaServer.handshake();
+		ready = true;
+	}	
+	
+	eurecaClient.exports.kill = function(id)
+	{	
+		if (botList[id]) {
+			botList[id].kill();
+			console.log('killing ', id, botList[id]);
+		}
+	}	
+	
+	eurecaClient.exports.spawnEnemy = function(i, x, y)
+	{
+		
+		if (i == myId) return; //this is me
+		
+		console.log('SPAWN');
+		var bt = new Bot(i, game, robot);
+		botList[i] = bt;
+	}
+	
+	eurecaClient.exports.updateState = function(id, state)
+	{
+		if (botList[id])  {
+			botList[id].cursor = state;
+			botList[id].robot.x = state.x;
+			botList[id].robot.y = state.y;
+			botList[id].robot.angle = state.angle;
+			botList[id].update();
+		}
+	}
+}
+
+
+Bot = function (index, game, player) {
+	this.cursor = {
+		left:false,
+		right:false,
+		up:false,
+		fire:false		
+	}
+
+	this.input = {
+		left:false,
+		right:false,
+		up:false,
+		fire:false
+	}
+
+    var x = 0;
+    var y = 0;
+
+    this.game = game;
+    this.health = 30;
+    this.player = player;
+    /*this.bullets = game.add.group();
+    this.bullets.enableBody = true;
+    this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    this.bullets.createMultiple(20, 'bullet', 0, false);
+    this.bullets.setAll('anchor.x', 0.5);
+    this.bullets.setAll('anchor.y', 0.5);
+    this.bullets.setAll('outOfBoundsKill', true);
+    this.bullets.setAll('checkWorldBounds', true);	*/
+	
+	
+	this.currentSpeed =0;
+    this.alive = true;
+
+    this.bot = game.add.sprite(x, y, 'bot');
+    this.bomb = game.add.sprite(x, y, 'bmb');
+    this.bomb.kill();
+
+    this.tank.id = index;
+    game.physics.enable(this.bot, Phaser.Physics.ARCADE);
+    game.physics.enable(this.bomb, Phaser.Physics.ARCADE);
+
+    this.bot.body.immovable = false;
+    this.bot.body.collideWorldBounds = true;
+    this.bot.body.bounce.setTo(0, 0);
+
+    //this.tank.angle = 0;
+
+   // game.physics.arcade.velocityFromRotation(this.tank.rotation, 0, this.tank.body.velocity);
+
+};
+    
+    Bot.prototype.update = function() {
+	
+	var inputChanged = (
+		this.cursor.left != this.input.left ||
+		this.cursor.right != this.input.right ||
+		this.cursor.up != this.input.up ||
+		this.cursor.fire != this.input.fire
+	);
+	
+	
+	if (inputChanged)
+	{
+		//Handle input change here
+		//send new values to the server		
+		if (this.bot.id == myId)
+		{
+			// send latest valid state to the server
+			this.input.x = this.bot.x;
+			this.input.y = this.bot.y;
+			eurecaServer.handleKeys(this.input);
+			
+		}
+	}
+
+	//cursor value is now updated by eurecaClient.exports.updateState method
+	
+	
+    if (this.cursor.left)
+    {
+         bot.body.velocity.x=-150;
+            bot.animations.play('left');
+            inertia=4; 
+            game.time.events.repeat(Phaser.Timer.SECOND * 2, 1, InertiaStop, this);
+
+    }
+    else if (this.cursor.right)
+    {
+        bot.body.velocity.x=150;
+            //if(t0+3==)
+            //player.body.gravity.x+=2000;
+        inertia=6;
+        bot.animations.play('right');
+    }	
+    else
+        {
+            bot.animations.stop();
+            bot.frame=14;
+        };
+    if (inertia==4)
+        {
+            bot.body.gravity.x=-2000;
+            game.time.events.repeat(Phaser.Timer.SECOND * 2, 1, InertiaStop, this);
+        }
+        else if(inertia==6)
+        {
+            bot.body.gravity.x=2000;
+            game.time.events.repeat(Phaser.Timer.SECOND * 2, 1, InertiaStop, this);
+        }
+        if (b.isDown&&!bomb.alive)
+        {   
+            bomb.x=bot.x;
+            bomb.y=bot.y;
+            bomb.revive();
+            bomb.body.collideWorldBounds = true;
+            bomb.body.bounce.set(0.8);
+            bomb.body.gravity.set(0, 180);
+            bomb.body.velocity.setTo(player.body.velocity.x*3, player.body.velocity.y/1.5);
+            game.time.events.repeat(Phaser.Timer.SECOND * 1.8, 1, killbmb, this);
+        }
+    
+    if(bomb.alive)
+        {
+             if(timer==0)
+            {
+                direction=bomb.x;
+                timer=1;
+            }
+            else if (timer==1)
+                {
+                timer=0;
+                }
+            if(bomb.x>direction)
+                {
+                    bomb.animations.play('rightbmb');
+                }
+            else if(bomb.x<direction)
+                {
+                    bomb.animations.play('leftbmb');
+                }
+        }
+    
+    if( cursors.up.isDown&&player.body.touching.down)
+        {
+            player.body.velocity.y=-350;
+        }
+	
+};
+
+
+Bot.prototype.fire = function() {
+		if (!this.alive) return;
+        
+    if (b.isDown&&!bomb.alive)
+        {   
+            bomb.x=bot.x;
+            bomb.y=bot.y;
+            bomb.revive();
+            bomb.body.collideWorldBounds = true;
+            bomb.body.bounce.set(0.8);
+            bomb.body.gravity.set(0, 180);
+            bomb.body.velocity.setTo(bot.body.velocity.x*3, player.body.velocity.y/1.5);
+            game.time.events.repeat(Phaser.Timer.SECOND * 1.8, 1, killbmb, this);
+        }
+    
+    if(bomb.alive)
+        {
+             if(timer==0)
+            {
+                direction=bomb.x;
+                timer=1;
+            }
+            else if (timer==1)
+                {
+                timer=0;
+                }
+            if(bomb.x>direction)
+                {
+                    bomb.animations.play('rightbmb');
+                }
+            else if(bomb.x<direction)
+                {
+                    bomb.animations.play('leftbmb');
+                }
+        }
+}
+
+
+Bot.prototype.kill = function() {
+	this.alive = false;
+	this.bot.kill();
+}
+
+
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var player;var time=0;var inertia;
+var platforms;var exp;
+var cursors;var direction=2;var timer=0;
+function preload() {
+    game.load.image('sky','assets/sky.png');
+    game.load.image('ground','assets/platform.png');
+    game.load.image('star','assets/star.png');
+    game.load.spritesheet('dude','assets/dude.png',32,48);
+    game.load.spritesheet('xplo','assets/xplo.png',1600/5,1163/5);
+    game.load.spritesheet('bot','assets/bot.png',256/4,384/4);
+    game.load.image('cave','assets/Cave.png');
+    game.load.spritesheet('bmb', 'assets/bombanimation.png',11463/9,994);
+
+}
+    
+    
+function create() {
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.add.sprite(0,0,'cave'); 
+    platforms=game.add.group();
+    platforms.enableBody=true;
+    var ground=platforms.create(0,game.world.height -64 ,'ground');
+    ground.scale.setTo(2,2);
+    ground.body.immovable=true;
+    var ledge=platforms.create(400,400,'ground');
+    ledge.body.immovable = true;
+    ledge = platforms.create(-150, 250, 'ground');
+    ledge.body.immovable = true;
+    //<PLAYER>
+    player=game.add.sprite(32,game.world.height-300,'bot');
+    game.physics.arcade.enable(player);
+    player.body.bounce.y=0.2;
+    player.body.gravity.y=300;
+    player.body.collideWorldBounds=true;
+    player.animations.add('left',[4,5,6,7],10,true);
+    player.animations.add('right',[8,9,10,11],10,true);
+    player.animations.add('up',[12,13,14,15],10,true);
+    player.animations.add('down',[0,1,2,3],10,true);
+    //</PLAYER>
+    //<BUTTONS>
+    cursors=game.input.keyboard.createCursorKeys();
+    Ak=game.input.keyboard.addKey(Phaser.Keyboard.C);
+    b=game.input.keyboard.addKey(Phaser.Keyboard.B);
+    //</BUTTONS>
+    //<BOMB>
+    bomb=game.add.sprite(0,0,'bmb');
+    bomb.animations.add("rightbmb",[0,1,2,3,4,5,6,7,8],10,true);
+    bomb.animations.add("leftbmb",[8,7,6,5,4,3,2,1,0],10,true);
+    bomb.scale.setTo(0.04, 0.04);
+    game.physics.enable(bomb, Phaser.Physics.ARCADE);
+        game.physics.arcade.enable(bomb);
+
+    bomb.body.collideWorldBounds=true;
+    bomb.kill();
+    //</BOMB>
+    //Time unit for inertia:
+    var t0=game.time.totalElapsedSeconds();
+    //<xplo>
+    kboom=game.add.sprite(0,0,'xplo');
+    kboom.animations.add('kboom',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],10,true);
+    kboom.kill();
+    //</xplo>
+    
+    tanksList = {};
+	
+	player = new Bot(myId, game, bot);
+	botList[myId] = player;
+	bot = player.bot;
+	bot.x=0;
+	bot.y=0;
+}
+function InertiaStop()
+    {
+        player.body.gravity.x=0;
+    }
+    
+function killbmb()
+    {
+        kboom.x=bomb.x-100;kboom.y=bomb.y-180;
+        bomb.kill();
+        kboom.revive();
+        kboom.animations.play('kboom',null,false,false);
+        
+    }
+function update() {
+    t0=game.time.totalElapsedSeconds();
+    game.physics.arcade.collide(player,platforms);
+    game.physics.arcade.collide(bomb,platforms);
+    
+	
+	player.input.left = cursors.left.isDown;
+	player.input.right = cursors.right.isDown;
+	player.input.up = cursors.up.isDown;
+	player.input.fire = game.input.activePointer.isDown;
+    	
+	
+    for (var i in botList)
+    {
+		if (!botList[i]) continue;
+		var curTank = botList[i].bot;
+		for (var j in botList)
+		{
+			if (!botList[j]) continue;
+			if (j!=i) 
+			{
+			
+				var targetTank = botList[j].bot;
+			
+			}
+			if (botList[j].alive)
+			{
+				botList[j].update();
+			}			
+		}
+    }
+}
+
+    
+
+</script>
+
+</body>
+</html>
