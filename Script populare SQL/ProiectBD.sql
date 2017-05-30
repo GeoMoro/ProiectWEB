@@ -24,6 +24,7 @@ CREATE TABLE Players(
   Victories number DEFAULT 0,
   Loses number DEFAULT 0,
   Createdat date  DEFAULT sysdate NOT NULL,
+  Logged int,
   CONSTRAINT Players_pk PRIMARY KEY (ID)
   );
   
@@ -587,8 +588,8 @@ begin
       then v_puncte:=0; 
     end if;
     
-    insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt) values
-      (v_count,v_username,v_nume,v_prenume,v_password,v_puncte,null,v_Veteran,v_count,(v_id1+v_id2),v_id1,v_id2,SYSDATE);
+    insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (v_count,v_username,v_nume,v_prenume,v_password,v_puncte,null,v_Veteran,v_count,(v_id1+v_id2),v_id1,v_id2,SYSDATE,0);
       
     v_count := v_count + 1;
     exit when v_count = 10000;
