@@ -1002,5 +1002,28 @@ begin
   delete from robots where ID = :old.ID;
 end;
 
-  
-  
+/
+
+CREATE MATERIALIZED VIEW Top50
+BUILD IMMEDIATE
+REFRESH COMPLETE ON DEMAND AS
+  SELECT * FROM ( SELECT * 
+                 FROM players
+                 ORDER BY Rank DESC
+                 )
+  WHERE rownum<51;
+/
+CREATE MATERIALIZED VIEW Last500
+BUILD IMMEDIATE
+REFRESH COMPLETE ON DEMAND AS
+  SELECT * FROM ( SELECT * 
+                 FROM players
+                 ORDER BY ID DESC
+                 )
+  WHERE rownum<501; 
+/*
+drop MATERIALIZED VIEW Top50;
+drop MATERIALIZED VIEW Last500;
+*/
+/
+select * from players order by id desc
