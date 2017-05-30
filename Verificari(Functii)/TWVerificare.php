@@ -36,7 +36,7 @@
 
 		else 
 
-			if(!preg_match('/^[a-zA-Z ]*$/', $p_nume))
+			if(!preg_match('/^[a-zA-Z ]*$/', str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_nume))))))
 
 				return 0;
 
@@ -298,7 +298,7 @@
 
 				$veteran = 'N';
 
-				$sql = 'insert into Players VALUES ('.$ID.', \''.$username.'\', \''.$firstname.'\', \''.$lastname.'\', \''.$pass.'\', 0, NULL, \''.$veteran.'\', '.$ID.', 0, 0, 0, SYSDATE)';
+				$sql = 'insert into Players VALUES ('.$ID.', \''.$username.'\', \''.$firstname.'\', \''.$lastname.'\', \''.$pass.'\', 0, NULL, \''.$veteran.'\', '.$ID.', 0, 0, 0, SYSDATE, 1)';
 
 				$result = oci_parse($connection, $sql);
 
@@ -730,6 +730,94 @@
 				oci_close($connection);
 
 				return $a;
+
+			}
+
+	}
+	
+	function setPlayerOn($usid) {
+		
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'update players SET Logged = 1 WHERE ID = '.$usid;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+		}
+		
+	}
+	
+	function setPlayerOff($usid) {
+		
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'update players SET Logged = 0 WHERE ID = '.$usid;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+		}
+		
+	}
+	
+	function getUserLogg($uid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = ' begin select logged into :rez from players where ID='.$uid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $rez;
 
 			}
 

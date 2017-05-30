@@ -199,6 +199,8 @@
 	<?php
 
 		if(isset($_POST['Submit'])) {
+			
+			setPlayerOff($uid);
 
 			setcookie("userID", "", time() - 3600);
 
