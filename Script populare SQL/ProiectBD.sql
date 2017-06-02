@@ -1122,3 +1122,24 @@ begin
   UTL_FILE.FCLOSE(Fisier);
 end;
 */
+/
+
+DROP INDEX IDX1;
+DROP INDEX IDX2;
+DROP INDEX IDX3;
+drop table nume;
+drop table prenume;
+drop table caracter;
+drop table numeRoboti;
+drop table atributRoboti;
+drop table arme;
+drop table abilitati;
+drop table materiale;
+drop table i_nume;
+drop table i_prenume;
+drop table i_abilitati;
+drop table i_caracter;
+drop table i_numeRoboti;
+drop table i_arme;
+DROP TABLE i_materiale;
+DROP TABLE i_atributRoboti;
