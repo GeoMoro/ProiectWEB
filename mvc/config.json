@@ -1,0 +1,15 @@
+{
+	"SITE":{
+	"NAME":"KITE FRAMEWORK",
+	"TMPL":"startup",
+	"HASH":"krishna"
+	},
+	
+	"DB":{
+		"HOST":"localhost",
+		"DB_NAME":"kite",
+		"USERNAME":"root",
+		"PASSWORD":""
+	}
+
+}
