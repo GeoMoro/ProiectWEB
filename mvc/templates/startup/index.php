@@ -6,7 +6,7 @@
 
 		<title>Welcome Nelogat</title>
 
-		<link rel="stylesheet" href="http://localhost/tw/assets/css/main.css" />
+		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
 
 	</head>
 
@@ -48,15 +48,15 @@
 
 							<header id="header">
 
-							    <img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+							    <img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
 
 								<nav>
 
-									<a href="1WelcomeNelogat.php" class="current-page-item"> Home </a>
+									<a href="root" class="current-page-item"> Home </a>
 
 									<a href="3'TopPlayers.php" > TopPlayers </a>
 
-									<a href="8'Rules.php"> How to </a>
+									<a href="rules"> How to </a>
 
 								</nav>
 
