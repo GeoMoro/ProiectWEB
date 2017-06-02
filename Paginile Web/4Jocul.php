@@ -34,6 +34,12 @@
 
 	<body>
 
+		<audio autoplay id="audio">
+
+			<source src="TW_CSS/img/Music.mp3" type="audio/mpeg">
+
+		</audio>
+
 		<div id="page-wrapper">
 
 			<div id="header-wrapper">
@@ -68,43 +74,47 @@
 
 			</div>
 
-			<div class="form">
+			<div id="main1">
 
-				<div class="row">
+				<div class="main2">
 
-					<div class="12u">
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-						<form>
+					<div class="row">
 
-							<label>Type : 1VS1</label>
+						<div class="12u">
 
-								<label>Terain</label>
+							<form>
 
-								<select class = "select">
+									<label>Terain</label>
 
-									<option value = "1">Jungle</option>
+									<select class = "select">
 
-									<option value = "2">Desert</option>
+										<option value = "1">Jungle</option>
 
-									<option value = "3">Vulcano</option>
+										<option value = "2">Desert</option>
 
-									<option value = "4">Random</option>
+										<option value = "3">Vulcano</option>
 
-								</select>
+										<option value = "4">Random</option>
 
-								<input type="submit" value="Start" />
+									</select>
 
-						</form>
+									<div style="text-align:center;">
+
+										<button id="Submit" name="Submit1" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Gogogo </button>
+
+									</div>
+
+									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+							</form>
+
+						</div>
 
 					</div>
 
 				</div>
-
-			</div>
-
-			<div class="container">
-
-				<img src="TW_CSS/img/bomberman.jpg" alt="Bomberman" style= "width:75%; height:75%;" />
 
 			</div>
 
@@ -135,6 +145,14 @@
 			</div>
 
 		</div>
+
+		<script>
+
+		    var audio = document.getElementById("audio");
+
+		    audio.volume = 0.05;
+
+		</script>
 
 	</body>
 

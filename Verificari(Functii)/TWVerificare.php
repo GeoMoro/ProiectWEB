@@ -829,4 +829,36 @@
 
 	}
 
+	function ExistAnotherUser($UserName) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = ' begin select getNrOfSameUsers(username) into :rez from players where username=\''.$UserName.'\'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $rez;
+
+			}
+
+	}
+	
 ?>

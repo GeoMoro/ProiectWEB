@@ -110,7 +110,7 @@
 
 									$UserSearch = $_POST["searchByName"];
 
-									if(validNume($UserSearch) == 1) {
+									if(validUserName($UserSearch) == 1) {
 
 										getTopByName($UserSearch);
 
@@ -169,7 +169,7 @@
 			</div>
 
 		</div>
-
+		
 		<script>
 
 			function showHint(str) {

@@ -986,6 +986,17 @@ begin
   return rez;
 end;
 /
+create or replace function getNrOfSameUsers(usern varchar2) return int as
+  rez int;
+begin
+  select count(*) 
+  into rez
+  from players 
+  where username = usern;
+  
+  return rez;
+end;
+/
 create or replace trigger AddBot
 after insert on players
 referencing new as new old as old
@@ -1003,7 +1014,7 @@ begin
 end;
 
 /
-
+/*
 CREATE MATERIALIZED VIEW Top50
 BUILD IMMEDIATE
 REFRESH COMPLETE ON DEMAND AS
@@ -1021,7 +1032,7 @@ REFRESH COMPLETE ON DEMAND AS
                  ORDER BY ID DESC
                  )
   WHERE rownum<501; 
-/*
+
 drop MATERIALIZED VIEW Top50;
 drop MATERIALIZED VIEW Last500;
 */

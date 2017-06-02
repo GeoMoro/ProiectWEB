@@ -135,14 +135,26 @@
 													}
 
 													else {
+														
+														$userAlreadyExists = ExistAnotherUser($username);
+														
+														if($userAlreadyExists == 0) {
 
-														echo '';
+															echo '';
 
-														UpdateUserName($uid,$username);
+															UpdateUserName($uid,$username);
 
-														setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+															setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-														header('Location: 6AccountInfo.php');
+															header('Location: 6AccountInfo.php');
+															
+														}
+														
+														else {
+
+															echo 'Un player deja foloseste acest UserName!';
+
+														}
 
 													}
 
@@ -154,7 +166,7 @@
 
 								</div>
 
-								<br><br><br>
+								<br><br><br><br><br>
 
 								<label class="labelacount"> First Name: <?php
 
@@ -164,7 +176,7 @@
 
 																		 ?></label>		
 
-								<br>
+								<br><br><br>
 
 								<label class="labelacount"> Last Name: <?php
 
@@ -174,7 +186,7 @@
 
 																		 ?></label>
 
-								<br>
+								<br><br><br><br>
 
 								<div class="dropdown2">
 
@@ -316,7 +328,7 @@
 
 								</div>
 
-								<br><br><br>
+								<br><br><br><br><br>
 
 								<label class="labelavatar"> Avatar:</label>
 

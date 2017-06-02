@@ -521,24 +521,25 @@
 							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
 
 						}
-						
+
 						else {
+
 							$cookie_value = getID($LogUserName,$LogPass);
 
 							$Logged = getUserLogg($cookie_value);
-						
+
 							if($Logged == 1) {
-								
+
 								$message = "Cineva este deja logat pe acest cont!";
-								
+
 								echo "<script type='text/javascript'>alert('$message');</script>";
 
 							$e1 = oci_error($statement1);
 
 							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
-								
+
 							}
-							
+
 						}
 
 					}
@@ -566,7 +567,7 @@
 						$cookie_value = getID($LogUserName,$LogPass);
 
 						$Logged = getUserLogg($cookie_value);
-						
+
 						if($Logged == 0) {
 
 							setPlayerOn($cookie_value);
@@ -574,7 +575,7 @@
 							setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
 							header('Location: 2WelcomeLogat.php');
-						
+
 						}
 
 					}
@@ -585,15 +586,35 @@
 
 					if(isset($_POST['Submit1'])) {
 
-						if($okUName == 1 && $okFName == 1 && $okLName && $okp == 1) {
+						if($okUName == 1 && $okFName == 1 && $okLName == 1 && $okp == 1) {
 
-							Register($UserName, $FirstName, $LastName, $Password_Register);
+							$alreadyexistuser = ExistAnotherUser($UserName);
 
-							$cookie_value = getID($UserName,$Password_Register);
+							//	echo "<div> <span>!!!!!!---".$alreadyexistuser."---???????</span> </div>";
 
-							setcookie("UserID", $cookie_value, time() + (86400 * 30), '/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+							if($alreadyexistuser == 0) {
 
-							header('Location: 2WelcomeLogat.php');
+								Register($UserName, $FirstName, $LastName, $Password_Register);
+
+								$cookie_value = getID($UserName,$Password_Register);
+
+								setcookie("UserID", $cookie_value, time() + (86400 * 30), '/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+
+								header('Location: 2WelcomeLogat.php');
+
+							}
+
+							else {
+
+								$message = "Un player deja foloseste acest UserName!";
+
+								echo "<script type='text/javascript'>alert('$message');</script>";
+
+								$e1 = oci_error($statement1);
+
+								trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+
+							}
 
 						}
 
