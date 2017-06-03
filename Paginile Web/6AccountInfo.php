@@ -330,7 +330,7 @@
 
 								<br><br><br><br><br>
 
-								<label class="labelavatar"> Avatar:</label>
+								<label class="labelavatar"> Avatar:&nbsp;&nbsp;&nbsp;</label>
 
 								<?php 
 

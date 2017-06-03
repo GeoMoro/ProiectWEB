@@ -84,7 +84,7 @@
 
 						<div class="12u">
 
-							<form>
+							<form action="" method='post'>
 
 									<label>Terain</label>
 
@@ -102,8 +102,18 @@
 
 									<div style="text-align:center;">
 
-										<button id="Submit" name="Submit1" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Gogogo </button>
+										<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Gogogo </button>
+										
+										<?php
+										
+											if(isset($_POST['Submit'])) {
 
+												header('Location: 9Login2ndPlayer.php');
+
+											}
+			
+										?>
+										
 									</div>
 
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
