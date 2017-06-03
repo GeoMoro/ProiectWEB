@@ -86,11 +86,11 @@
 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				    <span>
-						Your rank: <?php $rank = getRank($uid);
-						echo filter($rank);?> 
+			 <span>
+			 Your rank: <?php $basket = KITE::getInstance('basket');			
+						echo $basket->rank ?> 
 						
-				    </span>
+			 </span>
 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -127,14 +127,14 @@
   						<tbody>
 
 							<?php
+							   $basket = KITE::getInstance('basket');
+								if(isset($basket['Submit'])){
 
-								if(isset($_POST['Submit'])){
+									$basket = KITE::searchByName;
 
-									$UserSearch = $_POST["searchByName"];
+									if(validNume($basket->UserName) == 1) {
 
-									if(validNume($UserSearch) == 1) {
-
-										getTopByName($UserSearch);
+										getTopByName($basket->UserName);
 
 									}
 
@@ -142,17 +142,17 @@
 
 								else
 
-									if(isset($_POST['Submit1']))
+									if(isset($basket['Submit1']))
 
 									{
 
-										getTop10();
+										$basket.getTop10();
 
 									}
 
 									else {
 
-										getTop();
+										$basket.getTop();
 
 									}
 
