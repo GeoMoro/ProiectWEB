@@ -1,6 +1,44 @@
 <?php
 class TWVerificare
 {
+	function getUserName($uid) {
+        $basket = KITE::getInstance('basket');
+        if($uid==1)
+            $basket->set(UserName,'Ana');
+        else
+        $basket->set(UserName,$uid);
+		/*$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(UserName,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin :rez := getUN(:ID); end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+
+				oci_bind_by_name($result, ':rez', $user,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserName,$user);
+
+			}*/
+
+	}
+
    function validPassword($pass) {
 
 	    if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', str_replace(' ', '', str_replace('@', '', str_replace('&', '', str_replace('#', '', $pass))))))))))
@@ -158,8 +196,6 @@ class TWVerificare
 
 			echo "Connection failed. Please try again";
 
-			return -1;
-
 		}
 
 		else{
@@ -170,16 +206,9 @@ class TWVerificare
 
 				oci_execute($result);
 
-				$index = 0;
-
-				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
-
-					$index = $index + 1;
-
-					echo '<tr> <td> '.$index.' </td> '.$row[0].'</tr>';
-
-				}
-
+				$basket = KITE::getInstance('basket');
+				foreach ($result as $key => $value)
+					$basket->set($key,$value);
 			//	oci_free_statement($result);
 
 				oci_close($connection);
@@ -209,21 +238,10 @@ class TWVerificare
 
 				oci_execute($result);
 
-				$index = 0;
-
-				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
-
-					$index = $index + 1;
-
-					echo '<tr> <td> '.$index.' </td> '.$row[0].'</tr>';
-
-				}
-
-				if($index == 0){
-
-					echo '<tr> <td> Nu </td> <td> exista </td> <td> un </td> <td> asemenea </td> <td> player</td> </tr>';
-
-				}
+				
+				$basket = KITE::getInstance('basket');
+				foreach ($result as $key => $value)
+					$basket->set($key,$value);
 
 			//	oci_free_statement($result);
 
@@ -254,15 +272,10 @@ class TWVerificare
 
 				oci_execute($result);
 
-				$index = 0;
-
-				while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
-
-					$index = $index + 1;
-
-					echo '<tr> <td> '.$index.' </td> '.$row[0].'</tr>';
-
-				}
+				
+				$basket = KITE::getInstance('basket');
+				foreach ($result as $key => $value)
+					$basket->set($key,$value);
 
 			//	oci_free_statement($result);
 
@@ -311,41 +324,6 @@ class TWVerificare
 
 	}
 
-
-	function getUserName($uid) {
-        $basket = KITE::getInstance('basket');
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection) {
-
-			echo "Connection failed. Please try again";
-
-			$basket->set(UserName,'-1');
-
-		}
-
-		else{
-
-				$sql = ' begin :rez := getUN(:ID); end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
-
-				oci_bind_by_name($result, ':rez', $user,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				$basket->set(UserName,$user);
-
-			}
-
-	}
 
 
 	function getRank($uid) {
@@ -862,5 +840,102 @@ class TWVerificare
 			}
 
 	}
+	
+	function getUserMaterial($usid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = ' begin select Material into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $rez;
+
+			}
+
+	}
+	
+	function getUserTool($usid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = ' begin select Tool into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $rez;
+
+			}
+
+	}
+	
+	function getUserWeapon($usid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = ' begin select Weapon into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez, 50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				return $rez;
+
+			}
+
+	}
+	
 }	
 ?>

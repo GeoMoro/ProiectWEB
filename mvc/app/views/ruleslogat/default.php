@@ -1,3 +1,72 @@
+<!DOCTYPE HTML>
+
+<?php
+
+	ob_start();
+
+	error_reporting(0);
+
+	ini_set('display_errors', 0);
+
+	if(isset($_COOKIE['UserID'])){
+
+			$uid =  $_COOKIE["UserID"];
+
+	}
+
+?>
+
+<html lang="en">
+
+	<head>
+
+		<title>Welcome-logat</title>
+
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+
+	</head>
+
+	<body>
+
+		<div id="page-wrapper">
+
+			<div id="header-wrapper">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="12u">
+
+							<header id="header">
+
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+
+								<nav>
+
+									<a href="welcome" >Home</a>
+
+									<a href="toplogat" > TopPlayers </a>
+
+									<a href="ruleslogat" class="current-page-item"> How to </a>
+
+								</nav>
+
+							</header>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
 			<div class="container">	
 
 				<section class="left-content">
@@ -61,3 +130,8 @@
 			</div>
 
 		</div>
+
+
+	</body>
+
+</html>

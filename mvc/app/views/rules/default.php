@@ -1,3 +1,54 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+	<head>
+
+		<title>Welcome-logat</title>
+
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+
+	</head>
+
+	<body>
+
+		<div id="page-wrapper">
+
+			<div id="header-wrapper">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="12u">
+
+							<header id="header">
+
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+
+								<nav>
+
+									<a href="main" class="current-page-item"> Home </a>
+
+									<a href="top" > TopPlayers </a>
+
+									<a href="rules"> How to </a>
+
+								</nav>
+
+							</header>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
 
 			<div class="container">	
 
@@ -55,3 +106,7 @@
 			</div>
 
 		</div>
+		
+	</body>
+
+</html>

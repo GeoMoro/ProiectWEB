@@ -16,16 +16,100 @@ class root
 		KITE::render('login');
 	}
 	
-	function about()
+	function login2()
 	{
-		KITE::render('about');
+		KITE::render('login2');
 	}
 	
-	function contact()
+	function welcome()
 	{
-		KITE::render('contact');
+		KITE::render('welcomelogat');
 	}
 
+	function jocul()
+	{
+		KITE::render('jocul');
+	}
+	
+	function prepare()
+	{
+		KITE::render('prepare');
+	}
+	
+	function test()
+	{
+		KITE::render('test');
+	}
+
+	function acountinfo()
+	{
+		KITE::render('acountinfo');
+	}
+
+    function myrobot()
+    { 
+       
+        $basket2 = KITE::getInstance('basket');
+        $model = KITE::getModel('TWVerificare');
+        $id=$basket2->UserId;
+		$model->getUserName($id);
+        KITE::render('myrobot');
+    }
+	function rules()
+	{
+		
+		KITE::render('rules');
+	}
+
+    function ruleslogat()
+    { 
+        $model = KITE::getModel('TWVerificare');
+		$model->getUserName($id);
+        KITE::render('ruleslogat');
+    }
+
+	function top()
+	{
+		$model = KITE::getModel('TWVerificare');
+		
+		if(isset($_POST['Submit'])){
+
+									$UserSearch = $_POST["searchByName"];
+
+									//if(validUserName($UserSearch) == 1) {
+										if($UserSearch == "qwerty")
+
+											$model->getTopByName($UserSearch);
+
+								}
+
+								else
+
+									if(isset($_POST['Submit1']))
+
+									{
+
+										$model->getTop10();
+
+									}
+
+									else
+									{	
+										$model->getTop();
+									}
+
+		KITE::render('topplayers');
+	}
+
+    function toplogat()
+    { 
+       
+        $basket2 = KITE::getInstance('basket');
+        $model = KITE::getModel('TWVerificare');
+        $id=$basket2->UserId;
+		$model->getUserName($id);
+        KITE::render('topplayerslogat');
+    }
 }
 
 

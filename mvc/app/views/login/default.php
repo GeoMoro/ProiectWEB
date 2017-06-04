@@ -1,4 +1,77 @@
-	<div class="container">
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+	<head>
+
+		<title>Welcome Nelogat</title>
+
+		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+
+	</head>
+
+	<body>
+
+		<?php
+
+
+			ob_start();
+
+			error_reporting(0);
+
+			ini_set('display_errors', 0);
+
+			$LogUserName=$_POST["logusername"];
+
+			$LogPass=$_POST["logpassword"];
+
+			$LastName=$_POST["last_name"];
+
+			$FirstName=$_POST["first_name"];
+
+			$UserName=$_POST["username"];
+
+			$Password_Register=$_POST["passwordRegister"];
+
+			$Confirm_Password_Register=$_POST["confirm_passwordRegister"];
+
+		?>
+
+		<div id="page-wrapper">
+
+			<div id="header-wrapper">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="12u">
+
+							<header id="header">
+
+							    <img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+
+								<nav>
+
+									<a href="root/main" class="current-page-item"> Home </a>
+
+									<a href="top" > TopPlayers </a>
+
+									<a href="rules"> How to </a>
+
+								</nav>
+
+							</header>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+    <div class="container">
 
 				<div class="row main-row">
 
@@ -26,7 +99,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/vicol.robert"><img src="TW_CSS/img/robert.jpg" style= "width:85px;height:85px;" alt="" class="left"/> </a>
+									<a href="https://www.facebook.com/vicol.robert"><img src="http://localhost/kite/assets/img/robert.jpg" style= "width:85px;height:85px;" alt="" class="left"/> </a>
 
 									<h3>Vicol Robert Ilie</h3>
 
@@ -36,7 +109,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="TW_CSS/img/mazi.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="http://localhost/kite/assets/img/mazi.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
 
 									<h3>Mazilu George-Viorel</h3>
 
@@ -46,7 +119,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="http://localhost/kite/assets/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -56,7 +129,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/minuti.vlad"><img src="TW_CSS/img/vlad.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/minuti.vlad"><img src="http://localhost/kite/assets/img/vlad.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
 
 									<h3>Minuti Vladut-Stefan</h3>
 
@@ -549,3 +622,7 @@
 			?>
 
 		</span>
+        
+	</body>
+
+</html>

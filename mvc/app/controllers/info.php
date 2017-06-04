@@ -13,17 +13,17 @@ class rules
 
 	function main()
 	{
-		KITE::render('rules');
+		KITE::render('acountinfo');
 	}
 
-    function ruleslogat()
+    function myrobot()
     { 
        
         $basket2 = KITE::getInstance('basket');
         $model = KITE::getModel('TWVerificare');
         $id=$basket2->UserId;
 		$model->getUserName($id);
-        KITE::render('ruleslogat');
+        KITE::render('myrobot');
     }
 
 }
