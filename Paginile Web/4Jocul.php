@@ -90,7 +90,7 @@
 									<div style="text-align:center;">
 								
 									 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-									<button id="Submit" name="Submit" Value="Register" type="Submit" style=" font-size:35px;background-color:#00e6e6;color:red;height:30%;width:30%; border-radius:25px; " data-component="button"> Start the Bombardament! </button>
+									<button id="Submit" name="Submit" Value="Register" type="Submit" style=" font-size:35px;background-color:#00e6e6;color:red;height:15%;width:15%; border-radius:25px; " data-component="button"> Start! </button>
 										
 										<?php
 										

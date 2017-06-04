@@ -193,6 +193,12 @@
 			</div>
 
 		</div>
+		
+		<!--<script>
+			
+			window.onbeforeunload = function(){ return " Delogheaza-te mai intai!"; }
+		
+		</script> -->
 
 	</body>
 

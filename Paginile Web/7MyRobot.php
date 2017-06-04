@@ -34,11 +34,11 @@
 
 	<body background="TW_CSS/img/back.png">
 
-		<audio autoplay id="audio">
+	<!--	<audio autoplay id="audio">
 
 			<source src="TW_CSS/img/Music.mp3" type="audio/mpeg">
 
-		</audio>
+		</audio> -->
 
 		<div id="page-wrapper">
 
@@ -64,7 +64,7 @@
 
 								</nav>
 
-							</header>
+							</header> 	
 
 						</div>
 
@@ -74,7 +74,7 @@
 
 			</div>	
 
-		    <div id="main1">
+		    <div> <center>
 
 				<div class="main2">
 
@@ -219,9 +219,7 @@
 								<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
 
 						</section>
-	<section>
-		<img src="TW_CSS/img/back.png" >
-	</section>
+
 						<?php
 
 							if(isset($_POST['PlayAGame'])) {
@@ -241,6 +239,7 @@
 					</form>
 
 				</div>
+				</center>
 
 			</div>
 
@@ -272,13 +271,13 @@
 
 		</div>
 
-		<script>
+<!--		<script>
 
 		    var audio = document.getElementById("audio");
 
 		    audio.volume = 0.05;
 
-		</script>
+		</script>  -->
 
 	</body>
 

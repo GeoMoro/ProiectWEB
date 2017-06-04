@@ -288,6 +288,22 @@
 				<!--	<form action="" method='post'> -->
 
 						<section class = "topmenu1">
+						
+							<label>Terain</label>
+
+							<select class = "select">
+
+								<option value = "1">Jungle</option>
+
+								<option value = "2">Desert</option>
+
+								<option value = "3">Vulcano</option>
+
+								<option value = "4">Random</option>
+
+							</select>
+							
+							</br>
 
 							<button id="Submit" name="PlayAGame" Value="Play" type="Submit"> Play a game </button> 
 
