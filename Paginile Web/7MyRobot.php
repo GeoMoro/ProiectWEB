@@ -32,7 +32,7 @@
 
 	</head>
 
-	<body>
+	<body background="TW_CSS/img/back.png">
 
 		<audio autoplay id="audio">
 
@@ -219,7 +219,9 @@
 								<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
 
 						</section>
-
+	<section>
+		<img src="TW_CSS/img/back.png" >
+	</section>
 						<?php
 
 							if(isset($_POST['PlayAGame'])) {
