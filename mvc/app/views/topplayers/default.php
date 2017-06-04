@@ -106,12 +106,13 @@
 
 								$basket = KITE::getInstance('basket');
 								$index = 0;
+								$nrMaxim=$basket->NumarSelect;
+								for($index=0;$index<$nrMaxim;$index++) {
+									$key='id'.$index;
 
-										foreach($basket as $key =>$value) {
-
-											$index = $index + 1;
-
-											echo '<tr> <td> '.$index.' </td> '.$value.'</tr>';}
+											echo '<tr> <td> '.$index.' </td> '.$basket->get($key);
+											echo '</tr>';
+								}
 								
 
 							?>

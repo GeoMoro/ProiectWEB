@@ -200,15 +200,21 @@ class TWVerificare
 
 		else{
 
-				$sql = 'select \'<td> \'||Username||\'</td> <td> \'||First_Name||\'</td> <td>\'||last_name||\'</td> <td> \'||Rank||\' </td>\' from players order by rank desc';
-
+				$sql = 'select \'<td> \'||Username||\'</td> <td> \'||First_Name||\'</td> <td>\'||last_name||\'</td> <td> \'||Rank||\' </td>\' as "data" from players order by rank desc';
+				$sql2 = 'select count(*) as "numar" from players';
 				$result = oci_parse($connection, $sql);
-
+				$result2 = oci_parse($connection, $sql2);
 				oci_execute($result);
-
+				oci_execute($result2);
 				$basket = KITE::getInstance('basket');
-				foreach ($result as $key => $value)
-					$basket->set($key,$value);
+				$id=0;
+				$ceva=oci_fetch($result2);
+				$basket->set('NumarSelect',oci_result($result2, 'numar'));
+				while (($row = oci_fetch_array($result, OCI_NUM)) != false) {
+					$key='id'.$id;
+    				$basket->set($key,$row[0]);
+					$id++;
+				}
 			//	oci_free_statement($result);
 
 				oci_close($connection);
@@ -234,15 +240,20 @@ class TWVerificare
 
 				$sql = 'select \'<td> \'||Username||\'</td> <td> \'||First_Name||\'</td> <td>\'||last_name||\'</td> <td> \'||Rank||\' </td>\' from players where username like \'%'.$Usersearch.'%\' order by rank desc';
 
+				$sql2 = 'select count(*) as "numar" from players';
 				$result = oci_parse($connection, $sql);
-
+				$result2 = oci_parse($connection, $sql2);
 				oci_execute($result);
-
-				
+				oci_execute($result2);
 				$basket = KITE::getInstance('basket');
-				foreach ($result as $key => $value)
-					$basket->set($key,$value);
-
+				$id=0;
+				$ceva=oci_fetch($result2);
+				$basket->set('NumarSelect',oci_result($result2, 'numar'));
+				while (($row = oci_fetch_array($result, OCI_NUM)) != false) {
+					$key='id'.$id;
+    				$basket->set($key,$row[0]);
+					$id++;
+				}
 			//	oci_free_statement($result);
 
 				oci_close($connection);
@@ -267,16 +278,20 @@ class TWVerificare
 		else{
 
 				$sql = 'select \'<td> \'||Username||\'</td> <td> \'||First_Name||\'</td> <td>\'||last_name||\'</td> <td> \'||Rank||\' </td>\' from players where rownum < 11 order by rank desc';
-
+				$sql2 = 'select count(*) as "numar" from players';
 				$result = oci_parse($connection, $sql);
-
+				$result2 = oci_parse($connection, $sql2);
 				oci_execute($result);
-
-				
+				oci_execute($result2);
 				$basket = KITE::getInstance('basket');
-				foreach ($result as $key => $value)
-					$basket->set($key,$value);
-
+				$id=0;
+				$ceva=oci_fetch($result2);
+				$basket->set('NumarSelect',oci_result($result2, 'numar'));
+				while (($row = oci_fetch_array($result, OCI_NUM)) != false) {
+					$key='id'.$id;
+    				$basket->set($key,$row[0]);
+					$id++;
+				}
 			//	oci_free_statement($result);
 
 				oci_close($connection);

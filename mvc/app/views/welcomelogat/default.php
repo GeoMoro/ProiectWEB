@@ -76,9 +76,9 @@
 
 							<h2> Welcome, <?php 
 
-											$LoggedUserName = getUserName($uid);
+											//$LoggedUserName = getUserName($uid);
 
-											echo filter($LoggedUserName);
+											//echo filter($LoggedUserName);
 
 										 ?>! </h2>
 
@@ -146,13 +146,13 @@
 
 								<form action="" method='post'>
 
-									<a href="4Jocul.php"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
+									<a href="jocul"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
 
-									<a href="6Accoutinfo.php">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
+									<a href="acountinfo">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
 
-									<a href="7MyRobot.php">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
+									<a href="myrobot">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
 
-									<button id="Submit" name="Submit" Value="Logout" type="Submit"> Logout :( </button>
+									<a href="main"> <button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button> </a>
 
 								</form>
 
@@ -198,11 +198,11 @@
 
 		if(isset($_POST['Submit'])) {
 			
-			setPlayerOff($uid);
+			//setPlayerOff($uid);
 
 			setcookie("userID", "", time() - 3600);
 
-			header('Location: 1WelcomeNelogat.php');
+			header('Location: main');
 
 		}
 
@@ -212,7 +212,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: 4Jocul.php');
+				header('Location: jocul');
 
 			}
 
@@ -222,7 +222,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: 6AccountInfo.php');
+				header('Location: acountinfo');
 
 				}
 
@@ -232,7 +232,7 @@
 
 						setcookie("userID", "", time() - 3600);
 
-						header('Location: 7MyRobot.php');
+						header('Location: myrobot');
 
 					}
 

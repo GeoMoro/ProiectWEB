@@ -104,10 +104,33 @@ class root
     function toplogat()
     { 
        
-        $basket2 = KITE::getInstance('basket');
         $model = KITE::getModel('TWVerificare');
-        $id=$basket2->UserId;
-		$model->getUserName($id);
+		
+		if(isset($_POST['Submit'])){
+
+									$UserSearch = $_POST["searchByName"];
+
+									//if(validUserName($UserSearch) == 1) {
+										if($UserSearch == "qwerty")
+
+											$model->getTopByName($UserSearch);
+
+								}
+
+								else
+
+									if(isset($_POST['Submit1']))
+
+									{
+
+										$model->getTop10();
+
+									}
+
+									else
+									{	
+										$model->getTop();
+									}
         KITE::render('topplayerslogat');
     }
 }

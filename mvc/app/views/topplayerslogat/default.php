@@ -122,33 +122,15 @@
 
 							<?php
 
-								if(isset($_POST['Submit'])){
+								$basket = KITE::getInstance('basket');
+								$index = 0;
+								$nrMaxim=$basket->NumarSelect;
+								for($index=0;$index<$nrMaxim;$index++) {
+									$key='id'.$index;
 
-									$UserSearch = $_POST["searchByName"];
-
-									if(validNume($UserSearch) == 1) {
-
-										getTopByName($UserSearch);
-
-									}
-
+											echo '<tr> <td> '.$index.' </td> '.$basket->get($key);
+											echo '</tr>';
 								}
-
-								else
-
-									if(isset($_POST['Submit1']))
-
-									{
-
-										getTop10();
-
-									}
-
-									else {
-
-										getTop();
-
-									}
 
 							?>
 
