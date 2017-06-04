@@ -84,12 +84,12 @@
 							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Material1">
-								
+
 									<option value = "<?php echo getUserMaterial($uid1); ?>"><?php echo getUserMaterial($uid1); ?> - Saved</option>
 
-									<option value = "WOOD">WOOD</option>
+									<option value = "NORMAL">NORMAL</option>
 
-									<option value = "STONE">STONE</option>
+									<option value = "WOOD">WOOD</option>
 
 									<option value = "SILVER">SILVER</option>
 
@@ -99,7 +99,7 @@
 
 									<option value = "DIAMOND">DIAMOND</option>
 
-									<option value = "PLATINUM">PLATINUM</option>
+									<option value = "EMERALD">EMERALD</option>
 
 									<option value = "OBSIDIAN">OBSIDIAN</option>
 
@@ -117,15 +117,13 @@
 								
 									<option value = "<?php echo getUserWeapon($uid1); ?>"><?php echo getUserWeapon($uid1); ?> - Saved</option>
 
-									<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-									<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-									<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+									<option value = "Poison Bombs">Poisoned Bombs</option>
 
-									<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
-
-									<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+									<option value = "Metal Bombs">Metal Bombs</option>
 
 								</select>
 
@@ -138,22 +136,14 @@
 							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Tool1">
-								
+
 									<option value = "<?php echo getUserTool($uid1); ?>"><?php echo getUserTool($uid1); ?> - Saved</option>
 
-									<option value = "Guardian">Guardian(+1 life)</option>
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-									<option value = "JetPack">JetPack(jump over obstacles)</option>
+									<option value = "BOMB COLLISION">Bomb Collition</option>
 
-									<option value = "Detonator">Detonator</option>
-
-									<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
-
-									<option value = "Slide">Slide(Push the bomb trough the wall)</option>
-
-									<option value = "Invisibility">Invisibility</option>
-
-									<option value = "Redbull">Redbull(+Speed)</</option>
+									<option value = "JetPack">JetPack</option>
 
 								</select>
 
@@ -177,9 +167,9 @@
 
 									<option value = "<?php echo getUserMaterial($uid2); ?>"><?php echo getUserMaterial($uid2); ?> - Saved</option>
 
-									<option value = "WOOD">WOOD</option>
+									<option value = "NORMAL">NORMAL</option>
 
-									<option value = "STONE">STONE</option>
+									<option value = "WOOD">WOOD</option>
 
 									<option value = "SILVER">SILVER</option>
 
@@ -189,7 +179,7 @@
 
 									<option value = "DIAMOND">DIAMOND</option>
 
-									<option value = "PLATINUM">PLATINUM</option>
+									<option value = "EMERALD">EMERALD</option>
 
 									<option value = "OBSIDIAN">OBSIDIAN</option>
 
@@ -207,15 +197,13 @@
 								
 									<option value = "<?php echo getUserWeapon($uid2); ?>"><?php echo getUserWeapon($uid2); ?> - Saved</option>
 
-									<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-									<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-									<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+									<option value = "Poison Bombs">Poisoned Bombs</option>
 
-									<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
-
-									<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+									<option value = "Metal Bombs">Metal Bombs</option>
 
 								</select>
 
@@ -231,19 +219,11 @@
 								
 									<option value = "<?php echo getUserTool($uid2); ?>"><?php echo getUserTool($uid2); ?> - Saved</option>
 
-									<option value = "Guardian">Guardian(+1 life)</option>
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-									<option value = "JetPack">JetPack(jump over obstacles)</option>
+									<option value = "BOMB COLLISION">Bomb Collition</option>
 
-									<option value = "Detonator">Detonator</option>
-
-									<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
-
-									<option value = "Slide">Slide(Push the bomb trough the wall)</option>
-
-									<option value = "Invisibility">Invisibility</option>
-
-									<option value = "Redbull">Redbull(+Speed)</</option>
+									<option value = "JetPack">JetPack</option>
 
 								</select>
 

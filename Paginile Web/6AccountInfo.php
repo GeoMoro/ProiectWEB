@@ -52,7 +52,7 @@
 
 									<a href="2WelcomeLogat.php">Home</a>
 
-									<a href="3TopPlayers.php" class="current-page-item" > TopPlayers </a>
+									<a href="3TopPlayers.php" > TopPlayers </a>
 
 									<a href="8Rules.php"> How to </a>
 

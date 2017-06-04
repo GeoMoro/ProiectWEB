@@ -90,7 +90,7 @@
 
 					<form action="" method='post'>
 
-						<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
+						<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
 
 						<br>
 
@@ -98,9 +98,9 @@
 
 							<select class = "select" name="Material">
 
-								<option value = "WOOD">WOOD-Basic</option>
+								<option value = "NORMAL">NORMAL</option>
 
-								<option value = "STONE">STONE-Basic</option>
+								<option value = "WOOD">WOOD</option>
 
 								<option value = "SILVER">SILVER</option>
 
@@ -110,7 +110,7 @@
 
 								<option value = "DIAMOND">DIAMOND</option>
 
-								<option value = "PLATINUM">PLATINUM</option>
+								<option value = "EMERALD">EMERALD</option>
 
 								<option value = "OBSIDIAN">OBSIDIAN</option>
 
@@ -126,15 +126,13 @@
 
 							<select class = "select" name="Weapon">
 
-								<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+								<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-								<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+								<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-								<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+								<option value = "Poison Bombs">Poisoned Bombs</option>
 
-								<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
-
-								<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+								<option value = "Metal Bombs">Metal Bombs</option>
 
 							</select>
 
@@ -148,19 +146,11 @@
 
 							<select class = "select" name="Tool">
 
-								<option value = "Guardian">Guardian(+1 life)</option>
+								<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-								<option value = "JetPack">JetPack(jump over obstacles)</option>
+								<option value = "BOMB COLLISION">Bomb Collition</option>
 
-								<option value = "Detonator">Detonator</option>
-
-								<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
-
-								<option value = "Slide">Slide(Push the bomb trough the wall)</option>
-
-								<option value = "Invisibility">Invisibility</option>
-
-								<option value = "Redbull">Redbull(+Speed)</</option>
+								<option value = "JetPack">JetPack</option>
 
 							</select>
 
