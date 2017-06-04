@@ -86,23 +86,11 @@
 
 							<form action="" method='post'>
 
-									<label>Terain</label>
-
-									<select class = "select">
-
-										<option value = "1">Jungle</option>
-
-										<option value = "2">Desert</option>
-
-										<option value = "3">Vulcano</option>
-
-										<option value = "4">Random</option>
-
-									</select>
 
 									<div style="text-align:center;">
-
-										<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Gogogo </button>
+								
+									 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+									<button id="Submit" name="Submit" Value="Register" type="Submit" style=" font-size:35px;background-color:#00e6e6;color:red;height:30%;width:30%; border-radius:25px; " data-component="button"> Start the Bombardament! </button>
 										
 										<?php
 										
