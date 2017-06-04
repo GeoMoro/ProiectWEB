@@ -53,7 +53,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
 
 							</header>
 
