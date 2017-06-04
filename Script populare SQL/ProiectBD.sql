@@ -1014,6 +1014,28 @@ begin
 end;
 
 /
+create or replace function getWins(usid int) return int as
+  rez int;
+begin
+  select Victories
+  into rez
+  from players
+  where id = usid;
+  
+  return rez;
+end;
+/
+create or replace function getLoses(usid int) return int as
+  rez int;
+begin
+  select Loses
+  into rez
+  from players
+  where id = usid;
+  
+  return rez;
+end;
+/
 /*
 CREATE MATERIALIZED VIEW Top50
 BUILD IMMEDIATE

@@ -763,6 +763,7 @@
 		
 	}
 	
+
 	function setPlayerOff($usid) {
 		
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -790,7 +791,8 @@
 		}
 		
 	}
-	
+
+
 	function getUserLogg($uid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -823,11 +825,13 @@
 
 	}
 
+
 	function filter($string) { // functia care va preveni atacurile de tipul XSS
 
 		return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 
 	}
+
 
 	function ExistAnotherUser($UserName) {
 
@@ -860,7 +864,8 @@
 			}
 
 	}
-	
+
+
 	function getUserMaterial($usid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -892,7 +897,8 @@
 			}
 
 	}
-	
+
+
 	function getUserTool($usid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -924,7 +930,8 @@
 			}
 
 	}
-	
+
+
 	function getUserWeapon($usid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -956,5 +963,104 @@
 			}
 
 	}
-	
+
+
+	function WinGame($usid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'update players SET Victories = Victories + 1,Rank = Rank + 25 WHERE ID = '.$usid;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+		}
+
+	}
+
+
+	function DrawGame($usid1,$usid2) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'update players SET Victories = Victories + 1,Rank = Rank + 25 WHERE ID = '.$usid1.' or ID ='.$usid2;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+		}
+
+	}
+
+
+	function LostGame($usid) {
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql1 = ' begin select getRank('.$usid.') into :rez from players where ID='.$usid.'; end;';
+
+				$result1 = oci_parse($connection, $sql1);
+
+				oci_bind_by_name($result1, ':rez', $rank,50);
+
+				oci_execute($result1);
+
+				if($rank>=25)
+
+					$rank = $rank - 25;
+
+				$sql = 'update players SET Loses = Loses + 1,Rank = '.$rank.' WHERE ID = '.$usid;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+		}
+
+	}
+
 ?>
