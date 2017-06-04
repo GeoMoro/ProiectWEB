@@ -18,7 +18,6 @@
 
 ?>
 
-
 <html>
 
 	<head>
@@ -78,7 +77,7 @@
 						<section>
 
 							<div class="formacount">
-							
+
 								<h2> Player 1: <?php 
 
 													$LoggedUserName = getUserName($uid);
@@ -86,51 +85,49 @@
 													echo filter($LoggedUserName);
 
 												?>; </h2>
-								
+
 								<div class="form">
-							
 
-							<form action="" method='post'>
+									<form action="" method='post'>
 
-								<fieldset>
+										<fieldset>
 
-										<h2>Login as Player 2: </h2>
+												<h2>Login as Player 2: </h2>
 
-									<input type="text" name="logusername" placeholder="Username: *" required value="<?php 
+											<input type="text" name="logusername" placeholder="Username: *" required value="<?php 
 
-																														if($LogUserName == '') 
-
-																															echo '';
-
-																														else
-
-																															echo filter($LogUserName);
-
-																													?>">
-
-									<input type = "password" name = "logpassword" placeholder="Password: *" required value="<?php 
-
-																																if($LogPass == '')
+																																if($LogUserName == '') 
 
 																																	echo '';
 
 																																else
 
-																																	echo filter($LogPass);
+																																	echo filter($LogUserName);
 
 																															?>">
 
-								</fieldset>
+											<input type = "password" name = "logpassword" placeholder="Password: *" required value="<?php 
 
-								<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Go </button>
+																																		if($LogPass == '')
 
-							</form>
+																																			echo '';
 
-						</div>
+																																		else
 
-											
+																																			echo filter($LogPass);
+
+																																	?>">
+
+										</fieldset>
+
+										<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Go </button>
+
+									</form>
+
+								</div>
+
 							</div>
-								
+
 						</section>
 
 					</div>
@@ -246,7 +243,7 @@
 						if($Logged == 0) {
 
 							setPlayerOn($cookie_value);
-							
+
 							setcookie("UserID1", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);
 
 							setcookie("UserID2", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi

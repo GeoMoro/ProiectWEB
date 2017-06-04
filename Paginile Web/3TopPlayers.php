@@ -98,7 +98,7 @@
 
 			    </div>
 
-				<div style="overflow-x:auto">
+				<div style="overflow-x:auto; padding-left:53px;">
 
 					<table>
 

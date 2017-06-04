@@ -86,22 +86,22 @@
 
 							<form action="" method='post'>
 
-
 									<div style="text-align:center;">
-								
+
 									 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
 									<button id="Submit" name="Submit" Value="Register" type="Submit" style=" font-size:35px;background-color:#00e6e6;color:red;height:15%;width:15%; border-radius:25px; " data-component="button"> Start! </button>
-										
+
 										<?php
-										
+
 											if(isset($_POST['Submit'])) {
 
 												header('Location: 9Login2ndPlayer.php');
 
 											}
-			
+
 										?>
-										
+
 									</div>
 
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -148,7 +148,7 @@
 
 		    var audio = document.getElementById("audio");
 
-		    audio.volume = 0.05;
+		    audio.volume = 0.15;
 
 		</script>
 

@@ -74,161 +74,164 @@
 
 			</div>	
 
-		    <div> <center>
+		    <div> 
 
-				<div class="main2">
+				<center>
 
-					<br><br>
+					<div class="main2">
 
-					<h2>My Robot</h2>
+						<br><br>
 
-					<br><br>
+						<h2>My Robot</h2>
 
-					<h2><?php $Robotname = getRobotName($uid); echo filter($Robotname);?></h2>
+						<br><br>
 
-					<br><br>
+						<h2><?php $Robotname = getRobotName($uid); echo filter($Robotname);?></h2>
 
-					<form action="" method='post'>
+						<br><br>
 
-						<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
+						<form action="" method='post'>
 
-						<br>
+							<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
 
-						<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<br>
 
-							<select class = "select" name="Material">
+							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-								<option value = "NORMAL">NORMAL</option>
+								<select class = "select" name="Material">
 
-								<option value = "WOOD">WOOD</option>
+									<option value = "NORMAL">NORMAL</option>
 
-								<option value = "SILVER">SILVER</option>
+									<option value = "WOOD">WOOD</option>
 
-								<option value = "STEEL">STEEL</option>
+									<option value = "SILVER">SILVER</option>
 
-								<option value = "GOLD">GOLD</option>
+									<option value = "STEEL">STEEL</option>
 
-								<option value = "DIAMOND">DIAMOND</option>
+									<option value = "GOLD">GOLD</option>
 
-								<option value = "EMERALD">EMERALD</option>
+									<option value = "DIAMOND">DIAMOND</option>
 
-								<option value = "OBSIDIAN">OBSIDIAN</option>
+									<option value = "EMERALD">EMERALD</option>
 
-							</select>
+									<option value = "OBSIDIAN">OBSIDIAN</option>
 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</select>
 
-						</h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<br>
+							</h3>
 
-						<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<br>
 
-							<select class = "select" name="Weapon">
+							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
 
-								<option value = "Normal Bombs">Short Ranged Bombs</option>
+								<select class = "select" name="Weapon">
 
-								<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-								<option value = "Poison Bombs">Poisoned Bombs</option>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-								<option value = "Metal Bombs">Metal Bombs</option>
+									<option value = "Poison Bombs">Poisoned Bombs</option>
 
-							</select>
+									<option value = "Metal Bombs">Metal Bombs</option>
 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</select>
 
-						</h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<br>
+							</h3>
 
-						<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<br>
 
-							<select class = "select" name="Tool">
+							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-								<option value = "NO BOMB COLLISION">No Bomb Collition</option>
+								<select class = "select" name="Tool">
 
-								<option value = "BOMB COLLISION">Bomb Collition</option>
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-								<option value = "JetPack">JetPack</option>
+									<option value = "BOMB COLLISION">Bomb Collition</option>
 
-							</select>
+									<option value = "JetPack">JetPack</option>
 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</select>
 
-						</h3>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<span style="color:red"> 
+							</h3>
+
+							<span style="color:red"> 
+
+								<?php
+
+									if(isset($_POST['SubmitChange'])) {
+
+										$numeNouRobot = $_POST["CurrentName"];
+
+										$checkName = validPremume($numeNouRobot);
+
+										$tool = $_POST["Tool"];
+
+										$material = $_POST["Material"];
+
+										$weapon = $_POST["Weapon"];
+
+										if($checkName == 1) {
+
+											setRobotName($uid,$numeNouRobot);
+
+											setRobotMaterial($uid,$material);
+
+											setRobotTool($uid,$tool);
+
+											setRobotWeapon($uid,$weapon);
+
+											$cookie_value = $uid;
+
+											setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+
+											header('Location: 7MyRobot.php');
+
+										}
+
+										else {
+
+											echo 'Nume invalid!';
+
+										}
+
+									}
+
+								?>
+
+							</span>
+
+							<section class = "topmenu1">
+
+									<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
+
+							</section>
 
 							<?php
 
-								if(isset($_POST['SubmitChange'])) {
+								if(isset($_POST['PlayAGame'])) {
 
-									$numeNouRobot = $_POST["CurrentName"];
+									$cookie_value = $uid;
 
-									$checkName = validPremume($numeNouRobot);
+									setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-									$tool = $_POST["Tool"];
-
-									$material = $_POST["Material"];
-
-									$weapon = $_POST["Weapon"];
-
-									if($checkName == 1) {
-
-										setRobotName($uid,$numeNouRobot);
-
-										setRobotMaterial($uid,$material);
-
-										setRobotTool($uid,$tool);
-
-										setRobotWeapon($uid,$weapon);
-
-										$cookie_value = $uid;
-
-										setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-
-										header('Location: 7MyRobot.php');
-
-									}
-
-									else {
-
-										echo 'Nume invalid!';
-
-									}
+									header('Location: 4Jocul.php');
 
 								}
 
 							?>
 
-						</span>
+							<br><br><br><br><br><br><br><br><br><br>
 
-						<section class = "topmenu1">
+						</form>
 
-								<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
+					</div>
 
-						</section>
-
-						<?php
-
-							if(isset($_POST['PlayAGame'])) {
-
-								$cookie_value = $uid;
-
-								setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-
-								header('Location: 4Jocul.php');
-
-							}
-
-						?>
-
-						<br><br><br><br><br><br><br><br><br><br>
-
-					</form>
-
-				</div>
 				</center>
 
 			</div>

@@ -193,11 +193,11 @@
 			</div>
 
 		</div>
-		
+
 		<!--<script>
-			
+
 			window.onbeforeunload = function(){ return " Delogheaza-te mai intai!"; }
-		
+
 		</script> -->
 
 	</body>
@@ -205,7 +205,7 @@
 	<?php
 
 		if(isset($_POST['Submit'])) {
-			
+
 			setPlayerOff($uid);
 
 			setcookie("userID", "", time() - 3600);

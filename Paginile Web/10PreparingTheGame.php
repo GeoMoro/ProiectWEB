@@ -24,7 +24,6 @@
 
 ?>
 
-
 <html>
 
 	<head>
@@ -114,7 +113,7 @@
 							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Weapon1">
-								
+
 									<option value = "<?php echo getUserWeapon($uid1); ?>"><?php echo getUserWeapon($uid1); ?> - Saved</option>
 
 									<option value = "Normal Bombs">Short Ranged Bombs</option>
@@ -194,7 +193,7 @@
 							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Weapon2">
-								
+
 									<option value = "<?php echo getUserWeapon($uid2); ?>"><?php echo getUserWeapon($uid2); ?> - Saved</option>
 
 									<option value = "Normal Bombs">Short Ranged Bombs</option>
@@ -216,7 +215,7 @@
 							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class="select" name="Tool2">
-								
+
 									<option value = "<?php echo getUserTool($uid2); ?>"><?php echo getUserTool($uid2); ?> - Saved</option>
 
 									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
@@ -268,21 +267,21 @@
 				<!--	<form action="" method='post'> -->
 
 						<section class = "topmenu1">
-						
+
 							<label>Terain</label>
 
 							<select class = "select">
 
-								<option value = "1">Jungle</option>
+								<option value = "Cave">Cave</option>
 
-								<option value = "2">Desert</option>
+								<option value = "Mountain">Mountain</option>
 
-								<option value = "3">Vulcano</option>
+								<option value = "Vulcan">Vulcan</option>
 
-								<option value = "4">Random</option>
+								<option value = "Beach">Beach</option>
 
 							</select>
-							
+
 							</br>
 
 							<button id="Submit" name="PlayAGame" Value="Play" type="Submit"> Play a game </button> 
@@ -322,6 +321,7 @@
 										setcookie("ToolP2", $ToolP2,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);
 
 									//	echo '!!!'.$uid1.'! '.$MaterialP1.'! '.$ToolP1.'! '.$WeaponP1.'! '.$uid2.'! '.$MaterialP2.'! '.$ToolP2.'! '.$WeaponP2.'???';
+
 										header('Location: 11Test.php');
 
 									}

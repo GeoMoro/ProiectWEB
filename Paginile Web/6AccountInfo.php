@@ -135,9 +135,9 @@
 													}
 
 													else {
-														
+
 														$userAlreadyExists = ExistAnotherUser($username);
-														
+
 														if($userAlreadyExists == 0) {
 
 															echo '';
@@ -147,9 +147,9 @@
 															setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
 															header('Location: 6AccountInfo.php');
-															
+
 														}
-														
+
 														else {
 
 															echo 'Un player deja foloseste acest UserName!';
@@ -335,18 +335,29 @@
 								<?php 
 
 									$ImgNo = rand(1,6);
-									
+
 									if($ImgNo == 1)
+
 										echo '<img src="TW_CSS/img/r1.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
 									if($ImgNo == 2)
+
 										echo '<img src="TW_CSS/img/r2.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
 									if($ImgNo == 3)
+
 										echo '<img src="TW_CSS/img/r3.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
 									if($ImgNo == 4)
+
 										echo '<img src="TW_CSS/img/r4.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
 									if($ImgNo == 5)
+
 										echo '<img src="TW_CSS/img/r5.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
 									if($ImgNo == 6)
+
 										echo '<img src="TW_CSS/img/r6.png" alt="Avatar" style= "width:100px;height:100px;" >';
 
 								?>
@@ -393,10 +404,6 @@
 
 		<script>
 
-			/* When the user clicks on the button, 
-
-			toggle between hiding and showing the dropdown content */
-
 			function myFunction() {
 
 				document.getElementById("myDropdown").classList.toggle("show");
@@ -408,52 +415,6 @@
 				document.getElementById("myDropdown2").classList.toggle("show");
 
 			}
-
-			// Close the dropdown if the user clicks outside of it
-
-			//window.onclick = function(event) {
-
-				//if (!event.target.matches('.dropbtn')) {
-
-				//	var dropdowns = document.getElementsByClassName("dropdown-content");
-
-				//	var i;
-
-				//	for (i = 0; i < dropdowns.length; i++) {
-
-				//		var openDropdown = dropdowns[i];
-
-				//		if (openDropdown.classList.contains('show')) {
-
-				//			openDropdown.classList.remove('show');
-
-				//		}
-
-				//	}
-
-				//}
-
-				//if (!event.target.matches('.dropbtn2')) {
-
-				//	var dropdowns = document.getElementsByClassName("dropdown-content2");
-
-				//	var i;
-
-				//	for (i = 0; i < dropdowns.length; i++) {
-
-				//		var openDropdown = dropdowns[i];
-
-				//		if (openDropdown.classList.contains('show')) {
-
-				//			openDropdown.classList.remove('show');
-
-				//		}
-
-				//	}
-
-				//}
-
-			//}
 
         </script>
 

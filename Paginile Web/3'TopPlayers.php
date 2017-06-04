@@ -78,7 +78,7 @@
 
 			    </div>
 
-				<div style="overflow-x:auto">
+				<div style="overflow-x:auto; padding-left:53px;">
 
 					<table>
 
@@ -169,7 +169,7 @@
 			</div>
 
 		</div>
-		
+
 		<script>
 
 			function showHint(str) {
