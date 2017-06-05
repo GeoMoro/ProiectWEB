@@ -93,7 +93,7 @@ var player2Weapon= "<?php echo $weapon2; ?>"; /*
     player2Tool = "BOMB COLLISION";
 player2Weapon="Poison Bombs";
 player1Weapon="Long Ranged Bombs";*/
-
+var result=-1;
 var text0;var text1;var text2; var music;var end;var bmb1;var bmb2;var inp1;var inp2;var count1=0;var count2=0; var limit1=1; var limit2=1;var speed1=150; var speed2=150;
 var up1=400;var up2=400;
 var game = new Phaser.Game(1240, 723, Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -838,29 +838,61 @@ function update() {
         
         if (!player1.alive&&!player2.alive)
         {   result=0;
+			<?php 
+				$rezultat = "<script language=javascript>document.write(result);</script>";
+				if($rezultat = 0) {
+					DrawGame($uid1,$uid2);
+				}
+			?>
             text0.revive(); music.stop();    
             gamesounds(end);
             game.time.events.repeat(Phaser.Timer.SECOND*16.5, 1, killgame,this);
         }
+		else
         if (!player1.alive&&player2.alive)
         {
             result=2;music.stop();
+			<?php
+				$rezultat = "<script language=javascript>document.write(result);</script>";
+				if($rezultat = 2) {
+					WinGame($uid2);
+				
+					LostGame($uid1);
+				}
+			?>
             text2.revive();
             limit2=10000;
            // end.play();
             game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
         }
+		else
         if (player1.alive&&!player2.alive)
         {
             result=1;music.stop();
-			
-			
-			
+			<?php
+				$rezultat = "<script language=javascript>document.write(result);</script>";
+				if($rezultat = 1) {
+					WinGame($uid1);
+				
+					LostGame($uid2);
+				}
+			?>
            // end.play();
             limit1=10000;
             text1.revive();
             game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
         }
+		else {
+			result=-1;
+			<?php
+				$rezultat = "<script language=javascript>document.write(result);</script>";
+				if($rezultat = -1) {
+
+				}
+				
+			?>
+			
+		}
 
   
 }
