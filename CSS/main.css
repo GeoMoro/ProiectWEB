@@ -32,10 +32,59 @@
 	blockquote, q {
 		quotes: none;
 	}
+	
 
 	blockquote:before, blockquote:after, q:before, q:after {
 		content: '';
 		content: none;
+	}
+	
+	#centrat {
+		text-align: center;
+	}
+	
+	#imgbomberbot {
+		width:713px;
+		height:76px;
+	}
+	
+	#imgbomberbotlastpage {
+		padding-left: 300px;
+		padding-right: 25px; 
+		width:1025px;
+		height:76px;
+	}
+	
+	
+	#pozefb {
+		width:85px;
+		height:85px;
+	}
+	
+	#spancolorred {
+		color:red;
+	}
+	
+	#divtabeltop {
+		overflow-x:auto; 
+		padding-left:53px;
+	}
+	
+	#pozeavatar {
+		width:100px;
+		height:100px;
+	}
+	
+	#formlastpage {
+		padding-left:500px;
+	}
+	
+	#labellastpage {
+		padding-left:50px;
+	}
+	
+	#playerlastpage {
+		color: #006e8b;
 	}
 
 			table {
@@ -446,6 +495,7 @@
 	.dropdown,.dropdown2 {
 		float: left;
 		position: relative;
+		left: +360px;
 	}
 
 	.dropdown-content,.dropdown-content2 {

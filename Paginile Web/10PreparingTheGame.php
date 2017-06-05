@@ -39,7 +39,6 @@
 	</head>
 
 	<body>
-	
 
 		<div id="page-wrapper">
 
@@ -53,7 +52,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "padding-left: 300px;padding-right: 25px; width:1025px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbotlastpage" >
 
 							</header>
 
@@ -70,23 +69,22 @@
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
+					
+					<div id="centrat">
 
-						<form action="" method='post' style="padding-left:500px;">
-						
-							
+						<form action="" method='post' id="formlastpage">
+
 							<br>
-							
-							<h3 style="padding-left:50px; color: #006e8b;"> Player 1: <?php 
+
+							<h3 id="playerlastpage"> Player 1: <?php 
 
 								$Name1 = getUserName($uid1);
 
 								echo filter($Name1);
 
 							 ?></h3>
-							
-							
-							
-							<h3>&nbsp;Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<h3>Material : 
 
 								<select class = "select" name="Material1">
 
@@ -110,13 +108,11 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3>Bomb:
 
 								<select class = "select" name="Weapon1">
 
@@ -132,13 +128,11 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Tool :
 
 								<select class = "select" name="Tool1">
 
@@ -152,13 +146,11 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<hr>
-						
-							<h3 style="padding-left:50px; color: #006e8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Player 2: <?php 
+
+							<h3 id="playerlastpage">Player 2: <?php 
 
 								$Name2 = getUserName($uid2);
 
@@ -166,8 +158,8 @@
 
 							 ?> </h3>
 
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+							<h3>Material : 
+							
 								<select class = "select" name="Material2">
 
 									<option value = "<?php echo getUserMaterial($uid2); ?>"><?php echo getUserMaterial($uid2); ?> - Saved</option>
@@ -190,13 +182,11 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>&nbsp;&nbsp;Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3> Bomb:
 
 								<select class = "select" name="Weapon2">
 
@@ -212,13 +202,11 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Tool :
 
 								<select class="select" name="Tool2">
 
@@ -234,12 +222,8 @@
 
 							</h3>
 
-						<!--	<input type="checkbox" name="ch2" value="Yes" /> Do you want to play with your saved Weapon, Tool and Material? -->
-
 							</br></br>
-									
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
+
 							<button id="Submit" name="Submit" Value="Logout" type="Submit"> Disconnect from <?php echo $Name2 ?> </button>
 
 							<?php 
@@ -255,10 +239,12 @@
 								}
 
 							?>
-							
+
 							<br><br>
-							
+
 							<hr>
+							
+							</div>
 
 					<!--	</form> -->
 
@@ -274,11 +260,11 @@
 
 				<!--	<form action="" method='post'> -->
 
-						<section class = "topmenu1" style="padding-left:500px;">
-								
-							<label style = "padding-left:50px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terain</label>
+						<section class = "topmenu1" id="formlastpage">
 
-							<select class = "select">
+							<label id="labellastpage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terain</label>
+
+							<select class = "select" name= "Terenul">
 
 								<option value = "Cave">Cave</option>
 
@@ -289,15 +275,15 @@
 								<option value = "Beach">Beach</option>
 
 							</select>
-								
+
 							<br>
-							
+
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
+
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
+
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							
+
 							<button id="Submit" name="PlayAGame" Value="Play" type="Submit" > Play a game </button> 
 
 								<?php
@@ -334,9 +320,39 @@
 
 										setcookie("ToolP2", $ToolP2,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);
 
-									//	echo '!!!'.$uid1.'! '.$MaterialP1.'! '.$ToolP1.'! '.$WeaponP1.'! '.$uid2.'! '.$MaterialP2.'! '.$ToolP2.'! '.$WeaponP2.'???';
+										$Teren = $_POST["Terenul"];
 
-										header('Location: FinalGameV1.0');
+										echo '!!!'.$Teren.'???';
+
+										if($Teren=='Cave') {
+
+											header('Location: FinalGameV1.0/cave.php'); 
+
+										}
+
+										else
+
+											if($Teren=='Beach') {
+
+												header('Location: FinalGameV1.0/beach.php'); 
+
+											}
+
+											else
+
+												if($Teren=='Mountain') {
+
+													header('Location: FinalGameV1.0/mountain.php'); 
+
+												}
+
+												else
+
+													if($Teren=='Vulcan') {
+
+														header('Location: FinalGameV1.0/vulcan.php');
+
+													}
 
 									}
 
@@ -351,8 +367,7 @@
 			</div>
 
 		</div>
-		
-		
+
 		<div id="footer-wrapper">
 
 				<div class="container">

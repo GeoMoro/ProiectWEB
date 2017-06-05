@@ -46,7 +46,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -75,6 +75,8 @@
 					<div class="12u">
 
 						<section>
+						
+						<div id="centrat">
 
 							<div class="formacount">
 
@@ -82,7 +84,7 @@
 
 								<br><br>
 
-								<label class="labelavatar" > Nickname: <?php
+								<label class="labelacount" > Nickname: <?php
 
 																			$LoggedUserName = getUserName($uid);
 
@@ -110,7 +112,7 @@
 
 									</div>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -200,7 +202,7 @@
 
 												<input type="password" name="old_password" placeholder="Old password *">
 
-												<span style="color:red"> 
+												<span id="spancolorred"> 
 
 													<?php
 
@@ -236,7 +238,7 @@
 
 												<input type="password" name="confirm_password" placeholder="Confirm new password *">
 
-												<span style="color:red"> 
+												<span id="spancolorred"> 
 
 													<?php
 
@@ -296,7 +298,7 @@
 
 									</div>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -330,7 +332,7 @@
 
 								<br><br><br><br><br>
 
-								<label class="labelavatar"> Avatar:&nbsp;&nbsp;&nbsp;</label>
+								<label class="labelacount"> Avatar:</label>
 
 								<?php 
 
@@ -338,32 +340,34 @@
 
 									if($ImgNo == 1)
 
-										echo '<img src="TW_CSS/img/r1.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r1.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 2)
 
-										echo '<img src="TW_CSS/img/r2.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r2.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 3)
 
-										echo '<img src="TW_CSS/img/r3.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r3.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 4)
 
-										echo '<img src="TW_CSS/img/r4.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r4.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 5)
 
-										echo '<img src="TW_CSS/img/r5.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r5.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 6)
 
-										echo '<img src="TW_CSS/img/r6.png" alt="Avatar" style= "width:100px;height:100px;" >';
+										echo '<img src="TW_CSS/img/r6.png" alt="Avatar" id="pozeavatar" >';
 
 								?>
 
-							<!--	<img src="TW_CSS/img/avatar.png" alt="Avatar" style= "width:100px;height:100px;" >  -->
+							<!--	<img src="TW_CSS/img/avatar.png" alt="Avatar" id="pozeavatar" >  -->
 
+							</div>
+							
 							</div>
 
 						</section>

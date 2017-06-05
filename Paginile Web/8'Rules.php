@@ -28,7 +28,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -53,6 +53,8 @@
 			<div class="container">	
 
 				<section class="left-content">
+				
+				<div id="centrat">
 
 					<h2>Hello, guest!</h2>
 
@@ -75,6 +77,8 @@
 					<p>Have fun!</p>
 
 					<p>BomberBot team</p>
+					
+					</div>
 
 				</section>
 

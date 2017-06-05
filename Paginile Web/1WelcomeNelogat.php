@@ -50,7 +50,7 @@
 
 							<header id="header">
 
-							    <img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+							    <img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -100,7 +100,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/vicol.robert"><img src="TW_CSS/img/robert.jpg" style= "width:85px;height:85px;" alt="" class="left"/> </a>
+									<a href="https://www.facebook.com/vicol.robert"><img src="TW_CSS/img/robert.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Vicol Robert Ilie</h3>
 
@@ -110,7 +110,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="TW_CSS/img/mazi.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="TW_CSS/img/mazi.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Mazilu George-Viorel</h3>
 
@@ -120,7 +120,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -130,7 +130,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/minuti.vlad"><img src="TW_CSS/img/vlad.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/minuti.vlad"><img src="TW_CSS/img/vlad.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Minuti Vladut-Stefan</h3>
 
@@ -208,7 +208,7 @@
 
 									<br>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -260,7 +260,7 @@
 
 													 															?>">
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -322,7 +322,7 @@
 
 									?>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -384,7 +384,7 @@
 
 									?>
 
-									<span style="color:red">
+									<span id="spancolorred">
 
 										<?php
 
@@ -494,7 +494,7 @@
 
 		<div class="popup" onclick="myFunction()">
 
-			<span style="color:red">
+			<span id="spancolorred">
 
 				<?php
 

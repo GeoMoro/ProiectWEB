@@ -52,7 +52,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -76,15 +76,15 @@
 
 		    <div> 
 
-				<center>
+				<div id="centrat">
 
 					<div class="main2">
 
-						<br><br>
+						<br>
 
 						<h2>My Robot</h2>
 
-						<br><br>
+						<br>
 
 						<h2><?php $Robotname = getRobotName($uid); echo filter($Robotname);?></h2>
 
@@ -92,11 +92,11 @@
 
 						<form action="" method='post'>
 
-							<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
+							<h3>Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>"><!--&nbsp;&nbsp;&nbsp;--></h3>
 
 							<br>
 
-							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Material :  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 								<select class = "select" name="Material">
 
@@ -118,13 +118,13 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 							</h3>
 
 							<br>
 
-							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3>Bomb's Type:<!--&nbsp;&nbsp;&nbsp;-->
 
 								<select class = "select" name="Weapon">
 
@@ -138,13 +138,13 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
 
 							</h3>
 
 							<br>
 
-							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Tool : <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 								<select class = "select" name="Tool">
 
@@ -156,11 +156,13 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 							</h3>
+							
+							<br>
 
-							<span style="color:red"> 
+							<span id="spancolorred"> 
 
 								<?php
 
@@ -205,6 +207,10 @@
 								?>
 
 							</span>
+							
+							<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Save change</button>
+							
+							<br>
 
 							<section class = "topmenu1">
 
@@ -232,7 +238,7 @@
 
 					</div>
 
-				</center>
+				</div>
 
 			</div>
 

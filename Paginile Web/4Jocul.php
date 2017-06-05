@@ -52,7 +52,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -86,7 +86,7 @@
 
 							<form action="" method='post'>
 
-									<div style="text-align:center;">
+									<div id="centrat">
 
 									 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 

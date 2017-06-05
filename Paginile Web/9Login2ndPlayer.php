@@ -46,7 +46,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -78,51 +78,59 @@
 
 							<div class="formacount">
 
-								<h2> Player 1: <?php 
+								<div id="centrat">
 
-													$LoggedUserName = getUserName($uid);
+									<h2> Player 1:  <?php 
 
-													echo filter($LoggedUserName);
+														$LoggedUserName = getUserName($uid);
 
-												?>; </h2>
+														echo filter($LoggedUserName);
+
+													?>; </h2>
+
+								</div>
 
 								<div class="form">
 
-									<form action="" method='post'>
+									<div id="centrat">
 
-										<fieldset>
+										<form action="" method='post'>
 
-												<h2>Login as Player 2: </h2>
+											<fieldset>
 
-											<input type="text" name="logusername" placeholder="Username: *" required value="<?php 
+													<h2>Login as Player 2: </h2>
 
-																																if($LogUserName == '') 
+												<input type="text" name="logusername" placeholder="Username: *" required value="<?php 
 
-																																	echo '';
+																																	if($LogUserName == '') 
 
-																																else
+																																		echo '';
 
-																																	echo filter($LogUserName);
+																																	else
 
-																															?>">
+																																		echo filter($LogUserName);
 
-											<input type = "password" name = "logpassword" placeholder="Password: *" required value="<?php 
+																																?>">
 
-																																		if($LogPass == '')
+												<input type = "password" name = "logpassword" placeholder="Password: *" required value="<?php 
 
-																																			echo '';
+																																			if($LogPass == '')
 
-																																		else
+																																				echo '';
 
-																																			echo filter($LogPass);
+																																			else
 
-																																	?>">
+																																				echo filter($LogPass);
 
-										</fieldset>
+																																		?>">
 
-										<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Go </button>
+											</fieldset>
 
-									</form>
+											<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Go </button>
+
+										</form>
+
+									</div>
 
 								</div>
 
@@ -166,7 +174,7 @@
 
 	<div class="popup" onclick="myFunction()">
 
-			<span style="color:red">
+			<span id="spancolorred">
 
 				<?php
 
@@ -259,7 +267,6 @@
 			?>
 
 		</span>
-
 
 	</body>
 

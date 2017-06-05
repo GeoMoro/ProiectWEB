@@ -28,7 +28,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" id="imgbomberbot" >
 
 								<nav>
 
@@ -78,7 +78,7 @@
 
 			    </div>
 
-				<div style="overflow-x:auto; padding-left:53px;">
+				<div id="divtabeltop">
 
 					<table>
 
