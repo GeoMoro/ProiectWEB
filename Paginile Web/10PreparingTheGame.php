@@ -39,6 +39,7 @@
 	</head>
 
 	<body>
+	
 
 		<div id="page-wrapper">
 
@@ -52,7 +53,7 @@
 
 							<header id="header">
 
-								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="TW_CSS/img/BomberBot.png" alt="Bomberbot" style= "padding-left: 300px;padding-right: 25px; width:1025px;height:76px;" >
 
 							</header>
 
@@ -70,17 +71,22 @@
 
 					<div class="8u 12u(mobile)">
 
-						<form action="" method='post'>
-
-							<h2> Player 1: <?php 
+						<form action="" method='post' style="padding-left:500px;">
+						
+							
+							<br>
+							
+							<h3 style="padding-left:50px; color: #006e8b;"> Player 1: <?php 
 
 								$Name1 = getUserName($uid1);
 
-								echo $Name1;
+								echo filter($Name1);
 
-							 ?></h2>
-
-							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							 ?></h3>
+							
+							
+							
+							<h3>&nbsp;Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Material1">
 
@@ -132,7 +138,7 @@
 
 							<br>
 
-							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>&nbsp;&nbsp;&nbsp;&nbsp;Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Tool1">
 
@@ -150,17 +156,17 @@
 
 							</h3>
 
-						<hr>
-
-							<h2> Player 2: <?php 
+							<hr>
+						
+							<h3 style="padding-left:50px; color: #006e8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Player 2: <?php 
 
 								$Name2 = getUserName($uid2);
 
-								echo $Name2;
+								echo filter($Name2);
 
-							 ?></h2>
+							 ?> </h3>
 
-							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Material2">
 
@@ -190,7 +196,7 @@
 
 							<br>
 
-							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3>&nbsp;&nbsp;Bomb's Type:&nbsp;&nbsp;&nbsp;
 
 								<select class = "select" name="Weapon2">
 
@@ -212,7 +218,7 @@
 
 							<br>
 
-							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 								<select class="select" name="Tool2">
 
@@ -226,14 +232,14 @@
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 						<!--	<input type="checkbox" name="ch2" value="Yes" /> Do you want to play with your saved Weapon, Tool and Material? -->
 
 							</br></br>
-
+									
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
 							<button id="Submit" name="Submit" Value="Logout" type="Submit"> Disconnect from <?php echo $Name2 ?> </button>
 
 							<?php 
@@ -249,6 +255,10 @@
 								}
 
 							?>
+							
+							<br><br>
+							
+							<hr>
 
 					<!--	</form> -->
 
@@ -258,17 +268,15 @@
 
 			</div>
 
-			<hr>
-
 			<div class="container">
 
 				<div class="row main-row">
 
 				<!--	<form action="" method='post'> -->
 
-						<section class = "topmenu1">
-
-							<label>Terain</label>
+						<section class = "topmenu1" style="padding-left:500px;">
+								
+							<label style = "padding-left:50px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terain</label>
 
 							<select class = "select">
 
@@ -281,10 +289,16 @@
 								<option value = "Beach">Beach</option>
 
 							</select>
-
-							</br>
-
-							<button id="Submit" name="PlayAGame" Value="Play" type="Submit"> Play a game </button> 
+								
+							<br>
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<button id="Submit" name="PlayAGame" Value="Play" type="Submit" > Play a game </button> 
 
 								<?php
 
@@ -322,7 +336,7 @@
 
 									//	echo '!!!'.$uid1.'! '.$MaterialP1.'! '.$ToolP1.'! '.$WeaponP1.'! '.$uid2.'! '.$MaterialP2.'! '.$ToolP2.'! '.$WeaponP2.'???';
 
-										header('Location: 11Test.php');
+										header('Location: FinalGameV1.0');
 
 									}
 
@@ -336,7 +350,10 @@
 
 			</div>
 
-			<div id="footer-wrapper">
+		</div>
+		
+		
+		<div id="footer-wrapper">
 
 				<div class="container">
 
@@ -361,8 +378,6 @@
 				</div>
 
 			</div>
-
-		</div>
 
 	</body>
 

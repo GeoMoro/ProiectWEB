@@ -255,12 +255,23 @@
 		background-position: center;
 		text-align: center;
 	}
+	
+		#main3 {
+		margin: auto;
+		width: 100%;
+        height: 100%;
+        background-size: contain;
+		background-image: url("/TW_CSS/img/sans.gif");
+		background-repeat: no-repeat;
+		background-position: center;
+		text-align: center;
+	}
 
 	.main2 {
 		opacity: 0.8;
 	}
 
-	.main2 a,.main1 a{
+	.main2 a,.main1 a,.main3 a{
 		color: black;
 	}
 

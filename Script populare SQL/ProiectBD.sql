@@ -1165,3 +1165,5 @@ drop table i_numeRoboti;
 drop table i_arme;
 DROP TABLE i_materiale;
 DROP TABLE i_atributRoboti;
+/
+--select * from players order by id desc
