@@ -44,7 +44,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 

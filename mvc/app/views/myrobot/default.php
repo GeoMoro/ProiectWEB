@@ -30,7 +30,7 @@
 
 	</head>
 
-	<body>
+	 <body background="http://localhost/kite/assets/img/back.png">
 
 		<audio autoplay id="audio">
 
@@ -50,13 +50,14 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
 									<a href="welcome">Home</a>
 
-									<a href="toplogat" class="current-page-item" > TopPlayers </a>
+									<a href="toplogat"> TopPlayers </a>
 
 									<a href="ruleslogat"> How to </a>
 
@@ -72,169 +73,171 @@
 
 			</div>	
 
-		    <div id="main1">
+		    <div> 
 
-				<div class="main2">
+				<div id="centrat">
 
-					<br><br>
-
-					<h2>My Robot</h2>
-
-					<br><br>
-
-					<h2><?php $Robotname = getRobotName($uid); echo filter($Robotname);?></h2>
-
-					<br><br>
-
-					<form action="" method='post'>
-
-						<h3>Change Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot">&nbsp;&nbsp;&nbsp;<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Change?</button></h3>
+					<div class="main2">
 
 						<br>
 
-						<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-							<select class = "select" name="Material">
-
-								<option value = "WOOD">WOOD-Basic</option>
-
-								<option value = "STONE">STONE-Basic</option>
-
-								<option value = "SILVER">SILVER</option>
-
-								<option value = "STEEL">STEEL</option>
-
-								<option value = "GOLD">GOLD</option>
-
-								<option value = "DIAMOND">DIAMOND</option>
-
-								<option value = "PLATINUM">PLATINUM</option>
-
-								<option value = "OBSIDIAN">OBSIDIAN</option>
-
-							</select>
-
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-						</h3>
+						<h2>My Robot</h2>
 
 						<br>
 
-						<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+						<h2><?php 
+						$basket = KITE::getInstance('basket');
+						$Robotname = $basket->RobotName; echo filter($Robotname);?></h2>
 
-							<select class = "select" name="Weapon">
+						<br><br>
 
-								<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+						<form action="" method='post'>
 
-								<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+							<h3>Robot's Name:&nbsp;&nbsp;<input type="text" placeholder="ex: John Cenaitor" name="CurrentName" id="ChangeRobot" value="<?php echo filter($Robotname); ?>"><!--&nbsp;&nbsp;&nbsp;--></h3>
 
-								<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+							<br>
 
-								<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
+							<h3>Material :  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
-								<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+								<select class = "select" name="Material">
 
-							</select>
+									<option value = "NORMAL">NORMAL</option>
 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<option value = "WOOD">WOOD</option>
 
-						</h3>
+									<option value = "SILVER">SILVER</option>
 
-						<br>
+									<option value = "STEEL">STEEL</option>
 
-						<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<option value = "GOLD">GOLD</option>
 
-							<select class = "select" name="Tool">
+									<option value = "DIAMOND">DIAMOND</option>
 
-								<option value = "Guardian">Guardian(+1 life)</option>
+									<option value = "EMERALD">EMERALD</option>
 
-								<option value = "JetPack">JetPack(jump over obstacles)</option>
+									<option value = "OBSIDIAN">OBSIDIAN</option>
 
-								<option value = "Detonator">Detonator</option>
+								</select>
 
-								<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
-								<option value = "Slide">Slide(Push the bomb trough the wall)</option>
+							</h3>
 
-								<option value = "Invisibility">Invisibility</option>
+							<br>
 
-								<option value = "Redbull">Redbull(+Speed)</</option>
+							<h3>Bomb's Type:<!--&nbsp;&nbsp;&nbsp;-->
 
-							</select>
+								<select class = "select" name="Weapon">
 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-						</h3>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-						<span style="color:red"> 
+									<option value = "Poison Bombs">Poisoned Bombs</option>
+
+									<option value = "Metal Bombs">Metal Bombs</option>
+
+								</select>
+
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+							</h3>
+
+							<br>
+
+							<h3>Tool : <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+								<select class = "select" name="Tool">
+
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
+
+									<option value = "BOMB COLLISION">Bomb Collition</option>
+
+									<option value = "JetPack">JetPack</option>
+
+								</select>
+
+								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+							</h3>
+							
+							<br>
+
+							<span id="spancolorred"> 
+
+								<?php
+
+									if(isset($_POST['SubmitChange'])) {
+
+										$numeNouRobot = $_POST["CurrentName"];
+
+										$checkName = validPremume($numeNouRobot);
+
+										$tool = $_POST["Tool"];
+
+										$material = $_POST["Material"];
+
+										$weapon = $_POST["Weapon"];
+
+										if($checkName == 1) {
+
+											$model->setRobotName($uid,$numeNouRobot);
+
+											$model->setRobotMaterial($uid,$material);
+
+											$model->setRobotTool($uid,$tool);
+
+											$model->setRobotWeapon($uid,$weapon);
+
+											$cookie_value = $uid;
+
+											setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
+
+											header('Location: 7MyRobot.php');
+
+										}
+
+										else {
+
+											echo 'Nume invalid!';
+
+										}
+
+									}
+
+								?>
+
+							</span>
+							
+							<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Save change</button>
+							
+							<br>
+
+							<section class = "topmenu1">
+
+									<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
+
+							</section>
 
 							<?php
 
-								if(isset($_POST['SubmitChange'])) {
+								if(isset($_POST['PlayAGame'])) {
 
-									$numeNouRobot = $_POST["CurrentName"];
+									$cookie_value = $uid;
 
-									$checkName = validPremume($numeNouRobot);
+									setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-									$tool = $_POST["Tool"];
-
-									$material = $_POST["Material"];
-
-									$weapon = $_POST["Weapon"];
-
-									if($checkName == 1) {
-
-										setRobotName($uid,$numeNouRobot);
-
-										setRobotMaterial($uid,$material);
-
-										setRobotTool($uid,$tool);
-
-										setRobotWeapon($uid,$weapon);
-
-										$cookie_value = $uid;
-
-										setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-
-										header('Location: 7MyRobot.php');
-
-									}
-
-									else {
-
-										echo 'Nume invalid!';
-
-									}
+									header('Location: jocul');
 
 								}
 
 							?>
 
-						</span>
+							<br><br><br><br><br><br><br><br><br><br>
 
-						<section class = "topmenu1">
+						</form>
 
-								<button id="Submit" name="PlayAGame" Value="Register" type="Submit"> Play a game </button> 
-
-						</section>
-
-						<?php
-
-							if(isset($_POST['PlayAGame'])) {
-
-								$cookie_value = $uid;
-
-								setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
-
-								header('Location: 4Jocul.php');
-
-							}
-
-						?>
-
-						<br><br><br><br><br><br><br><br><br><br>
-
-					</form>
+					</div>
 
 				</div>
 
@@ -268,13 +271,13 @@
 
 		</div>
 
-		<script>
+<!--		<script>
 
 		    var audio = document.getElementById("audio");
 
 		    audio.volume = 0.05;
 
-		</script>
+		</script>  -->
 
 	</body>
 

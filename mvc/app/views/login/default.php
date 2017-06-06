@@ -49,7 +49,8 @@
 
 							<header id="header">
 
-							    <img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+							    <img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
@@ -99,7 +100,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/vicol.robert"><img src="http://localhost/kite/assets/img/robert.jpg" style= "width:85px;height:85px;" alt="" class="left"/> </a>
+									<a href="https://www.facebook.com/vicol.robert"><img src="http://localhost/kite/assets/img/robert.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Vicol Robert Ilie</h3>
 
@@ -109,7 +110,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="http://localhost/kite/assets/img/mazi.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="http://localhost/kite/assets/img/mazi.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Mazilu George-Viorel</h3>
 
@@ -119,7 +120,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="http://localhost/kite/assets/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="http://localhost/kite/assets/img/juan.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -129,7 +130,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/minuti.vlad"><img src="http://localhost/kite/assets/img/vlad.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/minuti.vlad"><img src="http://localhost/kite/assets/img/vlad.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Minuti Vladut-Stefan</h3>
 
@@ -207,7 +208,7 @@
 
 									<br>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -259,7 +260,7 @@
 
 													 															?>">
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -321,7 +322,7 @@
 
 									?>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -383,7 +384,7 @@
 
 									?>
 
-									<span style="color:red">
+									<span id="spancolorred">
 
 										<?php
 
@@ -493,7 +494,7 @@
 
 		<div class="popup" onclick="myFunction()">
 
-			<span style="color:red">
+			<span id="spancolorred">
 
 				<?php
 
@@ -502,8 +503,8 @@
 					$LogPass=$_POST["logpassword"];
 
 					if(isset($_POST['Submit'])) {
-
-						$rezultat = existUser($LogUserName,$LogPass);
+						$model->existUser($LogUserName,$LogPass);
+						$rezultat = $basket->existUser;
 
 						if($rezultat == 0){
 
@@ -522,10 +523,10 @@
 						}
 
 						else {
-
-							$cookie_value = getID($LogUserName,$LogPass);
-
-							$Logged = getUserLogg($cookie_value);
+							$model->getID($LogUserName,$LogPass);
+							$cookie_value = $basket->getID;
+							$model->getUserLogg($cookie_value);
+							$Logged = $basket->UserLogg;
 
 							if($Logged == 1) {
 
@@ -558,22 +559,22 @@
 				$LogPass=$_POST["logpassword"];
 
 				if(isset($_POST['Submit'])) {
-
-					$rezultat = existUser($LogUserName,$LogPass);
+					$model->existUser($LogUserName,$LogPass);
+					$rezultat = $basket->existUser;
 
 					if($rezultat == 1) {
-
-						$cookie_value = getID($LogUserName,$LogPass);
-
-						$Logged = getUserLogg($cookie_value);
+							$model->getID($LogUserName,$LogPass);
+							$cookie_value = $basket->getID;
+							$model->getUserLogg($cookie_value);
+							$Logged = $basket->UserLogg;
 
 						if($Logged == 0) {
 
-							setPlayerOn($cookie_value);
+							$model->setPlayerOn($cookie_value);
 
 							setcookie("UserID", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-							header('Location: 2WelcomeLogat.php');
+							header('Location: welcome');
 
 						}
 
@@ -586,16 +587,16 @@
 					if(isset($_POST['Submit1'])) {
 
 						if($okUName == 1 && $okFName == 1 && $okLName == 1 && $okp == 1) {
-
-							$alreadyexistuser = ExistAnotherUser($UserName);
+							$model->ExistAnotherUser($UserName);
+							$alreadyexistuser = $basket->AnotherUserName;
 
 							//	echo "<div> <span>!!!!!!---".$alreadyexistuser."---???????</span> </div>";
 
 							if($alreadyexistuser == 0) {
 
-								Register($UserName, $FirstName, $LastName, $Password_Register);
-
-								$cookie_value = getID($UserName,$Password_Register);
+								$model->Register($UserName, $FirstName, $LastName, $Password_Register);
+								$model->getID($UserName,$Password_Register);
+								$cookie_value = $basket->getID;
 
 								setcookie("UserID", $cookie_value, time() + (86400 * 30), '/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
@@ -622,7 +623,7 @@
 			?>
 
 		</span>
-        
+
 	</body>
 
 </html>

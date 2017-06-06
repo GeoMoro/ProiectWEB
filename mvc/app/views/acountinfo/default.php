@@ -14,7 +14,8 @@
 		$uid =  $_COOKIE["UserID"];
 
 	}
-
+	
+		$basket = KITE::getInstance('basket');
 ?>
 
 <html>
@@ -45,7 +46,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
@@ -74,6 +76,8 @@
 					<div class="12u">
 
 						<section>
+						
+						<div id="centrat">
 
 							<div class="formacount">
 
@@ -81,11 +85,9 @@
 
 								<br><br>
 
-								<label class="labelavatar" > Nickname: <?php
+								<label class="labelacount" > Nickname: <?php
 
-																			$LoggedUserName = getUserName($uid);
-
-																			echo filter($LoggedUserName);
+																			echo filter($basket->UserName);
 
 																	   ?></label>
 
@@ -109,7 +111,7 @@
 
 									</div>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -117,7 +119,7 @@
 
 												$username = $_POST["username"];
 
-												$real_username = getUserName($uid);
+												$real_username = $basket->UserName;
 
 												if(validUserName($username) == 0) {
 
@@ -134,21 +136,21 @@
 													}
 
 													else {
-														
-														$userAlreadyExists = ExistAnotherUser($username);
-														
+														$model->ExistAnotherUser($username);
+														$userAlreadyExists = $basket->AnotherUserName;
+
 														if($userAlreadyExists == 0) {
 
 															echo '';
 
-															UpdateUserName($uid,$username);
+															$model->UpdateUserName($uid,$username);
 
 															setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-															header('Location: 6AccountInfo.php');
-															
+															header('Location: acountinfo');
+
 														}
-														
+
 														else {
 
 															echo 'Un player deja foloseste acest UserName!';
@@ -168,20 +170,14 @@
 								<br><br><br><br><br>
 
 								<label class="labelacount"> First Name: <?php
-
-																			$LoggedFirstName = getFirstName($uid);
-
-																			echo filter($LoggedFirstName);
+																			echo filter( $basket->FirstName);
 
 																		 ?></label>		
 
 								<br><br><br>
 
 								<label class="labelacount"> Last Name: <?php
-
-																			$LoggedLasttName = getLastName($uid);
-
-																			echo filter($LoggedLasttName);
+																			echo filter($basket->LastName);
 
 																		 ?></label>
 
@@ -199,15 +195,14 @@
 
 												<input type="password" name="old_password" placeholder="Old password *">
 
-												<span style="color:red"> 
+												<span id="spancolorred"> 
 
 													<?php
-
 														if(isset($_POST['Submit2'])) {
 
 															$Old_pass=$_POST["old_password"];
-
-															$Real_Pass = getUserPass($uid);
+															$model->getUserPass($uid);
+															$Real_Pass = $basket->UserPass;
 
 															if(validPass($Old_pass,$Real_Pass) == 0) {
 
@@ -226,7 +221,8 @@
 																}
 
 														}
-
+		
+														
 													?>
 
 												</span>
@@ -235,7 +231,7 @@
 
 												<input type="password" name="confirm_password" placeholder="Confirm new password *">
 
-												<span style="color:red"> 
+												<span id="spancolorred"> 
 
 													<?php
 
@@ -295,7 +291,7 @@
 
 									</div>
 
-									<span style="color:red"> 
+									<span id="spancolorred"> 
 
 										<?php
 
@@ -311,11 +307,11 @@
 
 													echo '';
 
-													UpdatePass($uid,$New_Pass);
+													$model->UpdatePass($uid,$New_Pass);
 
 													setcookie("UserID", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-													header('Location: 6AccountInfo.php');
+													header('Location: acountinfo');
 
 												}
 
@@ -329,29 +325,42 @@
 
 								<br><br><br><br><br>
 
-								<label class="labelavatar"> Avatar:&nbsp;&nbsp;&nbsp;</label>
+								<label class="labelacount"> Avatar:</label>
 
 								<?php 
 
 									$ImgNo = rand(1,6);
-									
+
 									if($ImgNo == 1)
-										echo '<img src="http://localhost/kite/assets/img/r1.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r1.png" alt="Avatar" id="pozeavatar" >';
+
 									if($ImgNo == 2)
-										echo '<img src="http://localhost/kite/assets/img/r2.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r2.png" alt="Avatar" id="pozeavatar" >';
+
 									if($ImgNo == 3)
-										echo '<img src="http://localhost/kite/assets/img/r3.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r3.png" alt="Avatar" id="pozeavatar" >';
+
 									if($ImgNo == 4)
-										echo '<img src="http://localhost/kite/assets/img/r4.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r4.png" alt="Avatar" id="pozeavatar" >';
+
 									if($ImgNo == 5)
-										echo '<img src="http://localhost/kite/assets/img/r5.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r5.png" alt="Avatar" id="pozeavatar" >';
+
 									if($ImgNo == 6)
-										echo '<img src="http://localhost/kite/assets/img/r6.png" alt="Avatar" style= "width:100px;height:100px;" >';
+
+										echo '<img src="http://localhost/kite/assets/img/r6.png" alt="Avatar" id="pozeavatar" >';
 
 								?>
 
-							<!--	<img src="TW_CSS/img/avatar.png" alt="Avatar" style= "width:100px;height:100px;" >  -->
+							<!--	<img src="TW_CSS/img/avatar.png" alt="Avatar" id="pozeavatar" >  -->
 
+							</div>
+							
 							</div>
 
 						</section>
@@ -392,10 +401,6 @@
 
 		<script>
 
-			/* When the user clicks on the button, 
-
-			toggle between hiding and showing the dropdown content */
-
 			function myFunction() {
 
 				document.getElementById("myDropdown").classList.toggle("show");
@@ -407,52 +412,6 @@
 				document.getElementById("myDropdown2").classList.toggle("show");
 
 			}
-
-			// Close the dropdown if the user clicks outside of it
-
-			//window.onclick = function(event) {
-
-				//if (!event.target.matches('.dropbtn')) {
-
-				//	var dropdowns = document.getElementsByClassName("dropdown-content");
-
-				//	var i;
-
-				//	for (i = 0; i < dropdowns.length; i++) {
-
-				//		var openDropdown = dropdowns[i];
-
-				//		if (openDropdown.classList.contains('show')) {
-
-				//			openDropdown.classList.remove('show');
-
-				//		}
-
-				//	}
-
-				//}
-
-				//if (!event.target.matches('.dropbtn2')) {
-
-				//	var dropdowns = document.getElementsByClassName("dropdown-content2");
-
-				//	var i;
-
-				//	for (i = 0; i < dropdowns.length; i++) {
-
-				//		var openDropdown = dropdowns[i];
-
-				//		if (openDropdown.classList.contains('show')) {
-
-				//			openDropdown.classList.remove('show');
-
-				//		}
-
-				//	}
-
-				//}
-
-			//}
 
         </script>
 

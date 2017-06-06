@@ -51,7 +51,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
@@ -85,34 +86,22 @@
 
 							<form action="" method='post'>
 
-									<label>Terain</label>
+									<div id="centrat">
 
-									<select class = "select">
+									 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 
-										<option value = "1">Jungle</option>
+									<button id="Submit" name="Submit" Value="Register" type="Submit" style=" font-size:35px;background-color:#00e6e6;color:red;height:15%;width:15%; border-radius:25px; " data-component="button"> Start! </button>
 
-										<option value = "2">Desert</option>
-
-										<option value = "3">Vulcano</option>
-
-										<option value = "4">Random</option>
-
-									</select>
-
-									<div style="text-align:center;">
-
-										<button id="Submit" name="Submit" Value="Register" type="Submit" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button"> Gogogo </button>
-										
 										<?php
-										
+
 											if(isset($_POST['Submit'])) {
 
-												header('Location: 9Login2ndPlayer.php');
+												header('Location: login2');
 
 											}
-			
+
 										?>
-										
+
 									</div>
 
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -159,7 +148,7 @@
 
 		    var audio = document.getElementById("audio");
 
-		    audio.volume = 0.05;
+		    audio.volume = 0.15;
 
 		</script>
 

@@ -44,7 +44,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
@@ -66,7 +67,7 @@
 
 			</div>
 
-			<div class="container">
+		<div class="container">
 
 				<div class="row main-row">
 
@@ -76,9 +77,9 @@
 
 							<h2> Welcome, <?php 
 
-											//$LoggedUserName = getUserName($uid);
+											$basket = KITE::getInstance('basket');
 
-											//echo filter($LoggedUserName);
+									echo $basket->UserName;
 
 										 ?>! </h2>
 
@@ -94,7 +95,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/vicol.robert"><img src="http://localhost/kite/assets/img/robert.jpg" style= "width:85px;height:85px;" alt="" class="left"/> </a>
+									<a href="https://www.facebook.com/vicol.robert"><img src="TW_CSS/img/robert.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Vicol Robert Ilie</h3>
 
@@ -104,7 +105,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="http://localhost/kite/assets/img/mazi.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="TW_CSS/img/mazi.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Mazilu George-Viorel</h3>
 
@@ -114,7 +115,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="http://localhost/kite/assets/img/juan.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -124,7 +125,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/minuti.vlad"><img src="http://localhost/kite/assets/img/vlad.jpg" style= "width:85px;height:85px;" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/minuti.vlad"><img src="TW_CSS/img/vlad.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Minuti Vladut-Stefan</h3>
 
@@ -146,13 +147,13 @@
 
 								<form action="" method='post'>
 
-									<a href="jocul"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
+									<a href="4Jocul.php"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
 
-									<a href="acountinfo">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
+									<a href="6Accoutinfo.php">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
 
-									<a href="myrobot">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
+									<a href="7MyRobot.php">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
 
-									<a href="main"> <button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button> </a>
+									<button id="Submit" name="Submit" Value="Logout" type="Submit"> Logout :( </button>
 
 								</form>
 
@@ -192,17 +193,23 @@
 
 		</div>
 
+		<!--<script>
+
+			window.onbeforeunload = function(){ return " Delogheaza-te mai intai!"; }
+
+		</script> -->
+
 	</body>
 
 	<?php
 
 		if(isset($_POST['Submit'])) {
-			
-			//setPlayerOff($uid);
+
+			$model->setPlayerOff($uid);
 
 			setcookie("userID", "", time() - 3600);
 
-			header('Location: main');
+			header('Location: 1WelcomeNelogat.php');
 
 		}
 
@@ -212,7 +219,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: jocul');
+				header('Location: 4Jocul.php');
 
 			}
 
@@ -222,7 +229,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: acountinfo');
+				header('Location: 6AccountInfo.php');
 
 				}
 
@@ -232,7 +239,7 @@
 
 						setcookie("userID", "", time() - 3600);
 
-						header('Location: myrobot');
+						header('Location: 7MyRobot.php');
 
 					}
 

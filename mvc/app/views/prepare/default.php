@@ -51,7 +51,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 							</header>
 
@@ -63,31 +64,35 @@
 
 			</div>
 
-			<div class="container">
+					<div class="container">
 
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
+					
+					<div id="centrat">
 
-						<form action="" method='post'>
+						<form action="" method='post' id="formlastpage">
 
-							<h2> Player 1: <?php 
+							<br>
 
-								$Name1 = getUserName($uid1);
+							<h3 id="playerlastpage"> Player 1: <?php 
 
-								echo $Name1;
+								$model->getUserName($uid1);
 
-							 ?></h2>
+								echo filter($basket->UserName);
 
-							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							 ?></h3>
+
+							<h3>Material : 
 
 								<select class = "select" name="Material1">
-								
-									<option value = "<?php echo getUserMaterial($uid1); ?>"><?php echo getUserMaterial($uid1); ?> - Saved</option>
+
+									<option value = "<?php $model->getUserMaterial($uid1); echo $basket->UserMaterial; ?>"><?php echo $model->getUserMaterial($uid1); echo $basket->UserMaterial; ?> - Saved</option>
+
+									<option value = "NORMAL">NORMAL</option>
 
 									<option value = "WOOD">WOOD</option>
-
-									<option value = "STONE">STONE</option>
 
 									<option value = "SILVER">SILVER</option>
 
@@ -97,87 +102,71 @@
 
 									<option value = "DIAMOND">DIAMOND</option>
 
-									<option value = "PLATINUM">PLATINUM</option>
+									<option value = "EMERALD">EMERALD</option>
 
 									<option value = "OBSIDIAN">OBSIDIAN</option>
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3>Bomb:
 
 								<select class = "select" name="Weapon1">
-								
-									<option value = "<?php echo getUserWeapon($uid1); ?>"><?php echo getUserWeapon($uid1); ?> - Saved</option>
 
-									<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+									<option value = "<?php $model->getUserWeapon($uid1); echo $basket->UserWeapon; ?>"><?php $model->getUserWeapon($uid1); echo $basket->UserWeapon; ?> - Saved</option>
 
-									<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-									<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-									<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
+									<option value = "Poison Bombs">Poisoned Bombs</option>
 
-									<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+									<option value = "Metal Bombs">Metal Bombs</option>
 
 								</select>
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 							</h3>
 
 							<br>
 
-							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Tool :
 
 								<select class = "select" name="Tool1">
-								
-									<option value = "<?php echo getUserTool($uid1); ?>"><?php echo getUserTool($uid1); ?> - Saved</option>
 
-									<option value = "Guardian">Guardian(+1 life)</option>
+									<option value = "<?php $model->getUserTool($uid1); echo $basket->UserTool; ?>"><?php $model->getUserTool($uid1); echo $basket->UserTool; ?> - Saved</option>
 
-									<option value = "JetPack">JetPack(jump over obstacles)</option>
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-									<option value = "Detonator">Detonator</option>
+									<option value = "BOMB COLLISION">Bomb Collition</option>
 
-									<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
-
-									<option value = "Slide">Slide(Push the bomb trough the wall)</option>
-
-									<option value = "Invisibility">Invisibility</option>
-
-									<option value = "Redbull">Redbull(+Speed)</</option>
+									<option value = "JetPack">JetPack</option>
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
-						<hr>
+							<hr>
 
-							<h2> Player 2: <?php 
+							<h3 id="playerlastpage">Player 2: <?php 
 
-								$Name2 = getUserName($uid2);
+								$model->getUserName($uid2);
 
-								echo $Name2;
+								echo filter($basket->UserName);
 
-							 ?></h2>
+							 ?> </h3>
 
-							<h3>Material :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+							<h3>Material : 
+							
 								<select class = "select" name="Material2">
 
-									<option value = "<?php echo getUserMaterial($uid2); ?>"><?php echo getUserMaterial($uid2); ?> - Saved</option>
+									<option value = "<?php $model->getUserMaterial($uid2); echo $basket->UserMaterial; ?>"><?php $model->getUserMaterial($uid2); echo $basket->UserMaterial;  ?> - Saved</option>
+
+									<option value = "NORMAL">NORMAL</option>
 
 									<option value = "WOOD">WOOD</option>
-
-									<option value = "STONE">STONE</option>
 
 									<option value = "SILVER">SILVER</option>
 
@@ -187,69 +176,51 @@
 
 									<option value = "DIAMOND">DIAMOND</option>
 
-									<option value = "PLATINUM">PLATINUM</option>
+									<option value = "EMERALD">EMERALD</option>
 
 									<option value = "OBSIDIAN">OBSIDIAN</option>
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
 
 							<br>
 
-							<h3>Bomb's Type:&nbsp;&nbsp;&nbsp;
+							<h3> Bomb:
 
 								<select class = "select" name="Weapon2">
-								
-									<option value = "<?php echo getUserWeapon($uid2); ?>"><?php echo getUserWeapon($uid2); ?> - Saved</option>
 
-									<option value = "Normal Bombs">Normal Bombs(3 ranged)</option>
+									<option value = "<?php $model->getUserWeapon($uid2); echo $basket->UserWeapon;  ?>"><?php $model->getUserWeapon($uid2); echo $basket->UserWeapon;  ?> - Saved</option>
 
-									<option value = "Long Ranged Bombs">Long Ranged Bombs(5 ranged)</option>
+									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
-									<option value = "Poison Bombs">Poison Bombs(3 ranged)</option>
+									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
 
-									<option value = "Proximity Mine">Proximity Mine(1x1 ranged)</option>
+									<option value = "Poison Bombs">Poisoned Bombs</option>
 
-									<option value = "Rocket Launcher">Rocket Launcher(7 ranged 1 way)</option>
+									<option value = "Metal Bombs">Metal Bombs</option>
 
 								</select>
-
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 							</h3>
 
 							<br>
 
-							<h3>Tool : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<h3>Tool :
 
 								<select class="select" name="Tool2">
-								
-									<option value = "<?php echo getUserTool($uid2); ?>"><?php echo getUserTool($uid2); ?> - Saved</option>
 
-									<option value = "Guardian">Guardian(+1 life)</option>
+									<option value = "<?php $model->getUserTool($uid2); echo $basket->UserTool;  ?>"><?php $model->getUserTool($uid2); echo $basket->UserTool; ?> - Saved</option>
 
-									<option value = "JetPack">JetPack(jump over obstacles)</option>
+									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
-									<option value = "Detonator">Detonator</option>
+									<option value = "BOMB COLLISION">Bomb Collition</option>
 
-									<option value = "Kick">Kick(Push the bomb trough 1 obstacle)</option>
-
-									<option value = "Slide">Slide(Push the bomb trough the wall)</option>
-
-									<option value = "Invisibility">Invisibility</option>
-
-									<option value = "Redbull">Redbull(+Speed)</</option>
+									<option value = "JetPack">JetPack</option>
 
 								</select>
 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 							</h3>
-
-						<!--	<input type="checkbox" name="ch2" value="Yes" /> Do you want to play with your saved Weapon, Tool and Material? -->
 
 							</br></br>
 
@@ -259,7 +230,7 @@
 
 								if(isset($_POST['Submit'])) {
 
-									setPlayerOff($uid2);
+									$model->setPlayerOff($uid2);
 
 									setcookie("UserID2", "", time() - 3600);
 
@@ -269,6 +240,12 @@
 
 							?>
 
+							<br><br>
+
+							<hr>
+							
+							</div>
+
 					<!--	</form> -->
 
 					</div>
@@ -277,17 +254,37 @@
 
 			</div>
 
-			<hr>
-
 			<div class="container">
 
 				<div class="row main-row">
 
 				<!--	<form action="" method='post'> -->
 
-						<section class = "topmenu1">
+						<section class = "topmenu1" id="formlastpage">
 
-							<button id="Submit" name="PlayAGame" Value="Play" type="Submit"> Play a game </button> 
+							<label id="labellastpage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terain</label>
+
+							<select class = "select" name= "Terenul">
+
+								<option value = "Cave">Cave</option>
+
+								<option value = "Mountain">Mountain</option>
+
+								<option value = "Vulcan">Vulcan</option>
+
+								<option value = "Beach">Beach</option>
+
+							</select>
+
+							<br>
+
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<button id="Submit" name="PlayAGame" Value="Play" type="Submit" > Play a game </button> 
 
 								<?php
 
@@ -323,8 +320,39 @@
 
 										setcookie("ToolP2", $ToolP2,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);
 
-									//	echo '!!!'.$uid1.'! '.$MaterialP1.'! '.$ToolP1.'! '.$WeaponP1.'! '.$uid2.'! '.$MaterialP2.'! '.$ToolP2.'! '.$WeaponP2.'???';
-										header('Location: 11Test.php');
+										$Teren = $_POST["Terenul"];
+
+										echo '!!!'.$Teren.'???';
+
+										if($Teren=='Cave') {
+
+											header('Location: FinalGameV1.0/cave.php'); 
+
+										}
+
+										else
+
+											if($Teren=='Beach') {
+
+												header('Location: FinalGameV1.0/beach.php'); 
+
+											}
+
+											else
+
+												if($Teren=='Mountain') {
+
+													header('Location: FinalGameV1.0/mountain.php'); 
+
+												}
+
+												else
+
+													if($Teren=='Vulcan') {
+
+														header('Location: FinalGameV1.0/vulcan.php');
+
+													}
 
 									}
 
@@ -338,7 +366,9 @@
 
 			</div>
 
-			<div id="footer-wrapper">
+		</div>
+
+		<div id="footer-wrapper">
 
 				<div class="container">
 
@@ -363,8 +393,6 @@
 				</div>
 
 			</div>
-
-		</div>
 
 	</body>
 

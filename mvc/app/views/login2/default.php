@@ -45,7 +45,8 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:90px;" >
+								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+ 
 
 								<nav>
 
@@ -79,9 +80,10 @@
 							
 								<h2> Player 1: <?php 
 
-													$LoggedUserName = getUserName($uid);
+													
+								$basket = KITE::getInstance('basket');
 
-													echo filter($LoggedUserName);
+									echo $basket->UserName;
 
 												?>; </h2>
 								
@@ -177,8 +179,8 @@
 
 					if(isset($_POST['Submit'])) {
 
-						$rezultat = existUser($LogUserName,$LogPass);
-
+					$model->existUser($LogUserName,$LogPass);
+						$rezultat = $basket->existUser;
 						if($rezultat == 0){
 
 							//echo "Username sau Parola gresita!";
@@ -197,9 +199,10 @@
 
 						else {
 
-							$cookie_value = getID($LogUserName,$LogPass);
-
-							$Logged = getUserLogg($cookie_value);
+							$model->getID($LogUserName,$LogPass);
+							$cookie_value = $basket->getID;
+							$model->getUserLogg($cookie_value);
+							$Logged = $basket->UserLogg;
 
 							if($Logged == 1) {
 
@@ -233,23 +236,25 @@
 
 				if(isset($_POST['Submit'])) {
 
-					$rezultat = existUser($LogUserName,$LogPass);
+					$model->existUser($LogUserName,$LogPass);
+					$rezultat = $basket->existUser;
 
 					if($rezultat == 1) {
 
-						$cookie_value = getID($LogUserName,$LogPass);
-
-						$Logged = getUserLogg($cookie_value);
+						$model->getID($LogUserName,$LogPass);
+							$cookie_value = $basket->getID;
+							$model->getUserLogg($cookie_value);
+							$Logged = $basket->UserLogg;
 
 						if($Logged == 0) {
 
-							setPlayerOn($cookie_value);
+							$model->setPlayerOn($cookie_value);
 							
 							setcookie("UserID1", $uid,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);
 
 							setcookie("UserID2", $cookie_value,time() + (86400 * 30),'/', 'localhost');//, "/","",true);// time() + (86400 * 30), "/","",true);  // 86400 = o zi
 
-							header('Location: 10PreparingTheGame.php');
+							header('Location: prepare');
 
 						}
 

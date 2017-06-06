@@ -3,11 +3,7 @@ class TWVerificare
 {
 	function getUserName($uid) {
         $basket = KITE::getInstance('basket');
-        if($uid==1)
-            $basket->set(UserName,'Ana');
-        else
-        $basket->set(UserName,$uid);
-		/*$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+       $connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
 		if(!$connection) {
 
@@ -35,94 +31,85 @@ class TWVerificare
 
 				$basket->set(UserName,$user);
 
-			}*/
+			}
 
 	}
 
-   function validPassword($pass) {
+		function ExistAnotherUser($UserName) {
+			$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
-	    if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', str_replace(' ', '', str_replace('@', '', str_replace('&', '', str_replace('#', '', $pass))))))))))
+		if(!$connection) {
 
-			return 0;
+			echo "Connection failed. Please try again";
 
-		else 
+			$basket->set(AnotherUserName,'-1');
 
-			if(strlen($pass)<5)
+		}
 
-				return 0;
+		else{
 
-	    return 1;
+				$sql = ' begin select getNrOfSameUsers(username) into :rez from players where username=\''.$UserName.'\'; end;';
 
-   }
+				$result = oci_parse($connection, $sql);
 
+				oci_bind_by_name($result, ':rez', $rez,50);
 
-   function validPass($pass1, $pass2) {
+				oci_execute($result);
 
-		if($pass1==$pass2)
+			//	oci_free_statement($result);
 
-			return 1;
+				oci_close($connection);
 
-		return 0;
+				$basket->set(AnotherUserName,$rez);
 
-	}
-
-
-	function validNume($p_nume) {
-
-		if(!$p_nume)
-
-		   return 0;
-
-		else 
-
-			if(!preg_match('/^[a-zA-Z ]*$/', str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_nume))))))
-
-				return 0;
-
-		return 1;
+			}
 
 	}
-
-
-	function validPremume($p_prenume) {
-
-		if (!ctype_alpha(str_replace(' ','',str_replace('-', '', $p_prenume))))
-
-			return 0;
-
-		if(strlen(str_replace(' ','',str_replace('-', '', $p_prenume)))==0)
-
-			return -1;
-
-		return 1;
-
-	}
-
-
-	function validUserName($p_username) {
-
-		if (!ctype_alnum(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_username))))))
-
-			return 0;
-
-		if(strlen(str_replace('.','',str_replace('-','', str_replace('_','', str_replace('+', '', $p_username)))))<4)
-
-			return -1;
-
-		return 1;
-
-	}
-
-
-	function existUser($user,$pass) {
-
+	
+		function getUserPass($uid) {
+			$basket = KITE::getInstance('basket');
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
 		if(!$connection){
 
 			echo "Connection failed. Please try again";
 
-			return -1;
+			$basket->set(UserPass,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin :rez := getPass(:ID); end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+
+				oci_bind_by_name($result, ':rez', $user,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserPass,$user);
+
+			}
+
+	}
+
+		function existUser($user,$pass) {
+			$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(existUser,'-1');
 
 		}
 
@@ -144,22 +131,94 @@ class TWVerificare
 
 				oci_close($connection);
 
-				return $rezultat;
+				$basket->set(existUser,$rezultat);
+
+			}
+
+	}
+
+	
+
+	function getFirstName($uid) {
+		$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(FirstName,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin :rez := getFN(:ID); end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+
+				oci_bind_by_name($result, ':rez', $user,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(FirstName,$user);
 
 			}
 
 	}
 
 
-	function getID($user,$pass) {
+	function getLastName($uid) {
+		$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
+		if(!$connection){
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(LastName,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin :rez := getLN(:ID); end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+
+				oci_bind_by_name($result, ':rez', $user,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(LastName,$user);
+
+			}
+
+	}
+
+
+
+		function getID($user,$pass) {
+			$basket = KITE::getInstance('basket');
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
 		if(!$connection) {
 
 			echo "Connection failed. Please try again";
 
-			return -1;
+			$basket->set(getID,'-1');
 
 		}
 
@@ -181,15 +240,207 @@ class TWVerificare
 
 				oci_close($connection);
 
-				return $rezultat;
+				$basket->set(getID,$rezultat);
+
+			}
+
+	}
+
+		function getUserLogg($uid) {
+			$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(UserLogg,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin select logged into :rez from players where ID='.$uid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserLogg,$rez);
+
+			}
+
+	}
+
+		function getUserMaterial($usid) {
+			$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(UserMaterial,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin select Material into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserMaterial,$rez);
+
+			}
+
+	}
+	
+	function getUserTool($usid) {
+		$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(UserTool,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin select Tool into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserTool,$rez);
+
+			}
+
+	}
+	
+	function getUserWeapon($usid) {
+		$basket = KITE::getInstance('basket');
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(UserWeapon,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin select Weapon into :rez from robots where ID='.$usid.'; end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':rez', $rez, 50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(UserWeapon,$rez);
+
+			}
+
+	}
+
+	function getRank($uid) {
+		$basket = KITE::getInstance('basket');
+
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			$basket->set(Rank,'-1');
+
+		}
+
+		else{
+
+				$sql = ' begin :rez := getRank(:ID); end;';
+
+				$result = oci_parse($connection, $sql);
+
+				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
+
+				oci_bind_by_name($result, ':rez', $user,50);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+
+				$basket->set(Rank,$user);
 
 			}
 
 	}
 
 
-	function getTop() {
+		function UpdatePass($UID,$NewPass) {
 
+		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+
+		if(!$connection) {
+
+			echo "Connection failed. Please try again";
+
+			return -1;
+
+		}
+
+		else{
+
+				$sql = 'update players SET password = \''.$NewPass.'\' WHERE ID = '.$UID;
+
+				$result = oci_parse($connection, $sql);
+
+				oci_execute($result);
+
+			//	oci_free_statement($result);
+
+				oci_close($connection);
+		}
+
+	}
+
+
+
+	function getTop() {
+		
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
 		if(!$connection) {
@@ -376,139 +627,6 @@ class TWVerificare
 	}
 
 
-	function getFirstName($uid) {
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection){
-
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = ' begin :rez := getFN(:ID); end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
-
-				oci_bind_by_name($result, ':rez', $user,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				return $user;
-
-			}
-
-	}
-
-
-	function getLastName($uid) {
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection){
-
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = ' begin :rez := getLN(:ID); end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
-
-				oci_bind_by_name($result, ':rez', $user,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				return $user;
-
-			}
-
-	}
-
-
-	function getUserPass($uid) {
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection){
-
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = ' begin :rez := getPass(:ID); end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':ID', $uid,50,SQLT_INT);
-
-				oci_bind_by_name($result, ':rez', $user,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				return $user;
-
-			}
-
-	}
-
-
-	function UpdatePass($UID,$NewPass) {
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection) {
-
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = 'update players SET password = \''.$NewPass.'\' WHERE ID = '.$UID;
-
-				$result = oci_parse($connection, $sql);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-		}
-
-	}
-
-
 	function UpdateUserName($UID,$NewUserN) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -539,14 +657,14 @@ class TWVerificare
 
 
 	function getRobotName($usid) {
-
+		$basket = KITE::getInstance('basket');
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
 		if(!$connection){
 
 			echo "Connection failed. Please try again";
 
-			return -1;
+			$basket->set(RobotName,'-1');
 
 		}
 
@@ -566,7 +684,7 @@ class TWVerificare
 
 				oci_close($connection);
 
-				return $user;
+				$basket->set(RobotName,$user);
 
 			}
 
@@ -786,76 +904,9 @@ class TWVerificare
 		
 	}
 	
-	function getUserLogg($uid) {
 
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
-		if(!$connection) {
 
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = ' begin select logged into :rez from players where ID='.$uid.'; end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':rez', $rez,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				return $rez;
-
-			}
-
-	}
-
-	function filter($string) { // functia care va preveni atacurile de tipul XSS
-
-		return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-
-	}
-
-	function ExistAnotherUser($UserName) {
-
-		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
-
-		if(!$connection) {
-
-			echo "Connection failed. Please try again";
-
-			return -1;
-
-		}
-
-		else{
-
-				$sql = ' begin select getNrOfSameUsers(username) into :rez from players where username=\''.$UserName.'\'; end;';
-
-				$result = oci_parse($connection, $sql);
-
-				oci_bind_by_name($result, ':rez', $rez,50);
-
-				oci_execute($result);
-
-			//	oci_free_statement($result);
-
-				oci_close($connection);
-
-				return $rez;
-
-			}
-
-	}
-	
 	function getUserMaterial($usid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
@@ -951,6 +1002,199 @@ class TWVerificare
 			}
 
 	}
+	function WinGame($usid) {
+ 
+
+ 
+    $connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+ 
+
+ 
+    if(!$connection){
+ 
+
+ 
+      echo "Connection failed. Please try again";
+ 
+
+ 
+      return -1;
+ 
+
+ 
+    }
+ 
+
+ 
+    else{
+ 
+
+ 
+        $sql = 'update players SET Victories = Victories + 1,Rank = Rank + 25 WHERE ID = '.$usid;
+ 
+
+ 
+        $result = oci_parse($connection, $sql);
+ 
+
+ 
+        oci_execute($result);
+ 
+
+ 
+      //  oci_free_statement($result);
+ 
+
+ 
+        oci_close($connection);
+ 
+
+ 
+    }
+ 
+
+ 
+  }
+ 
+
+ 
+
+ 
+  function DrawGame($usid1,$usid2) {
+ 
+
+ 
+    $connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+ 
+
+ 
+    if(!$connection){
+ 
+
+ 
+      echo "Connection failed. Please try again";
+ 
+
+ 
+      return -1;
+  
+    }
+ 
+
+ 
+    else{
+ 
+
+ 
+        $sql = 'update players SET Victories = Victories + 1,Rank = Rank + 25 WHERE ID = '.$usid1.' or ID ='.$usid2;
+ 
+
+ 
+        $result = oci_parse($connection, $sql);
+ 
+
+ 
+        oci_execute($result);
+ 
+
+ 
+      //  oci_free_statement($result);
+ 
+
+ 
+        oci_close($connection);
+ 
+
+ 
+    }
+ 
+
+ 
+  }
+ 
+
+ 
+
+ 
+  function LostGame($usid) {
+ 
+
+ 
+    $connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
+ 
+
+ 
+    if(!$connection){
+ 
+
+ 
+      echo "Connection failed. Please try again";
+ 
+
+ 
+      return -1;
+ 
+
+ 
+    }
+ 
+
+ 
+    else{
+ 
+
+ 
+        $sql1 = ' begin select getRank('.$usid.') into :rez from players where ID='.$usid.'; end;';
+ 
+
+ 
+        $result1 = oci_parse($connection, $sql1);
+ 
+
+ 
+        oci_bind_by_name($result1, ':rez', $rank,50);
+ 
+
+ 
+        oci_execute($result1);
+ 
+ 
+        if($rank>=25)
+ 
+
+ 
+          $rank = $rank - 25;
+ 
+
+ 
+        $sql = 'update players SET Loses = Loses + 1,Rank = '.$rank.' WHERE ID = '.$usid;
+ 
+
+ 
+        $result = oci_parse($connection, $sql);
+ 
+
+ 
+        oci_execute($result);
+ 
+
+ 
+      //  oci_free_statement($result);
+ 
+
+ 
+        oci_close($connection);
+ 
+
+ 
+    }
+ 
+
+ 
+  }
+ 
+
+ 
 	
 }	
 ?>
