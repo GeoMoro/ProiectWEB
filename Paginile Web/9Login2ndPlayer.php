@@ -187,43 +187,55 @@
 					$LogPass=$_POST["logpassword"];
 
 					if(isset($_POST['Submit'])) {
+						
+						if(validUserName($LogUserName)==1 && validPassword($LogPass)==1) {
 
-						$rezultat = existUser($LogUserName,$LogPass);
+							$rezultat = existUser($LogUserName,$LogPass);
 
-						if($rezultat == 0){
+							if($rezultat == 0){
 
-							//echo "Username sau Parola gresita!";
+								//echo "Username sau Parola gresita!";
 
-							$message = "Username sau Parola gresita!";
+								$message = "Username sau Parola gresita!";
 
-							//echo "<strong>".'Error: '.$message.'!!!'."</strong>"."<br>";
-
-							echo "<script type='text/javascript'>alert('$message');</script>";
-
-						//	$e1 = oci_error($statement1);
-
-						//	trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
-
-						}
-
-						else {
-
-							$cookie_value = getID($LogUserName,$LogPass);
-
-							$Logged = getUserLogg($cookie_value);
-
-							if($Logged == 1) {
-
-								$message = "Cineva este deja logat pe acest cont!";
+								//echo "<strong>".'Error: '.$message.'!!!'."</strong>"."<br>";
 
 								echo "<script type='text/javascript'>alert('$message');</script>";
 
-						//	$e1 = oci_error($statement1);
+							//	$e1 = oci_error($statement1);
 
-//							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+							//	trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
 
 							}
 
+							else {
+
+								$cookie_value = getID($LogUserName,$LogPass);
+
+								$Logged = getUserLogg($cookie_value);
+
+								if($Logged == 1) {
+
+									$message = "Cineva este deja logat pe acest cont!";
+
+									echo "<script type='text/javascript'>alert('$message');</script>";
+
+							//	$e1 = oci_error($statement1);
+
+//								trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+
+								}
+
+							}
+
+						}
+						
+						else {
+							
+							$message = "Campuri completate gresit!";
+
+									echo "<script type='text/javascript'>alert('$message');</script>";
+							
 						}
 
 					}
