@@ -69,7 +69,7 @@
 			</div>
 
 			<div class="container">	
-			
+
 			<div id="centrat">
 
 				<section class="left-content">
@@ -103,7 +103,7 @@
 					<p>BomberBot team</p>
 
 				</section>
-				
+
 				</div>
 
 			</div>

@@ -75,7 +75,7 @@
 					<div class="12u">
 
 						<section>
-						
+
 						<div id="centrat">
 
 							<div class="formacount">
@@ -367,7 +367,7 @@
 							<!--	<img src="TW_CSS/img/avatar.png" alt="Avatar" id="pozeavatar" >  -->
 
 							</div>
-							
+
 							</div>
 
 						</section>

@@ -100,6 +100,8 @@
 
 								<select class = "select" name="Material">
 
+									<option value = "<?php echo getUserMaterial($uid); ?>"><?php echo getUserMaterial($uid); ?> - Saved</option>
+
 									<option value = "NORMAL">NORMAL</option>
 
 									<option value = "WOOD">WOOD</option>
@@ -128,6 +130,8 @@
 
 								<select class = "select" name="Weapon">
 
+									<option value = "<?php echo getUserWeapon($uid); ?>"><?php echo getUserWeapon($uid); ?> - Saved</option>
+
 									<option value = "Normal Bombs">Short Ranged Bombs</option>
 
 									<option value = "Long Ranged Bombs">Long Ranged Bombs</option>
@@ -148,6 +152,8 @@
 
 								<select class = "select" name="Tool">
 
+									<option value = "<?php echo getUserTool($uid); ?>"><?php echo getUserTool($uid); ?> - Saved</option>
+
 									<option value = "NO BOMB COLLISION">No Bomb Collition</option>
 
 									<option value = "BOMB COLLISION">Bomb Collition</option>
@@ -159,7 +165,7 @@
 								<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
 							</h3>
-							
+
 							<br>
 
 							<span id="spancolorred"> 
@@ -207,9 +213,9 @@
 								?>
 
 							</span>
-							
+
 							<button id="Submit" name="SubmitChange" Value="Register" type="Submit">Save change</button>
-							
+
 							<br>
 
 							<section class = "topmenu1">

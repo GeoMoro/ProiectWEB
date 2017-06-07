@@ -94,6 +94,7 @@ var player2Weapon= "<?php echo $weapon2; ?>"; /*
 player2Weapon="Poison Bombs";
 player1Weapon="Long Ranged Bombs";*/
 var result=-1;
+var rezultatfinal = -1;
 var text0;var text1;var text2; var music;var end;var bmb1;var bmb2;var inp1;var inp2;var count1=0;var count2=0; var limit1=1; var limit2=1;var speed1=150; var speed2=150;
 var up1=400;var up2=400;
 var game = new Phaser.Game(1280, 720, Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -614,7 +615,7 @@ function update() {
             inp1=1;
         }
 
-        else if (player1Tool=="JETPACK"&&cursors.down.isDown)
+        else if (player1Tool=="JetPack"&&cursors.down.isDown)
         {
             player1.animations.play('down');
             player1.body.velocity.y=65;
@@ -626,7 +627,7 @@ function update() {
             inp1=1;
         } 
         
-        if(player1Tool=='JETPACK'&&cursors.up.isDown)
+        if(player1Tool=='JetPack'&&cursors.up.isDown)
         {
             player1.body.gravity.y=170;
             player1.body.velocity.y=-200;
@@ -745,7 +746,7 @@ function update() {
             player2.animations.play('right');
             inp2=1;
         }
-       else if (player2Tool=="JETPACK"&& s.isDown)
+       else if (player2Tool=="JetPack"&& s.isDown)
         {
             player2.animations.play('down');
             player2.body.velocity.y=150;inp2=1;
@@ -756,7 +757,7 @@ function update() {
         }
     
     
-        if(player2Tool=="JETPACK" && w.isDown)
+        if(player2Tool=="JetPack" && w.isDown)
         {
             player2.body.gravity.y=170;
             player2.body.velocity.y=-200;
@@ -896,7 +897,7 @@ function update() {
         if (!player1.alive&&player2.alive)
         {
             result=2;
-			<?php
+		/*	<?php
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = 2) {
 					WinGame($uid2);
@@ -904,7 +905,7 @@ function update() {
 					LostGame($uid1);
 				}
 				
-			?>
+			?>*/
 			music.stop();
             text2.revive();
             limit2=10000;
@@ -915,7 +916,7 @@ function update() {
         if (player1.alive&&!player2.alive)
         {
             result=1;music.stop();
-			<?php
+		/*	<?php
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = 1) {
 					WinGame($uid1);
@@ -923,7 +924,7 @@ function update() {
 					LostGame($uid2);
 				}
 				
-			?>
+			?>*/
            // end.play();
             limit1=10000;
             text1.revive();
@@ -931,13 +932,13 @@ function update() {
         }
 		else {
 			result=-1;
-			<?php
+			/*<?php
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = -1) {
 
 				}
 				
-			?>
+			?>*/
 			
 		}
 
@@ -945,7 +946,28 @@ function update() {
   
 }
     
+rezultatfinal=result;
+<?php 
 
+	$rezultat = "<script language=javascript>document.write(rezultatfinal);</script>";
+
+	if($rezultat = 0) {
+		DrawGame($uid1,$uid2);
+	}
+	else
+		if($rezultat = 1) {
+			WinGame($uid1);
+				
+			LostGame($uid2);
+		}
+		else 
+			if($rezultat = 2) {
+				WinGame($uid2);
+				
+				LostGame($uid1);
+			}
+
+?>
     
 </script>
 

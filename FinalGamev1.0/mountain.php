@@ -3,6 +3,7 @@
 <?php
 
 	include "TWVerificare.php";
+
 	ob_start();
 
 	error_reporting(0);
@@ -14,43 +15,43 @@
 			$uid1 =  $_COOKIE["IDP1"];
 
 	}
-	
+
 	if(isset($_COOKIE['IDP2'])){
 
 			$uid2 =  $_COOKIE["IDP2"];
 
 	}
-	
+
 	if(isset($_COOKIE['WeaponP1'])){
 
 			$weapon1 =  $_COOKIE["WeaponP1"];
 
 	}
-	
+
 	if(isset($_COOKIE['WeaponP2'])){
 
 			$weapon2 =  $_COOKIE["WeaponP2"];
 
 	}
-	
+
 	if(isset($_COOKIE['MaterialP1'])){
 
 			$material1 =  $_COOKIE["MaterialP1"];
 
 	}
-	
+
 	if(isset($_COOKIE['MaterialP2'])){
 
 			$material2 =  $_COOKIE["MaterialP2"];
 
 	}
-	
+
 	if(isset($_COOKIE['ToolP1'])){
 
 			$tool1 =  $_COOKIE["ToolP1"];
 
 	}
-	
+
 	if(isset($_COOKIE['ToolP2'])){
 
 			$tool2 =  $_COOKIE["ToolP2"];
@@ -58,11 +59,12 @@
 	}
 
     $nume1=getUserName($uid1);
+
     $nume2=getUserName($uid2);
 
 ?>
 
-<html lang="en"> 
+<html lang="en">
 <head> 
 	<meta charset="UTF-8" />
 	<title>Phaser - Making your first game, part 1</title>
@@ -77,77 +79,104 @@
     </style>
 </head>
 <body bgcolor= "black">
-    
-    
+
 <script type="text/javascript">
-    
-var player1Tool = "<?php echo $tool1; ?>";
-var player2Tool = "<?php echo $tool2; ?>";
-var player1Material = "<?php echo $material1; ?>";
-var player2Material = "<?php echo $material2; ?>";
-var player1Weapon= "<?php echo $weapon1; ?>";
-var player2Weapon= "<?php echo $weapon2; ?>"; /*
+
+	var player1Tool = "<?php echo $tool1; ?>";
+	var player2Tool = "<?php echo $tool2; ?>";
+	var player1Material = "<?php echo $material1; ?>";
+	var player2Material = "<?php echo $material2; ?>";
+	var player1Weapon= "<?php echo $weapon1; ?>";
+	var player2Weapon= "<?php echo $weapon2; ?>"; 
+
+	/*
     player1Material = "GOLD";
     player2Material = "WOOD";
     player1Tool = "BOMB COLLISION";
     player2Tool = "BOMB COLLISION";
-player2Weapon="Poison Bombs";
-player1Weapon="Long Ranged Bombs";*/
-var result=-1;
-var text0;var text1;var text2; var music;var end;var bmb1;var bmb2;var inp1;var inp2;var count1=0;var count2=0; var limit1=1; var limit2=1;var speed1=150; var speed2=150;
-var up1=400;var up2=400;
-var game = new Phaser.Game(1240, 723, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-var player;var time=0;var inertia;var mcheck;
-var platforms;var exp;
-var cursors;var direction=2;var timer=0;var timer2=0;var direction2=2;
-function preload() {
+	player2Weapon="Poison Bombs";
+	player1Weapon="Long Ranged Bombs";
+	*/
+
+	var result=-1;
+	var rezultatfinal = -1;
+	var text0;
+	var text1;
+	var text2; 
+	var music;
+	var end;
+	var bmb1;
+	var bmb2;
+	var inp1;
+	var inp2;
+	var count1=0;
+	var count2=0; 
+	var limit1=1; 
+	var limit2=1;
+	var speed1=150; 
+	var speed2=150;
+	var up1=400;
+	var up2=400;
+	var game = new Phaser.Game(1240, 723, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+	var player;
+	var time=0;
+	var inertia;
+	var mcheck;
+	var platforms;
+	var exp;
+	var cursors;
+	var direction=2;
+	var timer=0;
+	var timer2=0;
+	var direction2=2;
+	function preload() {
     game.load.image('moon','assets/snow.png');
     game.load.image('ice','assets/try.png');
-    
+
     if (player1Material=='GOLD')
        {
         game.load.spritesheet('bot1','assets/Goldbot1.png',256/4,384/4);
         limit1=60;up1=370;
        }
     else
-    if (player1Material=='WOOD')
-    {
-        game.load.spritesheet('bot1','assets/Woodbot1.png',256/4,384/4);
-        speed1=250;
-    }
-    else
-    if (player1Material=='SILVER')
-    {
-        game.load.spritesheet('bot1','assets/Silverbot1.png',256/4,384/4);
-        limit1=40;
-    }
-    else
-    if (player1Material=='DIAMOND')
-    {
-        game.load.spritesheet('bot1','assets/Diamondbot1.png',256/4,384/4);
-        limit1=60;speed1=115;
-    }
-    else
-    if (player1Material=='EMERALD')
-    {
-        game.load.spritesheet('bot1','assets/Emeraldbot1.png',256/4,384/4);
-        limit1=40;speed1 = 125;
-    }
-    else
-    if (player1Material=='STEEL')
-        {
-        game.load.spritesheet('bot1','assets/Blackbot1.png',256/4,384/4);
-        limit1=50;speed1==115;
-            up1=260;
-        }
-    else
-    if (player1Material=='OBSIDIAN')
-    {
-        game.load.spritesheet('bot1','assets/Obsidianbot1.png',256/4,384/4);
-        limit1=40;speed1=165;
-    }
-    else 
-        game.load.spritesheet('bot1','assets/bot.png',256/4,384/4);
+		if (player1Material=='WOOD')
+		{
+			game.load.spritesheet('bot1','assets/Woodbot1.png',256/4,384/4);
+			speed1=250;
+		}
+		else
+			if (player1Material=='SILVER')
+			{
+				game.load.spritesheet('bot1','assets/Silverbot1.png',256/4,384/4);
+				limit1=40;
+			}
+			else
+				if (player1Material=='DIAMOND')
+				{
+					game.load.spritesheet('bot1','assets/Diamondbot1.png',256/4,384/4);
+					limit1=60;speed1=115;
+				}
+				else
+					if (player1Material=='EMERALD')
+					{
+						game.load.spritesheet('bot1','assets/Emeraldbot1.png',256/4,384/4);
+						limit1=40;speed1 = 125;
+					}
+					else
+						if (player1Material=='STEEL')
+							{
+							game.load.spritesheet('bot1','assets/Blackbot1.png',256/4,384/4);
+							limit1=50;speed1==115;
+								up1=260;
+							}
+						else
+							if (player1Material=='OBSIDIAN')
+							{
+								game.load.spritesheet('bot1','assets/Obsidianbot1.png',256/4,384/4);
+								limit1=40;speed1=165;
+							}
+							else 
+								game.load.spritesheet('bot1','assets/bot.png',256/4,384/4);
     
     
     
@@ -157,48 +186,46 @@ function preload() {
         game.load.spritesheet('bot2','assets/Goldbot2.png',256/4,384/4);
         limit2=3;up2=370;
     }
-        else
-    if (player2Material=='WOOD')
-        {
-        game.load.spritesheet('bot2','assets/Woodbot2.png',256/4,384/4);
-        speed2=250;
-        }
     else
-    if (player2Material=='SILVER')
-        {
-        game.load.spritesheet('bot2','assets/Silverbot2.png',256/4,384/4);
-        limit2=40;
-        }
-    else
-    if (player2Material=='DIAMOND')
-    {
-        game.load.spritesheet('bot2','assets/Diamondbot2.png',256/4,384/4);
-        limit2=60;speed2=115;
-    }
-    else
-    if (player2Material=='EMERALD')
-    {
-        game.load.spritesheet('bot2','assets/Emeraldbot2.png',256/4,384/4);
-        limit2=40;speed2 = 125;
-    }
-    else
-    if (player2Material=='STEEL')
-    {
-        game.load.spritesheet('bot2','assets/Blackbot2.png',256/4,384/4);
-        limit2=50;speed2==115;
-            up2=300;
-    }
-    else
-    if (player2Material=='OBSIDIAN')
-    {
-        game.load.spritesheet('bot2','assets/Obsidianbot2.png',256/4,384/4);
-        limit2=40;speed2=165;
-    }
-    else 
-        game.load.spritesheet('bot2','assets/bot.png',256/4,384/4);
+		if (player2Material=='WOOD')
+			{
+			game.load.spritesheet('bot2','assets/Woodbot2.png',256/4,384/4);
+			speed2=250;
+			}
+		else
+			if (player2Material=='SILVER')
+				{
+				game.load.spritesheet('bot2','assets/Silverbot2.png',256/4,384/4);
+				limit2=40;
+				}
+			else
+				if (player2Material=='DIAMOND')
+				{
+					game.load.spritesheet('bot2','assets/Diamondbot2.png',256/4,384/4);
+					limit2=60;speed2=115;
+				}
+				else
+					if (player2Material=='EMERALD')
+					{
+						game.load.spritesheet('bot2','assets/Emeraldbot2.png',256/4,384/4);
+						limit2=40;speed2 = 125;
+					}
+					else
+						if (player2Material=='STEEL')
+						{
+							game.load.spritesheet('bot2','assets/Blackbot2.png',256/4,384/4);
+							limit2=50;speed2==115;
+								up2=300;
+						}
+						else
+							if (player2Material=='OBSIDIAN')
+							{
+								game.load.spritesheet('bot2','assets/Obsidianbot2.png',256/4,384/4);
+								limit2=40;speed2=165;
+							}
+							else 
+								game.load.spritesheet('bot2','assets/bot.png',256/4,384/4);
 
-    
-    
     if (player1Weapon=="Metal Bombs")
         {
         game.load.spritesheet('bmb1', 'assets/MetalBomb3.png',1405/9,149);
@@ -582,7 +609,7 @@ function update() {
             inp1=1;
         }
 
-        else if (player1Tool=="JETPACK"&&cursors.down.isDown)
+        else if (player1Tool=="JetPack"&&cursors.down.isDown)
         {
             player1.animations.play('down');
             player1.body.velocity.y=65;
@@ -594,7 +621,7 @@ function update() {
             inp1=1;
         } 
         
-        if(player1Tool=='JETPACK'&&cursors.up.isDown)
+        if(player1Tool=='JetPack'&&cursors.up.isDown)
         {
             player1.body.gravity.y=170;
             player1.body.velocity.y=-200;
@@ -713,7 +740,7 @@ function update() {
             player2.animations.play('right');
             inp2=1;
         }
-       else if (player2Tool=="JETPACK"&& s.isDown)
+       else if (player2Tool=="JetPack"&& s.isDown)
         {
             player2.animations.play('down');
             player2.body.velocity.y=150;inp2=1;
@@ -724,7 +751,7 @@ function update() {
         }
     
     
-        if(player2Tool=="JETPACK" && w.isDown)
+        if(player2Tool=="JetPack" && w.isDown)
         {
             player2.body.gravity.y=170;
             player2.body.velocity.y=-200;
@@ -849,12 +876,12 @@ function update() {
         
         if (!player1.alive&&!player2.alive)
         {   result=0;
-			<?php 
+			/*<?php 
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = 0) {
 					DrawGame($uid1,$uid2);
 				}
-			?>
+			?>*/
             text0.revive(); music.stop();    
             gamesounds(end);
             game.time.events.repeat(Phaser.Timer.SECOND*16.5, 1, killgame,this);
@@ -863,14 +890,14 @@ function update() {
         if (!player1.alive&&player2.alive)
         {
             result=2;
-			<?php
+			/*<?php
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = 2) {
 					WinGame($uid2);
 				
 					LostGame($uid1);
 				}
-			?>
+			?>*/
 			music.stop();
             text2.revive();
             limit2=10000;
@@ -881,14 +908,14 @@ function update() {
         if (player1.alive&&!player2.alive)
         {
             result=1;music.stop();
-			<?php
+			/*<?php
 				$rezultat = "<script language=javascript>document.write(result);</script>";
 				if($rezultat = 1) {
 					WinGame($uid1);
 				
 					LostGame($uid2);
 				}
-			?>
+			?>*/
            // end.play();
             limit1=10000;
             text1.revive();
@@ -908,6 +935,29 @@ function update() {
 
   
 }
+
+rezultatfinal=result;
+<?php 
+
+	$rezultat = "<script language=javascript>document.write(rezultatfinal);</script>";
+
+	if($rezultat = 0) {
+		DrawGame($uid1,$uid2);
+	}
+	else
+		if($rezultat = 1) {
+			WinGame($uid1);
+				
+			LostGame($uid2);
+		}
+		else 
+			if($rezultat = 2) {
+				WinGame($uid2);
+				
+				LostGame($uid1);
+			}
+
+?>
     
 
     

@@ -16,6 +16,10 @@
 
 	}
 
+	$LogUserName=$_POST["logusername"];
+
+	$LogPass=$_POST["logpassword"];
+
 ?>
 
 <html>
@@ -172,7 +176,7 @@
 
 		</div>
 
-	<div class="popup" onclick="myFunction()">
+	<div class="popup"><!-- onclick="myFunction()">-->
 
 			<span id="spancolorred">
 
@@ -196,9 +200,9 @@
 
 							echo "<script type='text/javascript'>alert('$message');</script>";
 
-							$e1 = oci_error($statement1);
+						//	$e1 = oci_error($statement1);
 
-							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+						//	trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
 
 						}
 
@@ -214,9 +218,9 @@
 
 								echo "<script type='text/javascript'>alert('$message');</script>";
 
-							$e1 = oci_error($statement1);
+						//	$e1 = oci_error($statement1);
 
-							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
+//							trigger_error(htmlentities($e1['message'], ENT_QUOTES), E_USER_ERROR);
 
 							}
 

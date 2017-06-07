@@ -67,6 +67,7 @@
 	<meta charset="UTF-8" />
 	<title>Phaser - Making your first game, part 1</title>
     <script src="./phaser.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <style type="text/css">
         body {
             margin-top: 10%;
@@ -78,7 +79,8 @@
 </head>
 <body bgcolor= "black">
     
-    
+<form action="" method='post'>
+
 <script type="text/javascript">
     
 var player1Tool = "<?php echo $tool1; ?>";
@@ -94,6 +96,7 @@ var player2Weapon= "<?php echo $weapon2; ?>"; /*
 player2Weapon="Poison Bombs";
 player1Weapon="Long Ranged Bombs";*/
 var result=-1;
+var rezultatfinal=-1;
 var text0;var text1;var text2; var music;var end;var bmb1;var bmb2;var inp1;var inp2;var count1=0;var count2=0; var limit1=1; var limit2=1;var speed1=150; var speed2=150;
 var up1=400;var up2=400;
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -238,7 +241,34 @@ function preload() {
 
 }
     
-    
+    function p1win()
+	{
+		result=1;
+		music.stop();
+			
+           // end.play();
+        limit2=10000;
+        text2.revive();
+		game.time.events.repeat(Phaser.Timer.SECOND * 3, 1, killgame, this);
+			 $.ajax({
+			type: 'POST',
+			url: '11Test.php',
+			data: {'variable': result},
+			});
+	}
+	function p2win()
+	{result=2;
+	music.stop();
+           // end.play();
+        limit1=10000;
+        text1.revive();
+		game.time.events.repeat(Phaser.Timer.SECOND * 3, 1, killgame, this);
+			$.ajax({
+			type: 'POST',
+			url: '11Test.php',
+			data: {'variable': result},
+			});
+	}
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.add.sprite(0,0,'cave'); 
@@ -256,7 +286,7 @@ function create() {
     end=game.add.audio('endsound');
     
     //<PLAYER1>
-    player1=game.add.sprite(32,game.world.height-300,'bot1');
+    player1=game.add.sprite(600,game.world.height-300,'bot1');
     game.physics.arcade.enable(player1);
     player1.body.bounce.y=0.2;
     player1.body.gravity.y=400;
@@ -281,6 +311,7 @@ function create() {
     kboom1.kill();}
     bmb1=game.add.audio('bmb');
     //</xplo>
+	player1.events.onKilled.add(p1win,this);
     //</PLAYER1>
     
         //<PLAYER2>
@@ -298,7 +329,7 @@ function create() {
     s=game.input.keyboard.addKey(Phaser.Keyboard.S);
     d=game.input.keyboard.addKey(Phaser.Keyboard.D);
     c=game.input.keyboard.addKey(Phaser.Keyboard.C);   
-    
+    player2.events.onKilled.add(p2win,this);
         //<BOMB>
     bomb2=game.add.sprite(0,0,'bmb2');
     bomb2.animations.add("rightbmb",[0,1,2,3,4,5,6,7,8],10,true);
@@ -403,10 +434,10 @@ function killplayer1()
         else
         {*/
             if(kboom1.alive &&
-           kboom1.x>=player1.x-100-aoe && 
+           kboom1.x>=player1.x-100-aoe &&
            kboom1.x<=player1.x-100+aoe && 
            kboom1.y>=player1.y-100-aoe && 
-           kboom1.y<=player1.y-100+aoe)
+           kboom1.y<=player1.y-100+aoe&&player1.alive)
            {
             count1++;
             if(count1>=limit1)
@@ -430,7 +461,7 @@ function killplayer1()
            kboom2.x>=player1.x-100-aoe && 
            kboom2.x<=player1.x-100+aoe && 
            kboom2.y>=player1.y-100-aoe && 
-           kboom2.y<=player1.y-100+aoe )
+           kboom2.y<=player1.y-100+aoe &&player1.alive)
             {
             count1++;
             if(count1>=limit1)
@@ -461,7 +492,7 @@ function killplayer2()
            kboom1.x>=player2.x-100-aoe && 
            kboom1.x<=player2.x-100+aoe && 
            kboom1.y>=player2.y-100-aoe && 
-           kboom1.y<=player2.y-100+aoe)
+           kboom1.y<=player2.y-100+aoe&& player2.alive)
            {
             count2++;
             if(count2>=limit2)
@@ -485,7 +516,7 @@ function killplayer2()
            kboom2.x>=player2.x-100-aoe && 
            kboom2.x<=player2.x-100+aoe && 
            kboom2.y>=player2.y-100-aoe && 
-           kboom2.y<=player2.y-100+aoe )
+           kboom2.y<=player2.y-100+aoe&&player2.alive )
             {
             count2++;
             if(count2>=limit2)
@@ -510,6 +541,7 @@ function killbmb2()
     
 function update() {
     t0=game.time.totalElapsedSeconds();
+	
     game.physics.arcade.collide(player1,platforms);
     game.physics.arcade.collide(player2,platforms);
     game.physics.arcade.collide(bomb1,platforms);
@@ -563,7 +595,7 @@ function update() {
             inp1=1;
         }
 
-        else if (player1Tool=="JETPACK"&&cursors.down.isDown)
+        else if (player1Tool=="JetPack"&&cursors.down.isDown)
         {
             player1.animations.play('down');
             player1.body.velocity.y=65;
@@ -575,7 +607,7 @@ function update() {
             inp1=1;
         } 
         
-        if(player1Tool=='JETPACK'&&cursors.up.isDown)
+        if(player1Tool=='JetPack'&&cursors.up.isDown)
         {
             player1.body.gravity.y=170;
             player1.body.velocity.y=-200;
@@ -694,7 +726,7 @@ function update() {
             player2.animations.play('right');
             inp2=1;
         }
-       else if (player2Tool=="JETPACK"&& s.isDown)
+       else if (player2Tool=="JetPack"&& s.isDown)
         {
             player2.animations.play('down');
             player2.body.velocity.y=150;inp2=1;
@@ -705,7 +737,7 @@ function update() {
         }
     
     
-        if(player2Tool=="JETPACK" && w.isDown)
+        if(player2Tool=="JetPack" && w.isDown)
         {
             player2.body.gravity.y=170;
             player2.body.velocity.y=-200;
@@ -828,72 +860,85 @@ function update() {
         ///////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////
         
-        if (!player1.alive&&!player2.alive && result==-1)
+        /*if (!player1.alive&&!player2.alive && result==-1)
         {   result=0;
-			<?php 
-				$rezultat = "<script language=javascript>document.write(result);</script>";
-				if($rezultat = 0) {
-					DrawGame($uid1,$uid2);
-				}
-			?>
-            text0.revive(); music.stop();    
+
+            text0.revive(); 
+			music.stop();    
             gamesounds(end);
+			 $.ajax({
+			type: 'POST',
+			url: 'cave.php',
+			data: {'variable': 0},
+			});
             game.time.events.repeat(Phaser.Timer.SECOND*16.5, 1, killgame,this);
+			
+			
         }
 		else
         if (!player1.alive&&player2.alive && result==-1)
         {
-            result=2;music.stop();
-			<?php
-				$rezultat = "<script language=javascript>document.write(result);</script>";
-				if($rezultat = 2) {
-					WinGame($uid2);
-				
-					LostGame($uid1);
-				}
-			?>
+            result=2;
+			music.stop();
             text2.revive();
             limit2=10000;
            // end.play();
-            game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
+		   $.ajax({
+			type: 'POST',
+			url: 'cave.php',
+			data: {'variable': 2},
+			});
+           // game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
+		   killgame();
+			
+			
         }
 		else
         if (player1.alive&&!player2.alive && result==-1)
         {
-            result=1;music.stop();
-			
-			<?php
-				$rezultat = "<script language=javascript>document.write(result);</script>";
-				if($rezultat = 1) {
-					WinGame($uid1);
-				
-					LostGame($uid2);
-				}
-			?>
+            result=1;
+			music.stop();
 			
            // end.play();
             limit1=10000;
             text1.revive();
-            game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
-        }
-		else {
-			result=-1;
-			<?php
-				$rezultat = "<script language=javascript>document.write(result);</script>";
-				if($rezultat = -1) {
+			 $.ajax({
+			type: 'POST',
+			url: 'cave.php',
+			data: {'variable': 1},
+			});
 
-				}
-				
-			?>
-			
-		}
+          //  game.time.events.repeat(Phaser.Timer.SECOND * 15, 1, killgame, this);
+		  killgame();
+        } 	*/
 
-  
 }
-    
 
-    
+rezultatfinal=result;
+<?php 
+
+	$rezultat = "<script language=javascript>document.write(rezultatfinal);</script>";
+
+	if($rezultat = 0) {
+		DrawGame($uid1,$uid2);
+	}
+	else
+		if($rezultat = 1) {
+			WinGame($uid1);
+				
+			LostGame($uid2);
+		}
+		else 
+			if($rezultat = 2) {
+				WinGame($uid2);
+				
+				LostGame($uid1);
+			}
+
+?>
+
 </script>
-
+	
+</form>
 </body>
 </html>

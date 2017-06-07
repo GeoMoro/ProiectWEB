@@ -28,7 +28,7 @@
 
 	<head>
 
-		<title>Login2ndPlayer</title>
+		<title>Prepare4TheGame</title>
 
 		<meta charset="utf-8" />
 
@@ -69,7 +69,7 @@
 				<div class="row main-row">
 
 					<div class="8u 12u(mobile)">
-					
+
 					<div id="centrat">
 
 						<form action="" method='post' id="formlastpage">
@@ -159,7 +159,7 @@
 							 ?> </h3>
 
 							<h3>Material : 
-							
+
 								<select class = "select" name="Material2">
 
 									<option value = "<?php echo getUserMaterial($uid2); ?>"><?php echo getUserMaterial($uid2); ?> - Saved</option>
@@ -243,7 +243,7 @@
 							<br><br>
 
 							<hr>
-							
+
 							</div>
 
 					<!--	</form> -->
@@ -262,7 +262,7 @@
 
 						<section class = "topmenu1" id="formlastpage">
 
-							<label id="labellastpage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terain</label>
+							<label id="labellastpage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terrain</label>
 
 							<select class = "select" name= "Terenul">
 

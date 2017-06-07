@@ -53,7 +53,7 @@
 			<div class="container">	
 
 				<section class="left-content">
-				
+
 				<div id="centrat">
 
 					<h2>Hello, guest!</h2>
@@ -77,7 +77,7 @@
 					<p>Have fun!</p>
 
 					<p>BomberBot team</p>
-					
+
 					</div>
 
 				</section>

@@ -1165,5 +1165,41 @@ drop table i_numeRoboti;
 drop table i_arme;
 DROP TABLE i_materiale;
 DROP TABLE i_atributRoboti;
-/
---select * from players where username = 'test12' or username ='MrGado' order by id desc
+/*
+  insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10000,'Player1','Player','Player','Player1',0,null,'N',10000,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10001,'Player2','Player','Player','Player2',0,null,'N',10001,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10002,'Player3','Player','Player','Player3',0,null,'N',10002,0,0,0,SYSDATE,0);
+  insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10003,'Player4','Player','Player','Player4',0,null,'N',10003,0,0,0,SYSDATE,0);
+  insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10004,'Player5','Player','Player','Player5',0,null,'N',10004,0,0,0,SYSDATE,0);
+  insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10005,'Player6','Player','Player','Player6',0,null,'N',10005,0,0,0,SYSDATE,0); 
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10006,'MrGado','George','Moro','MrGado',0,null,'N',10006,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10007,'siqsiq','Roby','Vicol','siqsiq',0,null,'N',10007,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10008,'gtkgtk','George','Mazi','gtkgtk',0,null,'N',10008,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10009,'Player7','Player','Player','Player7',0,null,'N',10009,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10010,'Player8','Player','Player','Player8',0,null,'N',10010,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10011,'Player9','Player','Player','Player9',0,null,'N',10011,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10012,'Player10','Player','Player','Player10',0,null,'N',10012,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10013,'qwert','Player','Player','qwert',0,null,'N',10013,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10014,'qwerty','Player','Player','qwerty',0,null,'N',10014,0,0,0,SYSDATE,0);
+   insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10015,'qwertyu','Player','Player','qwertyu',0,null,'N',10015,0,0,0,SYSDATE,0);
+    insert into Players(id,username,first_name,last_name,password,rank,team,veteran,robotID,gamesNo,Victories,Loses,createdAt,Logged) values
+      (10016,'qwertyui','Player','Player','qwertyui',0,null,'N',10016,0,0,0,SYSDATE,0);
+      */
+--select * from players order by id desc
+    
