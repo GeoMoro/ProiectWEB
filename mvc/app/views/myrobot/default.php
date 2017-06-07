@@ -26,15 +26,15 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+		<link rel="stylesheet" href="http://localhost:8181/kite/assets/css/main.css" />
 
 	</head>
 
-	 <body background="http://localhost/kite/assets/img/back.png">
+	 <body background="http://localhost:8181/kite/assets/img/back.png">
 
 		<audio autoplay id="audio">
 
-			<source src="http://localhost/kite/assets/img/Music.mp3" type="audio/mpeg">
+			<source src="http://localhost:8181/kite/assets/img/Music.mp3" type="audio/mpeg">
 
 		</audio>
 
@@ -50,7 +50,7 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="http://localhost:8181/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
  
 
 								<nav>

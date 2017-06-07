@@ -27,7 +27,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+		<link rel="stylesheet" href="http://localhost:8181/kite/assets/css/main.css" />
 
 	</head>
 
@@ -45,7 +45,7 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="http://localhost:8181/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
  
 
 								<nav>

@@ -26,7 +26,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+		<link rel="stylesheet" href="http://localhost:8181/kite/assets/css/main.css" />
 
 	</head>
 
@@ -44,7 +44,7 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="http://localhost:8181/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
  
 
 								<nav>
@@ -95,7 +95,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/vicol.robert"><img src="TW_CSS/img/robert.jpg" id="pozefb" alt="" class="left"/> </a>
+									<a href="https://www.facebook.com/vicol.robert"><img src="http://localhost:8181/kite/assets/img/robert.jpg" id="pozefb" alt="" class="left"/> </a>
 
 									<h3>Vicol Robert Ilie</h3>
 
@@ -105,7 +105,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="TW_CSS/img/mazi.jpg" id="pozefb" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/mazilu.georgeviorel"><img src="http://localhost:8181/kite/assets/img/mazi.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Mazilu George-Viorel</h3>
 
@@ -115,7 +115,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="TW_CSS/img/juan.jpg" id="pozefb" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/georgecosmin.morosanu"><img src="http://localhost:8181/kite/assets/img/juan.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Morosanu George-Cosmin</h3>
 
@@ -125,7 +125,7 @@
 
 								<li>
 
-									<a href="https://www.facebook.com/minuti.vlad"><img src="TW_CSS/img/vlad.jpg" id="pozefb" alt="" class="left" /></a>
+									<a href="https://www.facebook.com/minuti.vlad"><img src="http://localhost:8181/kite/assets/img/vlad.jpg" id="pozefb" alt="" class="left" /></a>
 
 									<h3>Minuti Vladut-Stefan</h3>
 
@@ -147,13 +147,13 @@
 
 								<form action="" method='post'>
 
-									<a href="4Jocul.php"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
+									<a href="jocul"> <button id="Submit" name="Submit1" Value="Register" type="Submit">   Play a game  </button> </a>	
 
-									<a href="6Accoutinfo.php">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
+									<a href="acountinfo">  <button id="Submit" name="Submit2" Value="Register" type="Submit"> Account info </button> </a>
 
-									<a href="7MyRobot.php">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
+									<a href="myrobot">  <button id="Submit" name="Submit3" Value="Register" type="Submit"> My Robot </button> </a>	
 
-									<button id="Submit" name="Submit" Value="Logout" type="Submit"> Logout :( </button>
+									<a href="login">  <button id="Submit" name="Submit" Value="Register" type="Submit"> Logout :( </button> </a>
 
 								</form>
 
@@ -209,7 +209,7 @@
 
 			setcookie("userID", "", time() - 3600);
 
-			header('Location: 1WelcomeNelogat.php');
+			header('Location: login');
 
 		}
 
@@ -219,7 +219,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: 4Jocul.php');
+				header('Location: jocul');
 
 			}
 
@@ -229,7 +229,7 @@
 
 				setcookie("userID", "", time() - 3600);
 
-				header('Location: 6AccountInfo.php');
+				header('Location: acountinfo');
 
 				}
 
@@ -239,7 +239,7 @@
 
 						setcookie("userID", "", time() - 3600);
 
-						header('Location: 7MyRobot.php');
+						header('Location: myrobot');
 
 					}
 

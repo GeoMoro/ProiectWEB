@@ -28,7 +28,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="http://localhost/kite/assets/css/main.css" />
+		<link rel="stylesheet" href="http://localhost:8181/kite/assets/css/main.css" />
 
 	</head>
 
@@ -46,7 +46,7 @@
 
 							<header id="header">
 
-								<img src="http://localhost/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
+								<img src="http://localhost:8181/kite/assets/img/BomberBot.png" alt="Bomberbot" style= "width:713px;height:76px;" >
  
 
 								<nav>
@@ -333,27 +333,27 @@
 
 									if($ImgNo == 1)
 
-										echo '<img src="http://localhost/kite/assets/img/r1.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r1.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 2)
 
-										echo '<img src="http://localhost/kite/assets/img/r2.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r2.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 3)
 
-										echo '<img src="http://localhost/kite/assets/img/r3.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r3.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 4)
 
-										echo '<img src="http://localhost/kite/assets/img/r4.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r4.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 5)
 
-										echo '<img src="http://localhost/kite/assets/img/r5.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r5.png" alt="Avatar" id="pozeavatar" >';
 
 									if($ImgNo == 6)
 
-										echo '<img src="http://localhost/kite/assets/img/r6.png" alt="Avatar" id="pozeavatar" >';
+										echo '<img src="http://localhost:8181/kite/assets/img/r6.png" alt="Avatar" id="pozeavatar" >';
 
 								?>
 

@@ -592,7 +592,7 @@ class TWVerificare
 
 
 
-	function getRank($uid) {
+	/*function getRank($uid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
@@ -624,7 +624,7 @@ class TWVerificare
 
 			}
 
-	}
+	}*/
 
 
 	function UpdateUserName($UID,$NewUserN) {
@@ -907,7 +907,7 @@ class TWVerificare
 
 
 
-	function getUserMaterial($usid) {
+/*	function getUserMaterial($usid) {
 
 		$connection = oci_connect('ProjIP', 'ProjIP', 'localhost/xe');
 
@@ -1001,7 +1001,7 @@ class TWVerificare
 
 			}
 
-	}
+	}*/
 	function WinGame($usid) {
  
 
